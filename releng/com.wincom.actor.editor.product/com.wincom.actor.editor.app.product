@@ -15,7 +15,9 @@
 
    <windowImages/>
 
-   <launcher>
+   <splash
+      location="org.eclipse.platform" />
+   <launcher name="actor-editor">
       <solaris/>
       <win useIco="false">
          <bmp/>

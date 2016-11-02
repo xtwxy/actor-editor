@@ -14,6 +14,5 @@
     </parent>
     <modules>
         <module>com.wincom.actor.editor.app</module>
-        <module>com.wincom.actor.editor.rcp</module>
     </modules>
 </project>

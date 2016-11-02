@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_Pa_CAaDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.application" contributorURI="platform:/plugin/com.wincom.actor.editor.app" selectedElement="_Pa_CAqDMEea_aLNNpBX0Zw" bindingContexts="_Pa_CHKDMEea_aLNNpBX0Zw">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_Pa_CAqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.window.main" contributorURI="platform:/plugin/com.wincom.actor.editor.app" selectedElement="_Pa_CA6DMEea_aLNNpBX0Zw" label="Eclipse 4 RCP Application" x="0" y="27" width="500" height="400">
+    <tags>topLevel</tags>
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_Pa_CA6DMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.ide.perspectivestack" contributorURI="platform:/plugin/com.wincom.actor.editor.app" selectedElement="_Pa_CBKDMEea_aLNNpBX0Zw">
+      <children xsi:type="advanced:Perspective" xmi:id="_Pa_CBKDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.perspective.sample" contributorURI="platform:/plugin/com.wincom.actor.editor.app" selectedElement="_Pa_CBaDMEea_aLNNpBX0Zw">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_Pa_CBaDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.partsashcontainer.sample" contributorURI="platform:/plugin/com.wincom.actor.editor.app" selectedElement="_Pa_CBqDMEea_aLNNpBX0Zw">
+          <children xsi:type="basic:PartStack" xmi:id="_Pa_CBqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.partstack.sample" contributorURI="platform:/plugin/com.wincom.actor.editor.app" containerData="5000" selectedElement="_Pa_CB6DMEea_aLNNpBX0Zw">
+            <tags>active</tags>
+            <children xsi:type="basic:Part" xmi:id="_Pa_CB6DMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.part.sample" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://com.wincom.actor.editor.app/com.wincom.actor.editor.app.parts.SamplePart" label="Sample Part">
+              <tags>active</tags>
+            </children>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_Pa_CCKDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.main.menu" contributorURI="platform:/plugin/com.wincom.actor.editor.app">
+      <children xsi:type="menu:Menu" xmi:id="_Pa_CCaDMEea_aLNNpBX0Zw" elementId="file" contributorURI="platform:/plugin/com.wincom.actor.editor.app" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Pa_CCqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handleditem.file.open" contributorURI="platform:/plugin/com.wincom.actor.editor.app" label="Open" iconURI="platform:/plugin/com.wincom.actor.editor.app/icons/sample.png" command="_Pa_CIKDMEea_aLNNpBX0Zw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Pa_CC6DMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handleditem.save" contributorURI="platform:/plugin/com.wincom.actor.editor.app" label="Save" iconURI="platform:/plugin/com.wincom.actor.editor.app/icons/save_edit.png" command="_Pa_CIaDMEea_aLNNpBX0Zw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Pa_CDKDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handleditem.quit" contributorURI="platform:/plugin/com.wincom.actor.editor.app" label="Quit" command="_Pa_CH6DMEea_aLNNpBX0Zw"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_Pa_CDaDMEea_aLNNpBX0Zw" elementId="help" contributorURI="platform:/plugin/com.wincom.actor.editor.app" label="Help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Pa_CDqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handleditem.about" contributorURI="platform:/plugin/com.wincom.actor.editor.app" label="About" command="_Pa_CIqDMEea_aLNNpBX0Zw"/>
+      </children>
+    </mainMenu>
+    <trimBars xmi:id="_Pa_CD6DMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.trimbar.top" contributorURI="platform:/plugin/com.wincom.actor.editor.app">
+      <children xsi:type="menu:ToolBar" xmi:id="_Pa_CEKDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.main.toolbar" contributorURI="platform:/plugin/com.wincom.actor.editor.app">
+        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Pa_CEaDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handleditem.trimbar.top.open" contributorURI="platform:/plugin/com.wincom.actor.editor.app" iconURI="platform:/plugin/com.wincom.actor.editor.app/icons/sample.png" command="_Pa_CIKDMEea_aLNNpBX0Zw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Pa_CEqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handleditem.trimbar.top.save" contributorURI="platform:/plugin/com.wincom.actor.editor.app" iconURI="platform:/plugin/com.wincom.actor.editor.app/icons/save_edit.png" enabled="false" command="_Pa_CIaDMEea_aLNNpBX0Zw"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_Pa_CE6DMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handler.quitCommand" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://com.wincom.actor.editor.app/com.wincom.actor.editor.app.handlers.QuitHandler" command="_Pa_CH6DMEea_aLNNpBX0Zw"/>
+  <handlers xmi:id="_Pa_CFKDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handler.openCommand" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://com.wincom.actor.editor.app/com.wincom.actor.editor.app.handlers.OpenHandler" command="_Pa_CIKDMEea_aLNNpBX0Zw"/>
+  <handlers xmi:id="_Pa_CFaDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handler.saveCommand" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://com.wincom.actor.editor.app/com.wincom.actor.editor.app.handlers.SaveHandler" command="_Pa_CIaDMEea_aLNNpBX0Zw"/>
+  <handlers xmi:id="_Pa_CFqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.handler.aboutCommand" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://com.wincom.actor.editor.app/com.wincom.actor.editor.app.handlers.AboutHandler" command="_Pa_CIqDMEea_aLNNpBX0Zw"/>
+  <bindingTables xmi:id="_Pa_CF6DMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.bindingtable" contributorURI="platform:/plugin/com.wincom.actor.editor.app" bindingContext="_Pa_CHKDMEea_aLNNpBX0Zw">
+    <bindings xmi:id="_Pa_CGKDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.keybinding.m1q" contributorURI="platform:/plugin/com.wincom.actor.editor.app" keySequence="M1+Q" command="_Pa_CH6DMEea_aLNNpBX0Zw"/>
+    <bindings xmi:id="_Pa_CGaDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.keybinding.m1o" contributorURI="platform:/plugin/com.wincom.actor.editor.app" keySequence="M1+O" command="_Pa_CIKDMEea_aLNNpBX0Zw"/>
+    <bindings xmi:id="_Pa_CGqDMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.keybinding.m1s" contributorURI="platform:/plugin/com.wincom.actor.editor.app" keySequence="M1+S" command="_Pa_CIaDMEea_aLNNpBX0Zw"/>
+    <bindings xmi:id="_Pa_CG6DMEea_aLNNpBX0Zw" elementId="com.wincom.actor.editor.app.keybinding.m1a" contributorURI="platform:/plugin/com.wincom.actor.editor.app" keySequence="M1+A" command="_Pa_CIqDMEea_aLNNpBX0Zw"/>
+  </bindingTables>
+  <rootContext xmi:id="_Pa_CHKDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.contexts.dialogAndWindow" contributorURI="platform:/plugin/com.wincom.actor.editor.app" name="In Dialog and Windows">
+    <children xmi:id="_Pa_CHaDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.contexts.window" contributorURI="platform:/plugin/com.wincom.actor.editor.app" name="In Windows"/>
+    <children xmi:id="_Pa_CHqDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.contexts.dialog" contributorURI="platform:/plugin/com.wincom.actor.editor.app" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_Pa_CH6DMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.file.exit" contributorURI="platform:/plugin/com.wincom.actor.editor.app" commandName="quitCommand"/>
+  <commands xmi:id="_Pa_CIKDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.file.open" contributorURI="platform:/plugin/com.wincom.actor.editor.app" commandName="openCommand"/>
+  <commands xmi:id="_Pa_CIaDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.file.save" contributorURI="platform:/plugin/com.wincom.actor.editor.app" commandName="saveCommand"/>
+  <commands xmi:id="_Pa_CIqDMEea_aLNNpBX0Zw" elementId="org.eclipse.ui.help.aboutAction" contributorURI="platform:/plugin/com.wincom.actor.editor.app" commandName="aboutCommand"/>
+  <addons xmi:id="_Pa_CI6DMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_Pa_CJKDMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_Pa_CJaDMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_Pa_CJqDMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.ui.workbench.commands.model" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_Pa_CJ6DMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.ui.workbench.handler.model" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+  <addons xmi:id="_Pa_CKKDMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_Pa_CKaDMEea_aLNNpBX0Zw" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributorURI="platform:/plugin/com.wincom.actor.editor.app" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_PbDTcKDMEea_aLNNpBX0Zw" elementId="CleanupAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.cleanupaddon.CleanupAddon"/>
+  <addons xmi:id="_PbD6gKDMEea_aLNNpBX0Zw" elementId="MinMaxAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
+  <addons xmi:id="_PbD6gaDMEea_aLNNpBX0Zw" elementId="DnDAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.dndaddon.DnDAddon"/>
+  <addons xmi:id="_PbEhkKDMEea_aLNNpBX0Zw" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
+</application:Application>
