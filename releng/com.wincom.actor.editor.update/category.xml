@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.wincom.actor.editor.feature_1.0.0.qualifier.jar" id="com.wincom.actor.editor.feature" version="1.0.0.qualifier">
+      <category name="Actor Editor"/>
+   </feature>
+   <category-def name="Actor Editor" label="Actor Editor"/>
+</site>
