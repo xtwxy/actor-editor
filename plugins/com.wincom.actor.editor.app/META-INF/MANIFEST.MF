@@ -16,7 +16,6 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.e4.core.contexts;bundle-version="0.0.0",
  org.eclipse.core.runtime;bundle-version="0.0.0",
  org.eclipse.gef;bundle-version="0.0.0",
- org.eclipse.gef.examples.ui.pde;bundle-version="0.0.0",
- org.eclipse.gmf.runtime.gef.ui;bundle-version="0.0.0"
+ org.eclipse.ui.views;bundle-version="0.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
