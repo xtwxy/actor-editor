@@ -14,5 +14,7 @@
     </parent>
     <modules>
         <module>com.wincom.actor.editor.feature</module>
+        <module>org.eclipse.gef.mvc.examples-feature</module>
+        <module>org.eclipse.gef.zest.examples-feature</module>
     </modules>
 </project>

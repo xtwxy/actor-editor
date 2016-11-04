@@ -3,7 +3,8 @@
       id="com.wincom.actor.editor.feature"
       label="Graphics Editor"
       version="1.0.0.qualifier"
-      provider-name="WINCOM">
+      provider-name="WINCOM"
+      plugin="com.wincom.actor.editor.app">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]

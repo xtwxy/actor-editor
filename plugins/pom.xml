@@ -14,5 +14,11 @@
     </parent>
     <modules>
         <module>com.wincom.actor.editor.app</module>
+        <module>org.eclipse.gef.mvc.examples</module>
+        <module>org.eclipse.gef.mvc.examples.logo</module>
+        <module>org.eclipse.gef.mvc.examples.logo.ui</module>
+        <module>org.eclipse.gef.zest.examples</module>
+        <module>org.eclipse.gef.zest.examples.graph</module>
+        <module>org.eclipse.gef.zest.examples.graph.ui</module>
     </modules>
 </project>

@@ -1,0 +1,52 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: PwtSpNzmuL/ngmjAVKLH9+rOfTKvS
+ hIXGCQiIyQ6ras=
+SHA-256-Digest-Manifest: 3Cpmr+TeILahZuA4L31rZc+yZzYmguhNARZY6WNDV3Q=
+Created-By: 1.8.0_102 (Oracle Corporation)
+
+Name: about.properties
+SHA-256-Digest: aRnd39eEBIypA4IC1BeE85qJ5t1wDAnrEuBwmispz4U=
+
+Name: org/eclipse/gef/zest/examples/SimpleExample.class
+SHA-256-Digest: 5fRGCyg03YThqa4LiCj/o7NsiDprVfjDNXWfaDuhN4Q=
+
+Name: about.html
+SHA-256-Digest: XIAW3iP7OQU3Woo0skVEm9BKSc2o6t+OCZxcDCq/f0k=
+
+Name: org/eclipse/gef/zest/examples/AbstractZestExample.class
+SHA-256-Digest: TtxBau9DTw4z0NR0IeAG19mreb/qrGZuC/fmgZrDgdI=
+
+Name: org/eclipse/gef/zest/examples/AbstractZestExample$1.class
+SHA-256-Digest: E8G/7zA84mEuIfv1yCEFiieUuv6kvS+C7PnhdhP1sho=
+
+Name: org/eclipse/gef/zest/examples/CustomNodeExample.class
+SHA-256-Digest: Toi//I6wZx1p0UDj/L1S2JzyAC8gRMPXetmXqKaCymI=
+
+Name: org/eclipse/gef/zest/examples/CustomNodeExample$CustomModule$1.c
+ lass
+SHA-256-Digest: HsaSpjbdJBbe8p0OJFn1Tr+uECfOec4zEXeBAwg0kjY=
+
+Name: about.mappings
+SHA-256-Digest: nswTu611brNruqHVqdbrd9yyf+dIcIf9Fk0R7F5W2ZI=
+
+Name: org/eclipse/gef/zest/examples/CustomNodeExample$CustomNodeConten
+ tPart.class
+SHA-256-Digest: Ia/jAvRWrixnLefhOXYLcORc56kteqHw4vkzKHRaMUI=
+
+Name: about.ini
+SHA-256-Digest: E/MFHqbh59kyPS3W18LJs3iX9hQALC2kFL2BMdlR10s=
+
+Name: org/eclipse/gef/zest/examples/CustomNodeExample$CustomModule.cla
+ ss
+SHA-256-Digest: Aw/ZjmIb+u3blCyiSOVuhiCTnDGj44lPnIKaT150WPY=
+
+Name: org/eclipse/gef/zest/examples/CustomNodeExample$CustomContentPar
+ tFactory.class
+SHA-256-Digest: ffHgXIeXrUCXDV1xHyQ0vY2kq8f7efnmmjRK7rNm43g=
+
+Name: org/eclipse/gef/zest/examples/ibull.jpg
+SHA-256-Digest: jAJkkHC0Ol3VIS3bE90fWpxBJL+iCdmsE3G4yQDcXK4=
+
+Name: gef_eclipse_logo_32.png
+SHA-256-Digest: WykbvOFTwNbTmEpZas68B9kphT3sHwiiR5hXPtTVxqQ=
+

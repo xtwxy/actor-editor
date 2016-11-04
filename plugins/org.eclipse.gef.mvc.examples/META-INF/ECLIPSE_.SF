@@ -1,0 +1,24 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: 61Q8Yps3p813ySRiks2EMOklOrej5
+ 4piH/U+rDzkLN4=
+SHA-256-Digest-Manifest: S4vIG8V0exPCP+X3sC96nlCnJiLj9pUODYzqKbOVO7s=
+Created-By: 1.8.0_102 (Oracle Corporation)
+
+Name: about.properties
+SHA-256-Digest: WKbWD+caUglJ4Ms2qMgilcwTH07T4PqXTrNuxLEvMIo=
+
+Name: about.html
+SHA-256-Digest: XIAW3iP7OQU3Woo0skVEm9BKSc2o6t+OCZxcDCq/f0k=
+
+Name: org/eclipse/gef/mvc/examples/AbstractMvcExample.class
+SHA-256-Digest: 37xR1Yex/sJwSz0oQcvRll1v2kxn9ALfeEf2DO4Ocy8=
+
+Name: about.ini
+SHA-256-Digest: E/MFHqbh59kyPS3W18LJs3iX9hQALC2kFL2BMdlR10s=
+
+Name: gef_eclipse_logo_32.png
+SHA-256-Digest: WykbvOFTwNbTmEpZas68B9kphT3sHwiiR5hXPtTVxqQ=
+
+Name: about.mappings
+SHA-256-Digest: nswTu611brNruqHVqdbrd9yyf+dIcIf9Fk0R7F5W2ZI=
+

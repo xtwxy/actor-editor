@@ -1,0 +1,302 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: xra7FOOkS2H2pX0WpKlDvyktvsrHx
+ tQmReI0L2CA7Cs=
+SHA-256-Digest-Manifest: E6hue/pjF8ukJcK79jXHDFLRkmC+cBUx3xrHY4eoyYU=
+Created-By: 1.8.0_102 (Oracle Corporation)
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$2.c
+ lass
+SHA-256-Digest: uF61+OBP+Mt2SKAXnhJdTa/NCKlKhElVMVBsTW6ZOXs=
+
+Name: add_obj_disabled.gif
+SHA-256-Digest: i1mStsCHF0J4y80bDOAMwQNZN+dn13XqdRrWuw0Be08=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/FXGeometricCurve.class
+SHA-256-Digest: wztovGFmRGiHGcuCInZNo5yj+nWdP1LW1Z9t+D4wsKI=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXCreateCurveHoverHandle
+ Part.class
+SHA-256-Digest: I+2xw4MKEAxcajaSSClcST1hNXGeiQpNSTk4hTJdpHg=
+
+Name: org/eclipse/gef/mvc/examples/logo/behaviors/PaletteFocusBehavior
+ .class
+SHA-256-Digest: T7yVPuksrkiztN8vF53shDHp5ItT2KoCkiHMjT/yj10=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$11.class
+SHA-256-Digest: l7mKuLYU/fcgnjfDk3F8kIcpB0BnRoB+ClwH+yShwGw=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$Cir
+ cleHead.class
+SHA-256-Digest: LOxACW0E5+hb74bST0LFbwpep1CZIDsKITNs2lUZodM=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/AbstractLogoHoverHandleP
+ art.class
+SHA-256-Digest: n8b2gHttViKJNOKBvOOaiFXZhawRMSW77SZGkTBpIXM=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXLogoContentPartFactory
+ .class
+SHA-256-Digest: g/YfoGXXqKx8EQLojyFIAc1H8a0lKbHj2A6pghEY5rc=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$3.class
+SHA-256-Digest: w78BD7ARJrVhEDl1OrBkJIE3n5IHK3OuKOXVmOp1AgM=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$6.class
+SHA-256-Digest: qhHF10QVT8SSIvdGs8mYlZQAGIb4iVQsgoU83UXFCys=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/CreateAndTranslateOnD
+ ragPolicy$2.class
+SHA-256-Digest: NXE3RXUWzqYEJz+e2mh2Dgp+o5QMLVeHW2jxP9oAjG8=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXRelocateLinkedOnDra
+ gPolicy.class
+SHA-256-Digest: pSHvwAThtOnseTQJWXvIaa4qVFOlb2lSRkBNrUnGedw=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/CreateAndTranslateOnD
+ ragPolicy.class
+SHA-256-Digest: G4mfZZWvxlMaA1GwAVPVnynU1SLrKVr7deRqt9nMl+Q=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule.class
+SHA-256-Digest: QHRI/nkwosXAEUFD2U+hyLh5OiBPo6C7/gKi9TKl1nE=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/FXGeometricShape.class
+SHA-256-Digest: 5vbMXLIIPG6Xo1VBiWtJ+oi9R3yB7Nv5OSU9pPmS9xQ=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricModelPart.cla
+ ss
+SHA-256-Digest: 9nkln27+aW6YDYQDsVSw9otGQ3nAgCS7BJN5Ms/evf8=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/AbstractFXGeometricEleme
+ ntPart$1.class
+SHA-256-Digest: d0yPp1KhTVZSXnMUfzJGw8vVB3JO5xZ0Gik/72P+xcc=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/AbstractFXGeometricEleme
+ nt.class
+SHA-256-Digest: CZ/rNI9ekObV0QftJgrHEWbMJaZuefS+FxqTP58lNwg=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCreationMenuItemPro
+ vider.class
+SHA-256-Digest: u39QrLj4njJxRg/NHBUsxs1xmClmpfGzqBiphAeOGHE=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleViewersComposite
+ .class
+SHA-256-Digest: OEAmHoRGP0GlS0uzYC1B3Lg96g93w0JS+8HIV74Ryz4=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$3.c
+ lass
+SHA-256-Digest: SDfmNMbYe9S2Te2yoOlilhblF5xMA71HRipOlAm3rjw=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCreationMenuItemPro
+ vider$GeometricShapeItem.class
+SHA-256-Digest: D79/H0a6A/6qxTMmeam+blc5GCu4wDD1wFu3UXQ9dXA=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/CloneCurvePolicy.clas
+ s
+SHA-256-Digest: qIfUiKmVnXSnvrz+wkqYymoFGCSRJ/w9SdsGlPFjaXM=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/CloneShapePolicy.clas
+ s
+SHA-256-Digest: GP6mHeOjS3KyUurle8aJegthH0ukvqZ+FeY9cZGoue4=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$9.class
+SHA-256-Digest: rZU3SOXUJRKjOys42kPf1vjhkjCCEPJRHZeXsZ6366Q=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXDeleteFirstAnchorag
+ eOnClickPolicy.class
+SHA-256-Digest: eriIAjGrkTcp/N+9zF5CxF0IW9F11JgEQbrUg0yx5vs=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCreateCurveOnDragPo
+ licy.class
+SHA-256-Digest: 74iYg7oc9+xUsY49+zG07BNGycKyHAIV8LHe1zaUJj8=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXLogoSelectionHandlePar
+ tFactory.class
+SHA-256-Digest: VKsL7iiPlj/UeW1EA5iiaEYp36h5y1Ompjns6bTy0y4=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleViewersComposite
+ $3.class
+SHA-256-Digest: lQyvfWN8H23Hg4ZNznSaOKPNRaZ0Rv3LEq+Qf1JHd98=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCloneOnClickPolicy$
+ 2.class
+SHA-256-Digest: B1cV4nnYlvMbERwjuQr2CYtUi4iF/TeuqlZutuw8u9A=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricModelPart$1.c
+ lass
+SHA-256-Digest: Ql/JYTR1Mj9tRbl6HIdcnjun7GS2OSTrTZD84b578HI=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricShapePart.cla
+ ss
+SHA-256-Digest: Q1DcNsH7m4KDKiWCR+rR6rv+xK0n+0GmnOp01b177jU=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXDeleteHoverHandlePart.
+ class
+SHA-256-Digest: xtjFy9WyyDGiEBVHYL4HfReO8IfH8G6XSKboDUIS2bU=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/FXGeometricCurve$Decorat
+ ion.class
+SHA-256-Digest: wgE6JUrYruEr/cLs+EU/w7uoHBX51l8t1nySHo9GsBI=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/AbstractFXGeometricEleme
+ ntPart.class
+SHA-256-Digest: YnCzwGVX8mFtpC0DPb3fq+C8haZ5KhY9PAgp3ytlSiI=
+
+Name: add_obj.gif
+SHA-256-Digest: HU0OSGkunqIyhaV1qKIIFAe163S5gWUgoC6OMdoYVD4=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExample.class
+SHA-256-Digest: 8AbrT2ueZcrzLIrF+Y0kmeI9S9IceFpz7honAZjE1UM=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXLogoHoverHandlePartFac
+ tory.class
+SHA-256-Digest: jI8luILB2cRh/13IHId3+mXOrHxCC+DG6ia4C+NUOUs=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$10.class
+SHA-256-Digest: HA14tOijn7Gv80pWwYJVgM5jEhBKQzyZVvQ9bHgs30A=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXDeleteFirstAnchorag
+ eOnClickPolicy$1.class
+SHA-256-Digest: 2NQvQ0cv76fNO536bWlGmOjaWXBNOt1kgWXli2k1t1I=
+
+Name: images/delete_obj.gif
+SHA-256-Digest: BFIOG+YeF5gwkoYryoFkXbvV2Of5hGzvTYPM/bVvMBg=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXHoverHandleRootPart$1.
+ class
+SHA-256-Digest: MWtYPSbZ7lD03URzWlLDG0XQ57bElPvEX8hrXRu1NIw=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$2.class
+SHA-256-Digest: P8ZocZdJNEwKcGLQTkhriMZFRdfy1fJpH39RsltdZRs=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCreateCurveOnDragPo
+ licy$1.class
+SHA-256-Digest: W2szEEFeZ85zRVHo6/06zHPO7+A5RHjYl6ZbZC5dCdk=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/AbstractLogoHoverHandleP
+ art$1.class
+SHA-256-Digest: YOt5p8uHZAouVBZcXHHol0LNBAG3J9XzO1i0P+fv6rE=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$5.class
+SHA-256-Digest: Ug12TmdW6HcmaswLZNQ/qINV4IsuwsxaxyhTwu4RMuk=
+
+Name: images/add_obj_disabled.gif
+SHA-256-Digest: JBcqaGmzbuJgzBCRh7T9cJhg630Z7e+DhT76nLeInmc=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/PaletteModel.class
+SHA-256-Digest: 1E6deg1fW+6/nCZpMO8GTnmp3JNH5lxqODwZuQLugG8=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleViewersComposite
+ $2.class
+SHA-256-Digest: gJ9+d2UAV+kKPrXT9ZEHRIATeL9u6/UV/EW+7siBQOs=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/ContentRestrictedChan
+ geViewportPolicy.class
+SHA-256-Digest: ttjOxhVwyTXurydIyLPNnMElBt1V5V7Mpxs2dkqAnuQ=
+
+Name: delete_obj_disabled.gif
+SHA-256-Digest: QfDcmI7eDT6rhuzWQeCN5uVLyh3rgUTGYkuGdGL5A3g=
+
+Name: images/delete_obj_disabled.gif
+SHA-256-Digest: 2xaaI6jYiJQ5XAjE2A8NKyPPe42mlj3NG0DrGuS23fY=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/PaletteModelPart.class
+SHA-256-Digest: ReWv30fatu76ivaGbRjV8rXr3VC2l072zgn/alsNIQ4=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$8.class
+SHA-256-Digest: EwAfSAKzSt+49EMXsLccBDVpYi4zi6RLqxZT4qozsyM=
+
+Name: images/add_obj.gif
+SHA-256-Digest: ZmM7f+6pRB9ct1zUAHt/Pq4ZiO0Q1gHOkOsb6WFh1j0=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCreateCurveOnDragPo
+ licy$2.class
+SHA-256-Digest: 9A2uDg3QyYpuOvNH32lK76WSy7z5AZgHWyQoxGQyfc0=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCloneOnClickPolicy$
+ 1.class
+SHA-256-Digest: wmc8f/Msykj6Lg9xTnCgW1ARL886augtPsY/GUwUfYM=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricModelPart$2.c
+ lass
+SHA-256-Digest: moFjyutuv8TRyezTxT8XNNQNSoekT6dTVLWoiOhJ8jg=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$1.class
+SHA-256-Digest: SfYU/s9xSfl+ebb0Iar6b09m8Yo4sWQ0/QO+k4i8r1Y=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$4.c
+ lass
+SHA-256-Digest: oQ2PaHQnbM0/Ru4nJJ/XaamvNTc9e00HaB7lluwJQYw=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$1.c
+ lass
+SHA-256-Digest: hRPldvYL5Lat8IapdkgHVRK3opUp2H9d6TBTKaqF0+M=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleViewersComposite
+ $5.class
+SHA-256-Digest: WsDQfCrhL+mpVFCgNnqN8+2O0mJk4HOMU8A1pVUga4I=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXHoverHandleRootPart.cl
+ ass
+SHA-256-Digest: 0DvbugH0fuQ5o0MKNeLMrwPBA66VcvLzpjwyoM1Phpw=
+
+Name: about.html
+SHA-256-Digest: XIAW3iP7OQU3Woo0skVEm9BKSc2o6t+OCZxcDCq/f0k=
+
+Name: delete_obj.gif
+SHA-256-Digest: NPE1DdXydJi/GJ7mbHLljx0sx9vI2LoCfulzzpbZ5NE=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$4.class
+SHA-256-Digest: 7Wrw5BOFhcCUGHC4wVynpPPlntUiAsFa82gHJmJqtoI=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/PaletteElementPart.class
+SHA-256-Digest: H7C1I8UU0n019PhwUH+CwvoV6ODt8Q2zJuM/wZpG8CA=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/FXCloneOnClickPolicy.
+ class
+SHA-256-Digest: hxza9qIDanvGoMr/wYSnmfS1Qd9oWcbo3b+UanqDQI8=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/FXGeometricModel.class
+SHA-256-Digest: e043gqarT242ypM1yQ0zwA2oMcWqvva28s6DX7kMiLg=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleModule$7.class
+SHA-256-Digest: aIRwWHtPsB82xihAxOh5JljCrlJsztG1JwrNU52D9Cc=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleViewersComposite
+ $4.class
+SHA-256-Digest: wUrInkpfdYdABD2CLHf2AfS/kKWfx747b3AK4Vd/K+s=
+
+Name: org/eclipse/gef/mvc/examples/logo/model/FXGeometricCurve$Routing
+ Style.class
+SHA-256-Digest: XrAqKXM1nCuV9C+7b8PhTmt+uKPCZgB7+2jsdQIcaz0=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricShapePart$1.c
+ lass
+SHA-256-Digest: qC6J7PeGqhsSxZcoMCZzVf/2RMl/19rWD1aqnZl5GUU=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/CreateAndTranslateOnD
+ ragPolicy$1.class
+SHA-256-Digest: MusbIyCBhcaZU1V+n9JHDQtCietp1pL1vN+ZdSHhZWc=
+
+Name: org/eclipse/gef/mvc/examples/logo/policies/AbstractCloneContentP
+ olicy.class
+SHA-256-Digest: AMkda8pHoXn5tU0b7L/I1PZdOrvztia1zb8WwOZjz5Y=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXLogoPaletteContentPart
+ Factory.class
+SHA-256-Digest: WwmwkIyQGyDyN9g+HKEQ9mQ7LxO+i47+0hvQ1DAqMeU=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$5.c
+ lass
+SHA-256-Digest: MGN0hId9n0ZSrD/TSFTNq/THl7wa4arTLcippydDTQg=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart.cla
+ ss
+SHA-256-Digest: k83+AcIV1UOrKL65MXqlyezqAjp9n8icaHAfgEpD5DE=
+
+Name: org/eclipse/gef/mvc/examples/logo/MvcLogoExampleViewersComposite
+ $1.class
+SHA-256-Digest: PG2Vgo4MeeuNNFrQzhyHvfEZbCp8BE4zaLkCYzJYfjc=
+
+Name: org/eclipse/gef/mvc/examples/logo/parts/FXGeometricCurvePart$Arr
+ owHead.class
+SHA-256-Digest: HQvIDc/MZMkKzD0PqjbRyIs7oJ/F95IwRQoeyiE5Urw=
+

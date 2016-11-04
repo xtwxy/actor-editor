@@ -1,0 +1,15 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: l9jLqqILpr0wXl8bGFJ3+lyLR/H0e
+ 9yp2wHG5a7MLTM=
+SHA-256-Digest-Manifest: 9X1YwRmVSUVNL+Dv8vpdliJCY/rVJwdAS91yG2yLtbQ=
+Created-By: 1.8.0_102 (Oracle Corporation)
+
+Name: org/eclipse/gef/zest/examples/graph/ZestGraphExampleModule.class
+SHA-256-Digest: 3a6hpGkKZOPrbruvv4Y/db/6OLdUQmFqQhE6D1lRV54=
+
+Name: about.html
+SHA-256-Digest: XIAW3iP7OQU3Woo0skVEm9BKSc2o6t+OCZxcDCq/f0k=
+
+Name: org/eclipse/gef/zest/examples/graph/ZestGraphExample.class
+SHA-256-Digest: Q7Ejgla85f+ihFzKg63vfDGq8w7mEHp4UtoPDq0kdR4=
+

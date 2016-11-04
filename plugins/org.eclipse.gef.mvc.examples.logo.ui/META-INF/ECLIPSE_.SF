@@ -1,0 +1,56 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: oE9txbMLDADGoZ4VgKINkdEE1rHuu
+ B1RTzi+RQWm02w=
+SHA-256-Digest-Manifest: qZAO3vdPL1tPhpUX1LYkbabMOs/hvukhWikxQlFsEaU=
+Created-By: 1.8.0_102 (Oracle Corporation)
+
+Name: about.html
+SHA-256-Digest: XIAW3iP7OQU3Woo0skVEm9BKSc2o6t+OCZxcDCq/f0k=
+
+Name: plugin.xml
+SHA-256-Digest: 1uLljHiHQaMnTMIc32aJmHHfCC81GbOSyL+maGMAHYU=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/properties/FXCurvePropertyS
+ ource.class
+SHA-256-Digest: vraqr97Os0FIyBj9PyPFVEK2Vm8kPKb8RxzzlVC7bac=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/properties/PropertySourceAd
+ apterFactory.class
+SHA-256-Digest: 3UYfUOzQb093P06/4+e4EtJ8n4pQaBMVhj8qzqQZTPk=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/MvcLogoExampleUiModule.clas
+ s
+SHA-256-Digest: RWtLoVfj/lMDQNNv9z6RQ1JHHIQuYhZtAo1VkhOd5dA=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/view/MvcLogoExampleView$Upd
+ ateSelectionHandlesOperation$1.class
+SHA-256-Digest: cqfEytmVPrUt/lx5KNj8sul4EZZKbcPCpF0b6nS2P20=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/view/MvcLogoExampleView$Cha
+ ngeWayPointsOperation.class
+SHA-256-Digest: naqTIunFHdyDm/AhmEjMZS9mAka2klPl2XHV8VjBIxM=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/view/MvcLogoExampleView$1.c
+ lass
+SHA-256-Digest: 7EaRDYZwqfruFT0fuzTsVVSVs8ltc/Vm0Ki2O33PM7E=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/properties/FXShapePropertyS
+ ource.class
+SHA-256-Digest: sYzwKCCLEbjNvZkaHTmaDus9L2zsE8hKCEoWkja6CI8=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/properties/FXModelPropertyS
+ ource.class
+SHA-256-Digest: bk7G5P66oC0WRW5VRU5zSFMP8AqSfwvwJiNuFFhZ4vA=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/view/MvcLogoExampleView.cla
+ ss
+SHA-256-Digest: mgvys3gGShbYKVQX0e7OohiBEtcNQeOEOwEb7m+Vs0Y=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/MvcLogoExampleUiBundle.clas
+ s
+SHA-256-Digest: GANcaaG3Jb6HPZ0vV3prU7ABByNiH9CChp3dpB6S4XM=
+
+Name: org/eclipse/gef/mvc/examples/logo/ui/view/MvcLogoExampleView$Upd
+ ateSelectionHandlesOperation.class
+SHA-256-Digest: yoUYDKzb398g8D1E1IcOgXAPS0mwotL6a7e9AppMoTg=
+

@@ -1,0 +1,24 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: XhB7bFkw41MIqscKmdptNgTmFzGz3
+ kw8KyKN44rNdlI=
+SHA-256-Digest-Manifest: rJKWmG/OIgja0Iw4JcmGgLjSJNE0HTJvnnir2MTIDno=
+Created-By: 1.8.0_102 (Oracle Corporation)
+
+Name: about.html
+SHA-256-Digest: XIAW3iP7OQU3Woo0skVEm9BKSc2o6t+OCZxcDCq/f0k=
+
+Name: plugin.xml
+SHA-256-Digest: vH68uiLESKeSZtFEbysiS2pKUZLEQLZfQKoJgaAZxbU=
+
+Name: org/eclipse/gef/zest/examples/graph/ui/properties/PropertySource
+ AdapterFactory.class
+SHA-256-Digest: 8YINugq8rAIUN4AH8vDV7MIe1aY1VeLs8lQVgWHwPuU=
+
+Name: org/eclipse/gef/zest/examples/graph/ui/properties/NodePropertySo
+ urce.class
+SHA-256-Digest: o6ypJ/LQOX23I0cEKESmSMt3fGhT14PvzzYjhXsISBg=
+
+Name: org/eclipse/gef/zest/examples/graph/ui/view/ZestGraphExampleView
+ .class
+SHA-256-Digest: KbFXUnLVCukOPo1i64UbtHrvUye2M79Z+67ZGk6vN/g=
+
