@@ -31,10 +31,10 @@
    </plugins>
 
    <features>
-      <feature id="com.wincom.actor.editor.feature" version="1.0.0.qualifier"/>
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
+      <feature id="com.wincom.actor.editor.feature" version="1.0.0.qualifier"/>
    </features>
 
    <configurations>
