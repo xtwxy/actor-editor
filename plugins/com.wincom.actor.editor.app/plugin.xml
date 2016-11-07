@@ -78,18 +78,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.wincom.actor.editor.app.application"
-            name="RCP Product">
+            name="com.wincom.actor.editor.rcp">
          <property
-               name="aboutText"
-               value="RCP Mail template created by PDE">
-         </property>
-         <property
-               name="windowImages"
-               value="icons/sample2.gif">
-         </property>
-         <property
-               name="aboutImage"
-               value="product_lg.gif">
+               name="appName"
+               value="com.wincom.actor.editor.rcp">
          </property>
       </product>
    </extension>
@@ -124,6 +116,13 @@
                class="org.eclipse.core.resources.IResource">
          </selection>
       </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="com.wincom.actor.editor.app.splashHandlers.InteractiveSplashHandler"
+            id="com.wincom.actor.editor.app.splashHandlers.interactive">
+      </splashHandler>
    </extension>
 
 </plugin>
