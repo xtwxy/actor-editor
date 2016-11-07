@@ -3,16 +3,127 @@
 <plugin>
 
    <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.wincom.actor.editor.app.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.wincom.actor.editor.app.Perspective"
+            id="com.wincom.actor.editor.app.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Message"
+            allowMultiple="true"
+            icon="icons/sample2.gif"
+            class="com.wincom.actor.editor.app.View"
+            id="com.wincom.actor.editor.app.view">
+      </view>
+      <view
+            name="Mailboxes"
+            allowMultiple="true"
+            icon="icons/sample3.gif"
+            class="com.wincom.actor.editor.app.NavigationView"
+            id="com.wincom.actor.editor.app.navigationView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Mail"
+            id="com.wincom.actor.editor.app.category">
+      </category>
+      <command
+            name="Open Mailbox"
+            description="Opens a mailbox"
+            categoryId="com.wincom.actor.editor.app.category"
+            id="com.wincom.actor.editor.app.open">
+      </command>
+      <command
+            name="Open Message Dialog"
+            description="Open a message dialog"
+            categoryId="com.wincom.actor.editor.app.category"
+            id="com.wincom.actor.editor.app.openMessage">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.wincom.actor.editor.app.open"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+O">
+      </key>
+      <key
+            commandId="com.wincom.actor.editor.app.openMessage"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+M">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+SHIFT+Q">
+      </key>
+   </extension>
+   <extension
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            name="com.wincom.actor.editor.rcp"
-            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+            application="com.wincom.actor.editor.app.application"
+            name="RCP Product">
          <property
-               name="appName"
-               value="com.wincom.actor.editor.rcp">
+               name="aboutText"
+               value="RCP Mail template created by PDE">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/sample2.gif">
+         </property>
+         <property
+               name="aboutImage"
+               value="product_lg.gif">
          </property>
       </product>
+   </extension>
+   
+
+     <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="true"
+            name="Actor Editor"
+            extensions="flow"
+            icon="icons/view.gif"
+            class="com.wincom.actor.editor.flow.ui.FlowEditor"
+            contributorClass="com.wincom.actor.editor.flow.actions.FlowActionBarContributor"
+            id="Actor Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Actor Editor"
+            parentCategory="com.wincom.actor.editor.flow"
+            id="com.wincom.actor.editor.flow">
+      </category>
+      <wizard
+            name="Flow Diagram"
+            icon="icons/view.gif"
+            category="com.wincom.actor.editor.flow/com.wincom.actor.editor.flow"
+            class="com.wincom.actor.editor.flow.ui.FlowCreationWizard"
+            id="com.wincom.actor.editor.flow.wizard.new.file">
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
    </extension>
 
 </plugin>
