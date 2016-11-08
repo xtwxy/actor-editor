@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="com.wincom.actor.editor.feature"
-      label="Graphics Editor"
+      label="Graphics Editors"
       version="1.0.0.qualifier"
-      provider-name="WINCOM"
+      provider-name="Wincom.com"
       plugin="com.wincom.actor.editor.app">
 
    <description url="http://www.example.com/description">

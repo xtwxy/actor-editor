@@ -78,10 +78,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.wincom.actor.editor.app.application"
-            name="com.wincom.actor.editor.rcp">
+            name="actor-editor">
          <property
                name="appName"
-               value="com.wincom.actor.editor.rcp">
+               value="actor-editor">
          </property>
       </product>
    </extension>
@@ -116,13 +116,6 @@
                class="org.eclipse.core.resources.IResource">
          </selection>
       </wizard>
-   </extension>
-   <extension
-         point="org.eclipse.ui.splashHandlers">
-      <splashHandler
-            class="com.wincom.actor.editor.app.splashHandlers.InteractiveSplashHandler"
-            id="com.wincom.actor.editor.app.splashHandlers.interactive">
-      </splashHandler>
    </extension>
 
 </plugin>

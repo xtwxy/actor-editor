@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: App
+Bundle-Name: Actor Editor
 Bundle-SymbolicName: com.wincom.actor.editor.app;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.wincom.actor.editor.app.Activator
-Bundle-Vendor: WINCOM
+Bundle-Vendor: Wincom.com
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.workbench,
  org.eclipse.jface,

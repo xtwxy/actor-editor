@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="com.wincom.actor.editor.rcp" uid="actor-editor" id="com.wincom.actor.editor.app.product" application="com.wincom.actor.editor.app.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
-
+<product name="Actor Editor" uid="actor-editor" id="com.wincom.actor.editor.app.product" application="com.wincom.actor.editor.app.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -24,7 +23,6 @@
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
