@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?><plugin>
+
+     <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="true"
+            name="Actor Editor"
+            extensions="flow"
+            icon="view.gif"
+            class="com.wincom.actor.editor.flow.ui.FlowEditor"
+            contributorClass="com.wincom.actor.editor.flow.actions.FlowActionBarContributor"
+            id="Actor Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Actor Editor"
+            parentCategory="com.wincom.actor.editor.flow"
+            id="com.wincom.actor.editor.flow">
+      </category>
+      <wizard
+            name="Flow Diagram"
+            icon="view.gif"
+            category="com.wincom.actor/com.wincom.actor.editor.flow"
+            class="com.wincom.actor.editor.flow.ui.FlowCreationWizard"
+            id="com.wincom.actor.editor.flow.wizard.new.file">
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+   </extension>
+
+</plugin>

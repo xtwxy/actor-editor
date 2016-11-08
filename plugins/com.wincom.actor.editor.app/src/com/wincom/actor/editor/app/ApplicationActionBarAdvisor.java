@@ -46,22 +46,15 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
         // Registering also provides automatic disposal of the actions when
         // the window is closed.
 
+        newAction = ActionFactory.NEW_WIZARD_DROP_DOWN.create(window);
+        register(newAction);
+        
         exitAction = ActionFactory.QUIT.create(window);
         register(exitAction);
         
         aboutAction = ActionFactory.ABOUT.create(window);
         register(aboutAction);
         
-        newWindowAction = ActionFactory.OPEN_NEW_WINDOW.create(window);
-        register(newWindowAction);
-        newAction = ActionFactory.NEW.create(window);
-        register(newAction);
-        
-        openViewAction = new OpenViewAction(window, "Open Another Message View", View.ID);
-        register(openViewAction);
-        
-        messagePopupAction = new MessagePopupAction("Open Message", window);
-        register(messagePopupAction);
     }
     
     protected void fillMenuBar(IMenuManager menuBar) {
@@ -75,10 +68,6 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
         
         // File
         fileMenu.add(newAction);
-        fileMenu.add(newWindowAction);
-        fileMenu.add(new Separator());
-        fileMenu.add(messagePopupAction);
-        fileMenu.add(openViewAction);
         fileMenu.add(new Separator());
         fileMenu.add(exitAction);
         
@@ -89,7 +78,5 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     protected void fillCoolBar(ICoolBarManager coolBar) {
         IToolBarManager toolbar = new ToolBarManager(SWT.FLAT | SWT.RIGHT);
         coolBar.add(new ToolBarContributionItem(toolbar, "main"));   
-        toolbar.add(openViewAction);
-        toolbar.add(messagePopupAction);
     }
 }

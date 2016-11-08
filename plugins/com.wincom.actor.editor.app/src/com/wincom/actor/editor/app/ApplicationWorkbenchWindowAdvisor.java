@@ -14,6 +14,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
     public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
         return new ApplicationActionBarAdvisor(configurer);
+        //return new ActionBarAdvisor(configurer);
     }
     
     public void preWindowOpen() {

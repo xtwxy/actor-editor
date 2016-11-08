@@ -37,51 +37,14 @@
       </view>
    </extension>
    <extension
-         point="org.eclipse.ui.commands">
-      <category
-            name="Mail"
-            id="com.wincom.actor.editor.app.category">
-      </category>
-      <command
-            name="Open Mailbox"
-            description="Opens a mailbox"
-            categoryId="com.wincom.actor.editor.app.category"
-            id="com.wincom.actor.editor.app.open">
-      </command>
-      <command
-            name="Open Message Dialog"
-            description="Open a message dialog"
-            categoryId="com.wincom.actor.editor.app.category"
-            id="com.wincom.actor.editor.app.openMessage">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="com.wincom.actor.editor.app.open"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="CTRL+SHIFT+O">
-      </key>
-      <key
-            commandId="com.wincom.actor.editor.app.openMessage"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="CTRL+SHIFT+M">
-      </key>
-      <key
-            commandId="org.eclipse.ui.file.exit"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="CTRL+SHIFT+Q">
-      </key>
-   </extension>
-   <extension
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
             application="com.wincom.actor.editor.app.application"
-            name="actor-editor">
+            name="Actor Editor">
          <property
                name="appName"
-               value="actor-editor">
+               value="Actor Editor">
          </property>
       </product>
    </extension>
