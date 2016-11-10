@@ -22,14 +22,18 @@ import org.eclipse.draw2d.graph.Subgraph;
 import com.wincom.actor.editor.flow.FlowImages;
 import com.wincom.actor.editor.flow.figures.SimpleActivityLabel;
 import org.eclipse.jface.viewers.TextCellEditor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr Created on Jul 17, 2003
  */
 public class SimpleActivityPart extends ActivityPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public void contributeNodesToGraph(CompoundDirectedGraph graph, Subgraph s,
 			Map map) {
+		log.info("check");
 		Node n = new Node(this, s);
 		n.outgoingOffset = getAnchorOffset();
 		n.incomingOffset = getAnchorOffset();
@@ -44,6 +48,7 @@ public class SimpleActivityPart extends ActivityPart {
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
 	 */
 	protected IFigure createFigure() {
+		log.info("check");
 		Label l = new SimpleActivityLabel();
 		l.setLabelAlignment(PositionConstants.LEFT);
 		l.setIcon(FlowImages.GEAR);
@@ -51,10 +56,12 @@ public class SimpleActivityPart extends ActivityPart {
 	}
 
 	int getAnchorOffset() {
+		log.info("check");
 		return 9;
 	}
 
 	protected void performDirectEdit() {
+		log.info("check");
 		if (manager == null) {
 			Label l = (Label) getFigure();
 			manager = new ActivityDirectEditManager(this, TextCellEditor.class,
@@ -67,6 +74,7 @@ public class SimpleActivityPart extends ActivityPart {
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
 	 */
 	protected void refreshVisuals() {
+		log.info("check");
 		((Label) getFigure()).setText(getActivity().getName());
 	}
 

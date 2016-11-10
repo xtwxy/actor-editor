@@ -22,16 +22,20 @@ import com.wincom.actor.editor.flow.model.commands.AddAndAssignSourceCommand;
 import com.wincom.actor.editor.flow.model.commands.CreateAndAssignSourceCommand;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.GroupRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Daniel Lee
  */
 public class ActivitySourceEditPolicy extends ContainerEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see org.eclipse.gef.editpolicies.ContainerEditPolicy#getAddCommand(org.eclipse.gef.requests.GroupRequest)
 	 */
 	protected Command getAddCommand(GroupRequest request) {
+		log.info("check");
 		CompoundCommand cmd = new CompoundCommand();
 		for (int i = 0; i < request.getEditParts().size(); i++) {
 			AddAndAssignSourceCommand add = new AddAndAssignSourceCommand();
@@ -48,6 +52,7 @@ public class ActivitySourceEditPolicy extends ContainerEditPolicy {
 	 * @see ContainerEditPolicy#getCreateCommand(org.eclipse.gef.requests.CreateRequest)
 	 */
 	protected Command getCreateCommand(CreateRequest request) {
+		log.info("check");
 		CreateAndAssignSourceCommand cmd = new CreateAndAssignSourceCommand();
 		cmd.setParent((StructuredActivity) getHost().getParent().getModel());
 		cmd.setChild((Activity) request.getNewObject());
@@ -59,6 +64,7 @@ public class ActivitySourceEditPolicy extends ContainerEditPolicy {
 	 * @see AbstractEditPolicy#getTargetEditPart(org.eclipse.gef.Request)
 	 */
 	public EditPart getTargetEditPart(Request request) {
+		log.info("check");
 		if (REQ_CREATE.equals(request.getType()))
 			return getHost();
 		if (REQ_ADD.equals(request.getType()))

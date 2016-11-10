@@ -15,11 +15,14 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr
  */
 public class SequentialActivityFigure extends SubgraphFigure {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	static final MarginBorder MARGIN_BORDER = new MarginBorder(0, 8, 0, 0);
 
@@ -36,11 +39,13 @@ public class SequentialActivityFigure extends SubgraphFigure {
 	 */
 	public SequentialActivityFigure() {
 		super(new StartTag(""), new EndTag(""));
+		log.info("check");
 		setBorder(MARGIN_BORDER);
 		setOpaque(true);
 	}
 
 	protected void paintFigure(Graphics graphics) {
+		log.info("check");
 		super.paintFigure(graphics);
 		graphics.setBackgroundColor(ColorConstants.button);
 		Rectangle r = getBounds();

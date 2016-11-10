@@ -35,12 +35,15 @@ import com.wincom.actor.editor.flow.policies.ActivityEditPolicy;
 import com.wincom.actor.editor.flow.policies.ActivityNodeEditPolicy;
 import com.wincom.actor.editor.flow.policies.ActivitySourceEditPolicy;
 import org.eclipse.gef.tools.DirectEditManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr Created on Jun 30, 2003
  */
 public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 		PropertyChangeListener, NodeEditPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	protected DirectEditManager manager;
 
@@ -48,11 +51,13 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.EditPart#activate()
 	 */
 	public void activate() {
+		log.info("check");
 		super.activate();
 		getActivity().addPropertyChangeListener(this);
 	}
 
 	protected void applyGraphResults(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		Node n = (Node) map.get(this);
 		getFigure().setBounds(new Rectangle(n.x, n.y, n.width, n.height));
 
@@ -64,6 +69,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	}
 
 	public void contributeEdgesToGraph(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		List outgoing = getSourceConnections();
 		for (int i = 0; i < outgoing.size(); i++) {
 			TransitionPart part = (TransitionPart) getSourceConnections()
@@ -83,6 +89,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
 	 */
 	protected void createEditPolicies() {
+		log.info("check");
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
 				new ActivityNodeEditPolicy());
 		installEditPolicy(EditPolicy.CONTAINER_ROLE,
@@ -96,6 +103,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.EditPart#deactivate()
 	 */
 	public void deactivate() {
+		log.info("check");
 		super.deactivate();
 		getActivity().removePropertyChangeListener(this);
 	}
@@ -106,6 +114,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @return the Activity model
 	 */
 	protected Activity getActivity() {
+		log.info("check");
 		return (Activity) getModel();
 	}
 
@@ -113,6 +122,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getModelSourceConnections()
 	 */
 	protected List getModelSourceConnections() {
+		log.info("check");
 		return getActivity().getOutgoingTransitions();
 	}
 
@@ -120,6 +130,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getModelTargetConnections()
 	 */
 	protected List getModelTargetConnections() {
+		log.info("check");
 		return getActivity().getIncomingTransitions();
 	}
 
@@ -130,6 +141,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 */
 	public ConnectionAnchor getSourceConnectionAnchor(
 			ConnectionEditPart connection) {
+		log.info("check");
 		return new BottomAnchor(getFigure(), getAnchorOffset());
 	}
 
@@ -137,6 +149,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.NodeEditPart#getSourceConnectionAnchor(org.eclipse.gef.Request)
 	 */
 	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+		log.info("check");
 		return new BottomAnchor(getFigure(), getAnchorOffset());
 	}
 
@@ -145,6 +158,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 */
 	public ConnectionAnchor getTargetConnectionAnchor(
 			ConnectionEditPart connection) {
+		log.info("check");
 		return new TopAnchor(getFigure(), getAnchorOffset());
 	}
 
@@ -152,16 +166,19 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.NodeEditPart#getTargetConnectionAnchor(org.eclipse.gef.Request)
 	 */
 	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
+		log.info("check");
 		return new TopAnchor(getFigure(), getAnchorOffset());
 	}
 
 	protected void performDirectEdit() {
+		log.info("check");
 	}
 
 	/**
 	 * @see org.eclipse.gef.EditPart#performRequest(org.eclipse.gef.Request)
 	 */
 	public void performRequest(Request request) {
+		log.info("check");
 		if (request.getType() == RequestConstants.REQ_DIRECT_EDIT)
 			performDirectEdit();
 	}
@@ -170,6 +187,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
+		log.info("check");
 		String prop = evt.getPropertyName();
 		if (FlowElement.CHILDREN.equals(prop))
 			refreshChildren();
@@ -189,6 +207,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#setFigure(org.eclipse.draw2d.IFigure)
 	 */
 	protected void setFigure(IFigure figure) {
+		log.info("check");
 		figure.getBounds().setSize(0, 0);
 		super.setFigure(figure);
 	}
@@ -197,6 +216,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#toString()
 	 */
 	public String toString() {
+		log.info("check");
 		return getModel().toString();
 	}
 

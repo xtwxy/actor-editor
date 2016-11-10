@@ -33,17 +33,21 @@ import com.wincom.actor.editor.flow.policies.StructuredActivityDirectEditPolicy;
 import com.wincom.actor.editor.flow.policies.StructuredActivityLayoutEditPolicy;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.jface.viewers.TextCellEditor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr Created on Jun 30, 2003
  */
 public abstract class StructuredActivityPart extends ActivityPart implements
 		NodeEditPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	static final Insets PADDING = new Insets(8, 6, 8, 6);
 	static final Insets INNER_PADDING = new Insets(0);
 
 	protected void applyChildrenResults(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		for (int i = 0; i < getChildren().size(); i++) {
 			ActivityPart part = (ActivityPart) getChildren().get(i);
 			part.applyGraphResults(graph, map);
@@ -51,11 +55,13 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	}
 
 	protected void applyGraphResults(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		applyOwnResults(graph, map);
 		applyChildrenResults(graph, map);
 	}
 
 	protected void applyOwnResults(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		super.applyGraphResults(graph, map);
 	}
 
@@ -63,6 +69,7 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	 * @see com.wincom.actor.editor.flow.parts.ActivityPart#createEditPolicies()
 	 */
 	protected void createEditPolicies() {
+		log.info("check");
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
 				new ActivityNodeEditPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new ActivityEditPolicy());
@@ -78,6 +85,7 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 
 	public void contributeNodesToGraph(CompoundDirectedGraph graph, Subgraph s,
 			Map map) {
+		log.info("check");
 		GraphAnimation.recordInitialState(getContentPane());
 		Subgraph me = new Subgraph(this, s);
 		// me.rowOrder = getActivity().getSortIndex();
@@ -103,6 +111,7 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	}
 
 	private boolean directEditHitTest(Point requestLoc) {
+		log.info("check");
 		IFigure header = ((SubgraphFigure) getFigure()).getHeader();
 		header.translateToRelative(requestLoc);
 		if (header.containsPoint(requestLoc))
@@ -114,6 +123,7 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	 * @see org.eclipse.gef.EditPart#performRequest(org.eclipse.gef.Request)
 	 */
 	public void performRequest(Request request) {
+		log.info("check");
 		if (request.getType() == RequestConstants.REQ_DIRECT_EDIT) {
 			if (request instanceof DirectEditRequest
 					&& !directEditHitTest(((DirectEditRequest) request)
@@ -124,20 +134,24 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	}
 
 	int getAnchorOffset() {
+		log.info("check");
 		return -1;
 	}
 
 	public IFigure getContentPane() {
+		log.info("check");
 		if (getFigure() instanceof SubgraphFigure)
 			return ((SubgraphFigure) getFigure()).getContents();
 		return getFigure();
 	}
 
 	protected List getModelChildren() {
+		log.info("check");
 		return getStructuredActivity().getChildren();
 	}
 
 	StructuredActivity getStructuredActivity() {
+		log.info("check");
 		return (StructuredActivity) getModel();
 	}
 
@@ -145,6 +159,7 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	 * @see com.wincom.actor.editor.flow.parts.ActivityPart#performDirectEdit()
 	 */
 	protected void performDirectEdit() {
+		log.info("check");
 		if (manager == null) {
 			Label l = ((Label) ((SubgraphFigure) getFigure()).getHeader());
 			manager = new ActivityDirectEditManager(this, TextCellEditor.class,
@@ -157,6 +172,7 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
 	 */
 	protected void refreshVisuals() {
+		log.info("check");
 		((Label) ((SubgraphFigure) getFigure()).getHeader())
 				.setText(getActivity().getName());
 		((Label) ((SubgraphFigure) getFigure()).getFooter())

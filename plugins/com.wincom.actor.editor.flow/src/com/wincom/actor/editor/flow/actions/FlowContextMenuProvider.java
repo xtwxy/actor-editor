@@ -17,6 +17,8 @@ import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.actions.ActionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Provides a context menu for the flow editor.
@@ -24,6 +26,7 @@ import org.eclipse.ui.actions.ActionFactory;
  * @author Daniel Lee
  */
 public class FlowContextMenuProvider extends ContextMenuProvider {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private ActionRegistry actionRegistry;
 
@@ -39,6 +42,7 @@ public class FlowContextMenuProvider extends ContextMenuProvider {
 	public FlowContextMenuProvider(EditPartViewer viewer,
 			ActionRegistry registry) {
 		super(viewer);
+		log.info("check");
 		setActionRegistry(registry);
 	}
 
@@ -46,6 +50,7 @@ public class FlowContextMenuProvider extends ContextMenuProvider {
 	 * @see ContextMenuProvider#buildContextMenu(org.eclipse.jface.action.IMenuManager)
 	 */
 	public void buildContextMenu(IMenuManager menu) {
+		log.info("check");
 		GEFActionConstants.addStandardActionGroups(menu);
 
 		IAction action;
@@ -62,6 +67,7 @@ public class FlowContextMenuProvider extends ContextMenuProvider {
 	}
 
 	private ActionRegistry getActionRegistry() {
+		log.info("check");
 		return actionRegistry;
 	}
 
@@ -72,6 +78,7 @@ public class FlowContextMenuProvider extends ContextMenuProvider {
 	 *            the action registry
 	 */
 	public void setActionRegistry(ActionRegistry registry) {
+		log.info("check");
 		actionRegistry = registry;
 	}
 

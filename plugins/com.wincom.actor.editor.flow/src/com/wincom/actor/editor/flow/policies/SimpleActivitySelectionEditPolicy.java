@@ -11,6 +11,9 @@
 package com.wincom.actor.editor.flow.policies;
 
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.figures.SimpleActivityLabel;
 import com.wincom.actor.editor.flow.parts.SimpleActivityPart;
 
@@ -22,8 +25,10 @@ import com.wincom.actor.editor.flow.parts.SimpleActivityPart;
  * @author Daniel Lee
  */
 public class SimpleActivitySelectionEditPolicy extends NonResizableEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private SimpleActivityLabel getLabel() {
+		log.info("check");
 		SimpleActivityPart part = (SimpleActivityPart) getHost();
 		return ((SimpleActivityLabel) part.getFigure());
 	}
@@ -32,6 +37,7 @@ public class SimpleActivitySelectionEditPolicy extends NonResizableEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#hideFocus()
 	 */
 	protected void hideFocus() {
+		log.info("check");
 		getLabel().setFocus(false);
 	}
 
@@ -39,6 +45,7 @@ public class SimpleActivitySelectionEditPolicy extends NonResizableEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.SelectionHandlesEditPolicy#hideSelection()
 	 */
 	protected void hideSelection() {
+		log.info("check");
 		getLabel().setSelected(false);
 		getLabel().setFocus(false);
 
@@ -48,6 +55,7 @@ public class SimpleActivitySelectionEditPolicy extends NonResizableEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#showFocus()
 	 */
 	protected void showFocus() {
+		log.info("check");
 		getLabel().setFocus(true);
 	}
 
@@ -55,6 +63,7 @@ public class SimpleActivitySelectionEditPolicy extends NonResizableEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.SelectionHandlesEditPolicy#showSelection()
 	 */
 	protected void showPrimarySelection() {
+		log.info("check");
 		getLabel().setSelected(true);
 		getLabel().setFocus(true);
 	}
@@ -63,6 +72,7 @@ public class SimpleActivitySelectionEditPolicy extends NonResizableEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.SelectionHandlesEditPolicy#showSelection()
 	 */
 	protected void showSelection() {
+		log.info("check");
 		getLabel().setSelected(true);
 		getLabel().setFocus(false);
 	}

@@ -16,6 +16,8 @@ import org.eclipse.gef.tools.CellEditorLocator;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * CellEditorLocator for Activities.
@@ -23,6 +25,7 @@ import org.eclipse.swt.widgets.Text;
  * @author Daniel Lee
  */
 public class ActivityCellEditorLocator implements CellEditorLocator {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 	private Label label;
 
 	/**
@@ -32,6 +35,7 @@ public class ActivityCellEditorLocator implements CellEditorLocator {
 	 *            the Label
 	 */
 	public ActivityCellEditorLocator(Label label) {
+		log.info("check");
 		setLabel(label);
 	}
 
@@ -39,6 +43,7 @@ public class ActivityCellEditorLocator implements CellEditorLocator {
 	 * @see CellEditorLocator#relocate(org.eclipse.jface.viewers.CellEditor)
 	 */
 	public void relocate(CellEditor celleditor) {
+		log.info("check");
 		Text text = (Text) celleditor.getControl();
 		Point pref = text.computeSize(-1, -1);
 		Rectangle rect = label.getTextBounds().getCopy();
@@ -52,6 +57,7 @@ public class ActivityCellEditorLocator implements CellEditorLocator {
 	 * @return the Label
 	 */
 	protected Label getLabel() {
+		log.info("check");
 		return label;
 	}
 
@@ -62,6 +68,7 @@ public class ActivityCellEditorLocator implements CellEditorLocator {
 	 *            The label to set
 	 */
 	protected void setLabel(Label label) {
+		log.info("check");
 		this.label = label;
 	}
 

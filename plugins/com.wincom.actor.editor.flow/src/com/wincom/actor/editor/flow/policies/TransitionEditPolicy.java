@@ -23,6 +23,8 @@ import com.wincom.actor.editor.flow.model.commands.SplitTransitionCommand;
 import com.wincom.actor.editor.flow.parts.TransitionPart;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.GroupRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * EditPolicy for Transitions. Supports deletion and "splitting", i.e. adding an
@@ -32,17 +34,20 @@ import org.eclipse.gef.requests.GroupRequest;
  * @author Daniel Lee
  */
 public class TransitionEditPolicy extends ConnectionEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see org.eclipse.gef.editpolicies.ConnectionEditPolicy#getCommand(org.eclipse.gef.Request)
 	 */
 	public Command getCommand(Request request) {
+		log.info("check");
 		if (REQ_CREATE.equals(request.getType()))
 			return getSplitTransitionCommand(request);
 		return super.getCommand(request);
 	}
 
 	private PolylineConnection getConnectionFigure() {
+		log.info("check");
 		return ((PolylineConnection) ((TransitionPart) getHost()).getFigure());
 	}
 
@@ -50,6 +55,7 @@ public class TransitionEditPolicy extends ConnectionEditPolicy {
 	 * @see ConnectionEditPolicy#getDeleteCommand(org.eclipse.gef.requests.GroupRequest)
 	 */
 	protected Command getDeleteCommand(GroupRequest request) {
+		log.info("check");
 		DeleteConnectionCommand cmd = new DeleteConnectionCommand();
 		Transition t = (Transition) getHost().getModel();
 		cmd.setTransition(t);
@@ -59,6 +65,7 @@ public class TransitionEditPolicy extends ConnectionEditPolicy {
 	}
 
 	protected Command getSplitTransitionCommand(Request request) {
+		log.info("check");
 		SplitTransitionCommand cmd = new SplitTransitionCommand();
 		cmd.setTransition(((Transition) getHost().getModel()));
 		cmd.setParent(((StructuredActivity) ((TransitionPart) getHost())
@@ -71,6 +78,7 @@ public class TransitionEditPolicy extends ConnectionEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#getTargetEditPart(org.eclipse.gef.Request)
 	 */
 	public EditPart getTargetEditPart(Request request) {
+		log.info("check");
 		if (REQ_CREATE.equals(request.getType()))
 			return getHost();
 		return null;
@@ -80,6 +88,7 @@ public class TransitionEditPolicy extends ConnectionEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#eraseTargetFeedback(org.eclipse.gef.Request)
 	 */
 	public void eraseTargetFeedback(Request request) {
+		log.info("check");
 		if (REQ_CREATE.equals(request.getType()))
 			getConnectionFigure().setLineWidth(1);
 	}
@@ -88,6 +97,7 @@ public class TransitionEditPolicy extends ConnectionEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.AbstractEditPolicy#showTargetFeedback(org.eclipse.gef.Request)
 	 */
 	public void showTargetFeedback(Request request) {
+		log.info("check");
 		if (REQ_CREATE.equals(request.getType()))
 			getConnectionFigure().setLineWidth(2);
 	}

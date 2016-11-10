@@ -18,17 +18,22 @@ import org.eclipse.draw2d.graph.CompoundDirectedGraph;
 import org.eclipse.draw2d.graph.Edge;
 import org.eclipse.draw2d.graph.Node;
 import org.eclipse.gef.EditPart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.figures.SequentialActivityFigure;
 
 /**
  * @author hudsonr Created on Jul 18, 2003
  */
 public class SequentialActivityPart extends StructuredActivityPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see com.wincom.actor.editor.flow.parts.StructuredActivityPart#createFigure()
 	 */
 	protected IFigure createFigure() {
+		log.info("check");
 		return new SequentialActivityFigure();
 	}
 
@@ -37,6 +42,7 @@ public class SequentialActivityPart extends StructuredActivityPart {
 	 *      java.util.Map)
 	 */
 	public void contributeEdgesToGraph(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		super.contributeEdgesToGraph(graph, map);
 		Node node, prev = null;
 		EditPart a;
@@ -57,6 +63,7 @@ public class SequentialActivityPart extends StructuredActivityPart {
 	 * @see com.wincom.actor.editor.flow.parts.StructuredActivityPart#getAnchorOffset()
 	 */
 	int getAnchorOffset() {
+		log.info("check");
 		return 15;
 	}
 

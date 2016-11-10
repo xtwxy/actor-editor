@@ -14,6 +14,9 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.parts.DummyLayout;
 
 /**
@@ -21,12 +24,14 @@ import com.wincom.actor.editor.flow.parts.DummyLayout;
  * @author hudsonr Created on Jul 23, 2003
  */
 public class SubgraphFigure extends Figure {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	IFigure contents;
 	IFigure footer;
 	IFigure header;
 
 	public SubgraphFigure(IFigure header, IFigure footer) {
+		log.info("check");
 		contents = new Figure();
 		contents.setLayoutManager(new DummyLayout());
 		add(contents);
@@ -35,14 +40,17 @@ public class SubgraphFigure extends Figure {
 	}
 
 	public IFigure getContents() {
+		log.info("check");
 		return contents;
 	}
 
 	public IFigure getFooter() {
+		log.info("check");
 		return footer;
 	}
 
 	public IFigure getHeader() {
+		log.info("check");
 		return header;
 	}
 
@@ -50,6 +58,7 @@ public class SubgraphFigure extends Figure {
 	 * @see org.eclipse.draw2d.Figure#getPreferredSize(int, int)
 	 */
 	public Dimension getPreferredSize(int wHint, int hHint) {
+		log.info("check");
 		Dimension dim = new Dimension();
 		dim.width = getFooter().getPreferredSize().width;
 		dim.width += getInsets().getWidth();
@@ -58,6 +67,7 @@ public class SubgraphFigure extends Figure {
 	}
 
 	public void setBounds(Rectangle rect) {
+		log.info("check");
 		super.setBounds(rect);
 		rect = Rectangle.SINGLETON;
 		getClientArea(rect);
@@ -72,6 +82,7 @@ public class SubgraphFigure extends Figure {
 	}
 
 	public void setSelected(boolean value) {
+		log.info("check");
 	}
 
 }

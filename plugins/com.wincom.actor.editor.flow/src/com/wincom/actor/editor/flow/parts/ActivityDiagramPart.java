@@ -20,6 +20,9 @@ import org.eclipse.draw2d.graph.CompoundDirectedGraph;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.commands.CommandStackListener;
 import org.eclipse.gef.editpolicies.RootComponentEditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.policies.ActivityContainerEditPolicy;
 import com.wincom.actor.editor.flow.policies.StructuredActivityLayoutEditPolicy;
 
@@ -27,9 +30,11 @@ import com.wincom.actor.editor.flow.policies.StructuredActivityLayoutEditPolicy;
  * @author hudsonr Created on Jul 16, 2003
  */
 public class ActivityDiagramPart extends StructuredActivityPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	CommandStackListener stackListener = new CommandStackListener() {
 		public void commandStackChanged(EventObject event) {
+		log.info("check");
 			if (!GraphAnimation.captureLayout(getFigure()))
 				return;
 			while (GraphAnimation.step())
@@ -39,12 +44,14 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 	};
 
 	protected void applyOwnResults(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 	}
 
 	/**
 	 * @see com.wincom.actor.editor.flow.parts.ActivityPart#activate()
 	 */
 	public void activate() {
+		log.info("check");
 		super.activate();
 		getViewer().getEditDomain().getCommandStack()
 				.addCommandStackListener(stackListener);
@@ -54,6 +61,7 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 	 * @see com.wincom.actor.editor.flow.parts.ActivityPart#createEditPolicies()
 	 */
 	protected void createEditPolicies() {
+		log.info("check");
 		installEditPolicy(EditPolicy.NODE_ROLE, null);
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, null);
 		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, null);
@@ -66,6 +74,7 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 	}
 
 	protected IFigure createFigure() {
+		log.info("check");
 		Figure f = new Figure() {
 			public void setBounds(Rectangle rect) {
 				int x = bounds.x, y = bounds.y;
@@ -97,6 +106,7 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 	 * @see com.wincom.actor.editor.flow.parts.ActivityPart#deactivate()
 	 */
 	public void deactivate() {
+		log.info("check");
 		getViewer().getEditDomain().getCommandStack()
 				.removeCommandStackListener(stackListener);
 		super.deactivate();
@@ -106,6 +116,7 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#isSelectable()
 	 */
 	public boolean isSelectable() {
+		log.info("check");
 		return false;
 	}
 
@@ -113,6 +124,7 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 	 * @see com.wincom.actor.editor.flow.parts.StructuredActivityPart#refreshVisuals()
 	 */
 	protected void refreshVisuals() {
+		log.info("check");
 	}
 
 }

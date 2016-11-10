@@ -38,8 +38,6 @@
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.gef"/>
-      <feature id="org.eclipse.pde"/>
-      <feature id="org.eclipse.jdt"/>
    </features>
 
    <configurations>

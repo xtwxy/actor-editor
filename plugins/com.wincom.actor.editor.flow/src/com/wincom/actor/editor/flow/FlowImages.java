@@ -14,15 +14,19 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.eclipse.swt.graphics.Image;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr
  */
 public class FlowImages {
+	private static Logger log = LoggerFactory.getLogger(FlowImages.class);
 
 	public static final Image GEAR;
 
 	static {
+		log.info("check");
 		InputStream stream = FlowPlugin.class
 				.getResourceAsStream("images/gear.gif");
 		GEAR = new Image(null, stream);

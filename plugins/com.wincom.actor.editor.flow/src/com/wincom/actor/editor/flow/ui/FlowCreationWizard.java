@@ -14,6 +14,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FlowCreationWizard
@@ -21,6 +23,7 @@ import org.eclipse.ui.IWorkbench;
  * @author Daniel Lee
  */
 public class FlowCreationWizard extends Wizard implements INewWizard {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private FlowWizardPage1 flowWizardPage;
 	private IStructuredSelection selection;
@@ -30,6 +33,7 @@ public class FlowCreationWizard extends Wizard implements INewWizard {
 	 * @see org.eclipse.jface.wizard.IWizard#addPages()
 	 */
 	public void addPages() {
+		log.info("check");
 		flowWizardPage = new FlowWizardPage1(workbench, selection);
 		addPage(flowWizardPage);
 	}
@@ -40,6 +44,7 @@ public class FlowCreationWizard extends Wizard implements INewWizard {
 	 */
 	public void init(IWorkbench aWorkbench,
 			IStructuredSelection currentSelection) {
+		log.info("check");
 		workbench = aWorkbench;
 		selection = currentSelection;
 	}
@@ -48,6 +53,7 @@ public class FlowCreationWizard extends Wizard implements INewWizard {
 	 * @see org.eclipse.jface.wizard.IWizard#performFinish()
 	 */
 	public boolean performFinish() {
+		log.info("check");
 		return flowWizardPage.finish();
 	}
 

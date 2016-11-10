@@ -29,14 +29,19 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.policies.TransitionEditPolicy;
 
 /**
  * @author hudsonr Created on Jul 16, 2003
  */
 public class TransitionPart extends AbstractConnectionEditPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	protected void applyGraphResults(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		Edge e = (Edge) map.get(this);
 		NodeList nodes = e.vNodes;
 		PolylineConnection conn = (PolylineConnection) getConnectionFigure();
@@ -65,6 +70,7 @@ public class TransitionPart extends AbstractConnectionEditPart {
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#createEditPolicies()
 	 */
 	protected void createEditPolicies() {
+		log.info("check");
 		installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE,
 				new ConnectionEndpointEditPolicy());
 		installEditPolicy(EditPolicy.CONNECTION_ROLE,
@@ -75,6 +81,7 @@ public class TransitionPart extends AbstractConnectionEditPart {
 	 * @see org.eclipse.gef.editparts.AbstractConnectionEditPart#createFigure()
 	 */
 	protected IFigure createFigure() {
+		log.info("check");
 		PolylineConnection conn = (PolylineConnection) super.createFigure();
 		conn.setConnectionRouter(new BendpointConnectionRouter() {
 			public void route(Connection conn) {
@@ -92,6 +99,7 @@ public class TransitionPart extends AbstractConnectionEditPart {
 	 * @see org.eclipse.gef.EditPart#setSelected(int)
 	 */
 	public void setSelected(int value) {
+		log.info("check");
 		super.setSelected(value);
 		if (value != EditPart.SELECTED_NONE)
 			((PolylineConnection) getFigure()).setLineWidth(2);
@@ -100,6 +108,7 @@ public class TransitionPart extends AbstractConnectionEditPart {
 	}
 
 	public void contributeToGraph(CompoundDirectedGraph graph, Map map) {
+		log.info("check");
 		GraphAnimation.recordInitialState(getConnectionFigure());
 		Node source = (Node) map.get(getSource());
 		Node target = (Node) map.get(getTarget());

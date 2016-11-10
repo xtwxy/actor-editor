@@ -15,6 +15,8 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A customized Label for SimpleActivities. Primary selection is denoted by
@@ -23,11 +25,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * @author Daniel Lee
  */
 public class SimpleActivityLabel extends Label {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private boolean selected;
 	private boolean hasFocus;
 
 	private Rectangle getSelectionRectangle() {
+		log.info("check");
 		Rectangle bounds = getTextBounds();
 		bounds.expand(new Insets(2, 2, 0, 0));
 		translateToParent(bounds);
@@ -39,6 +43,7 @@ public class SimpleActivityLabel extends Label {
 	 * @see org.eclipse.draw2d.Label#paintFigure(org.eclipse.draw2d.Graphics)
 	 */
 	protected void paintFigure(Graphics graphics) {
+		log.info("check");
 		if (selected) {
 			graphics.pushState();
 			graphics.setBackgroundColor(ColorConstants.menuBackgroundSelected);
@@ -64,6 +69,7 @@ public class SimpleActivityLabel extends Label {
 	 *            true will cause the label to appear selected
 	 */
 	public void setSelected(boolean b) {
+		log.info("check");
 		selected = b;
 		repaint();
 	}
@@ -76,6 +82,7 @@ public class SimpleActivityLabel extends Label {
 	 *            of the Label
 	 */
 	public void setFocus(boolean b) {
+		log.info("check");
 		hasFocus = b;
 		repaint();
 	}

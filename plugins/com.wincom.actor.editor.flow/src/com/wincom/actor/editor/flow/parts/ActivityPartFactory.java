@@ -12,6 +12,9 @@ package com.wincom.actor.editor.flow.parts;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.ActivityDiagram;
 import com.wincom.actor.editor.flow.model.ParallelActivity;
@@ -22,8 +25,10 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author hudsonr Created on Jul 16, 2003
  */
 public class ActivityPartFactory implements EditPartFactory {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public EditPart createEditPart(EditPart context, Object model) {
+		log.info("check");
 		EditPart part = null;
 		if (model instanceof ActivityDiagram)
 			part = new ActivityDiagramPart();

@@ -16,16 +16,20 @@ import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.StructuredActivity;
 import com.wincom.actor.editor.flow.model.commands.DeleteCommand;
 import org.eclipse.gef.requests.GroupRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Daniel Lee
  */
 public class ActivityEditPolicy extends ComponentEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see ComponentEditPolicy#createDeleteCommand(org.eclipse.gef.requests.GroupRequest)
 	 */
 	protected Command createDeleteCommand(GroupRequest deleteRequest) {
+		log.info("check");
 		StructuredActivity parent = (StructuredActivity) (getHost().getParent()
 				.getModel());
 		DeleteCommand deleteCmd = new DeleteCommand();

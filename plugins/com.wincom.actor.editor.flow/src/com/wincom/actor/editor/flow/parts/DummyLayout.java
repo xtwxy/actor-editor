@@ -13,6 +13,8 @@ package com.wincom.actor.editor.flow.parts;
 import org.eclipse.draw2d.AbstractLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The dummy layout class does nothing during normal layouts. The Graph layout
@@ -23,6 +25,7 @@ import org.eclipse.draw2d.geometry.Dimension;
  * @author hudsonr
  */
 public class DummyLayout extends AbstractLayout {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see org.eclipse.draw2d.AbstractLayout#calculatePreferredSize(org.eclipse.draw2d.IFigure,
@@ -30,6 +33,7 @@ public class DummyLayout extends AbstractLayout {
 	 */
 	protected Dimension calculatePreferredSize(IFigure container, int wHint,
 			int hHint) {
+		log.info("check");
 		return null;
 	}
 
@@ -37,6 +41,7 @@ public class DummyLayout extends AbstractLayout {
 	 * @see org.eclipse.draw2d.LayoutManager#layout(org.eclipse.draw2d.IFigure)
 	 */
 	public void layout(IFigure container) {
+		log.info("check");
 		// GraphAnimation.recordInitialState(container);
 		GraphAnimation.playbackState(container);
 	}

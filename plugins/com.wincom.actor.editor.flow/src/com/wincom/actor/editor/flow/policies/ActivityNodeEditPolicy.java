@@ -20,18 +20,22 @@ import com.wincom.actor.editor.flow.model.commands.ReconnectTargetCommand;
 import com.wincom.actor.editor.flow.parts.ActivityPart;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
  * Created on Jul 17, 2003
  */
 public class ActivityNodeEditPolicy extends GraphicalNodeEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see GraphicalNodeEditPolicy#getConnectionCompleteCommand(CreateConnectionRequest)
 	 */
 	protected Command getConnectionCompleteCommand(
 			CreateConnectionRequest request) {
+		log.info("check");
 		ConnectionCreateCommand cmd = (ConnectionCreateCommand) request
 				.getStartCommand();
 		cmd.setTarget(getActivity());
@@ -42,6 +46,7 @@ public class ActivityNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 * @see GraphicalNodeEditPolicy#getConnectionCreateCommand(CreateConnectionRequest)
 	 */
 	protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
+		log.info("check");
 		ConnectionCreateCommand cmd = new ConnectionCreateCommand();
 		cmd.setSource(getActivity());
 		request.setStartCommand(cmd);
@@ -54,6 +59,7 @@ public class ActivityNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 * @return the
 	 */
 	protected ActivityPart getActivityPart() {
+		log.info("check");
 		return (ActivityPart) getHost();
 	}
 
@@ -64,6 +70,7 @@ public class ActivityNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 * @return the model
 	 */
 	protected Activity getActivity() {
+		log.info("check");
 		return (Activity) getHost().getModel();
 	}
 
@@ -71,6 +78,7 @@ public class ActivityNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 * @see GraphicalNodeEditPolicy#getReconnectSourceCommand(ReconnectRequest)
 	 */
 	protected Command getReconnectSourceCommand(ReconnectRequest request) {
+		log.info("check");
 		ReconnectSourceCommand cmd = new ReconnectSourceCommand();
 		cmd.setTransition((Transition) request.getConnectionEditPart()
 				.getModel());
@@ -82,6 +90,7 @@ public class ActivityNodeEditPolicy extends GraphicalNodeEditPolicy {
 	 * @see GraphicalNodeEditPolicy#getReconnectTargetCommand(ReconnectRequest)
 	 */
 	protected Command getReconnectTargetCommand(ReconnectRequest request) {
+		log.info("check");
 		ReconnectTargetCommand cmd = new ReconnectTargetCommand();
 		cmd.setTransition((Transition) request.getConnectionEditPart()
 				.getModel());

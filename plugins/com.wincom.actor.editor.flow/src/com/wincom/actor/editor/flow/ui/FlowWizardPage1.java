@@ -30,6 +30,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.ide.IDE;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FlowWizardPage1
@@ -37,12 +39,14 @@ import org.eclipse.ui.ide.IDE;
  * @author Daniel Lee
  */
 public class FlowWizardPage1 extends WizardNewFileCreationPage {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private IWorkbench workbench;
 	private static int exampleCount = 1;
 
 	public FlowWizardPage1(IWorkbench aWorkbench, IStructuredSelection selection) {
 		super("sampleFlowPage1", selection);
+		log.info("check");
 		this.setTitle("Create Flow Example File");
 		this.setDescription("Create a new flow file resource");
 		this.setImageDescriptor(ImageDescriptor.createFromFile(
@@ -54,12 +58,14 @@ public class FlowWizardPage1 extends WizardNewFileCreationPage {
 	 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
 	 */
 	public void createControl(Composite parent) {
+		log.info("check");
 		super.createControl(parent);
 		this.setFileName("flowExample" + exampleCount + ".flow");
 		setPageComplete(validatePage());
 	}
 
 	private ActivityDiagram createWakeupModel() {
+		log.info("check");
 		ActivityDiagram diagram = new ActivityDiagram();
 		SequentialActivity wakeup = new SequentialActivity();
 		Activity backToSleep = new Activity("Go back to sleep");
@@ -110,6 +116,7 @@ public class FlowWizardPage1 extends WizardNewFileCreationPage {
 	}
 
 	protected InputStream getInitialContents() {
+		log.info("check");
 		ActivityDiagram diag = createWakeupModel();
 		ByteArrayInputStream bais = null;
 		try {
@@ -128,6 +135,7 @@ public class FlowWizardPage1 extends WizardNewFileCreationPage {
 	}
 
 	public boolean finish() {
+		log.info("check");
 		IFile newFile = createNewFile();
 		if (newFile == null)
 			return false; // ie.- creation was unsuccessful

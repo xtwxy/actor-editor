@@ -10,11 +10,15 @@
  *******************************************************************************/
 package com.wincom.actor.editor.flow.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 
  * @author hudsonr Created on Jun 30, 2003
  */
 public class ActivityDiagram extends ParallelActivity {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private static final long serialVersionUID = -1220159739618345237L;
 
@@ -23,6 +27,7 @@ public class ActivityDiagram extends ParallelActivity {
 	 */
 	public ActivityDiagram() {
 		super();
+		log.info("check");
 		// TODO Auto-generated constructor stub
 	}
 }

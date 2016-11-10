@@ -15,11 +15,14 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr
  */
 public class ParallelActivityFigure extends SubgraphFigure {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	boolean selected;
 
@@ -29,11 +32,13 @@ public class ParallelActivityFigure extends SubgraphFigure {
 	 */
 	public ParallelActivityFigure() {
 		super(new Label(""), new Label(""));
+		log.info("check");
 		setBorder(new MarginBorder(3, 5, 3, 0));
 		setOpaque(true);
 	}
 
 	protected void paintFigure(Graphics g) {
+		log.info("check");
 		super.paintFigure(g);
 		Rectangle r = getBounds();
 		g.setBackgroundColor(ColorConstants.button);
@@ -49,6 +54,7 @@ public class ParallelActivityFigure extends SubgraphFigure {
 	}
 
 	public void setSelected(boolean selected) {
+		log.info("check");
 		if (this.selected == selected)
 			return;
 		this.selected = selected;

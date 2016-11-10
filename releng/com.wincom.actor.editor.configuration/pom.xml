@@ -10,10 +10,11 @@
 	<properties>
 		<tycho.version>0.25.0</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<eclipse-repo.url>http://192.168.0.161/~master/eclipse-repo/eclipse/neon/
+		<eclipse-repo.url>http://192.168.0.161/~master/eclipse-repo/eclipse/mars/
 		</eclipse-repo.url>
 		<gef-repo.url>http://192.168.0.161/~master/eclipse-repo/gef/update/5.0.0.201610141103/
 		</gef-repo.url>
+		<orbit-repo.url>http://192.168.0.161/~master/eclipse-repo/orbit/drops/mars/</orbit-repo.url>
 	</properties>
 	<repositories>
 		<repository>
@@ -24,6 +25,11 @@
 		<repository>
 			<id>gef</id>
 			<url>${gef-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>orbit</id>
+			<url>${orbit-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
@@ -61,12 +67,13 @@
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
-							<arch>x86</arch>
+							<arch>x86_64</arch>
 						</environment>
+<!-- 						
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
-							<arch>x86_64</arch>
+							<arch>x86</arch>
 						</environment>
 						<environment>
 							<os>win32</os>
@@ -83,6 +90,7 @@
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
+						-->
 					</environments>
 				</configuration>
 			</plugin>

@@ -33,10 +33,6 @@ import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
 import org.eclipse.gef.dnd.TemplateTransferDropTargetListener;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
-import com.wincom.actor.editor.flow.FlowEditorPaletteFactory;
-import com.wincom.actor.editor.flow.actions.FlowContextMenuProvider;
-import com.wincom.actor.editor.flow.model.ActivityDiagram;
-import com.wincom.actor.editor.flow.parts.ActivityPartFactory;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.gef.ui.actions.DirectEditAction;
@@ -54,18 +50,27 @@ import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.part.FileEditorInput;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.wincom.actor.editor.flow.FlowEditorPaletteFactory;
+import com.wincom.actor.editor.flow.actions.FlowContextMenuProvider;
+import com.wincom.actor.editor.flow.model.ActivityDiagram;
+import com.wincom.actor.editor.flow.parts.ActivityPartFactory;
 
 /**
  * 
  * @author hudsonr Created on Jun 27, 2003
  */
 public class FlowEditor extends GraphicalEditorWithPalette {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	ActivityDiagram diagram;
 	private PaletteRoot root;
 	private KeyHandler sharedKeyHandler;
 
 	public FlowEditor() {
+		log.info("check");
 		DefaultEditDomain defaultEditDomain = new DefaultEditDomain(this);
 		setEditDomain(defaultEditDomain);
 	}
@@ -74,6 +79,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.gef.commands.CommandStackListener#commandStackChanged(java.util.EventObject)
 	 */
 	public void commandStackChanged(EventObject event) {
+		log.info("check");
 		firePropertyChange(IEditorPart.PROP_DIRTY);
 		super.commandStackChanged(event);
 	}
@@ -82,6 +88,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.gef.ui.parts.GraphicalEditor#createActions()
 	 */
 	protected void createActions() {
+		log.info("check");
 		super.createActions();
 		ActionRegistry registry = getActionRegistry();
 		IAction action;
@@ -100,6 +107,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @throws IOException
 	 */
 	protected void createOutputStream(OutputStream os) throws IOException {
+		log.info("check");
 		ObjectOutputStream out = new ObjectOutputStream(os);
 		out.writeObject(diagram);
 		out.close();
@@ -109,6 +117,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.gef.ui.parts.GraphicalEditor#configureGraphicalViewer()
 	 */
 	protected void configureGraphicalViewer() {
+		log.info("check");
 		super.configureGraphicalViewer();
 		getGraphicalViewer().setRootEditPart(new ScalableRootEditPart());
 		getGraphicalViewer().setEditPartFactory(new ActivityPartFactory());
@@ -129,6 +138,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.gef.ui.parts.GraphicalEditor#initializeGraphicalViewer()
 	 */
 	protected void initializeGraphicalViewer() {
+		log.info("check");
 		getGraphicalViewer().setContents(diagram);
 		getGraphicalViewer().addDropTargetListener(
 				new TemplateTransferDropTargetListener(getGraphicalViewer()));
@@ -139,6 +149,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.gef.ui.parts.GraphicalEditorWithPalette#initializePaletteViewer()
 	 */
 	protected void initializePaletteViewer() {
+		log.info("check");
 		super.initializePaletteViewer();
 		getPaletteViewer().addDragSourceListener(
 				new TemplateTransferDragSourceListener(getPaletteViewer()));
@@ -148,6 +159,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.ui.ISaveablePart#doSave(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void doSave(IProgressMonitor monitor) {
+		log.info("check");
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			createOutputStream(out);
@@ -165,6 +177,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.ui.ISaveablePart#doSaveAs()
 	 */
 	public void doSaveAs() {
+		log.info("check");
 		SaveAsDialog dialog = new SaveAsDialog(getSite().getWorkbenchWindow()
 				.getShell());
 		dialog.setOriginalFile(((IFileEditorInput) getEditorInput()).getFile());
@@ -180,6 +193,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 		WorkspaceModifyOperation op = new WorkspaceModifyOperation() {
 			public void execute(final IProgressMonitor monitor)
 					throws CoreException {
+		log.info("check");
 				try {
 					ByteArrayOutputStream out = new ByteArrayOutputStream();
 					createOutputStream(out);
@@ -203,6 +217,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	}
 
 	protected KeyHandler getCommonKeyHandler() {
+		log.info("check");
 		if (sharedKeyHandler == null) {
 			sharedKeyHandler = new KeyHandler();
 			sharedKeyHandler
@@ -221,18 +236,21 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.gef.ui.parts.GraphicalEditorWithPalette#getPaletteRoot()
 	 */
 	protected PaletteRoot getPaletteRoot() {
+		log.info("check");
 		if (root == null)
 			root = FlowEditorPaletteFactory.createPalette();
 		return root;
 	}
 
 	public void gotoMarker(IMarker marker) {
+		log.info("check");
 	}
 
 	/**
 	 * @see org.eclipse.ui.ISaveablePart#isSaveAsAllowed()
 	 */
 	public boolean isSaveAsAllowed() {
+		log.info("check");
 		return true;
 	}
 
@@ -240,6 +258,7 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 	 * @see org.eclipse.ui.part.EditorPart#setInput(org.eclipse.ui.IEditorInput)
 	 */
 	protected void setInput(IEditorInput input) {
+		log.info("check");
 		super.setInput(input);
 
 		IFile file = ((IFileEditorInput) input).getFile();

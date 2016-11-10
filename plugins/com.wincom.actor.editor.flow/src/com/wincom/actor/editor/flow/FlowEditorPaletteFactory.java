@@ -13,9 +13,6 @@ package com.wincom.actor.editor.flow;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wincom.actor.editor.flow.model.Activity;
-import com.wincom.actor.editor.flow.model.ParallelActivity;
-import com.wincom.actor.editor.flow.model.SequentialActivity;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
@@ -29,6 +26,12 @@ import org.eclipse.gef.palette.SelectionToolEntry;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.SimpleFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.wincom.actor.editor.flow.model.Activity;
+import com.wincom.actor.editor.flow.model.ParallelActivity;
+import com.wincom.actor.editor.flow.model.SequentialActivity;
 
 /**
  * Handles the creation of the palette for the Flow Editor.
@@ -36,8 +39,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
  * @author Daniel Lee
  */
 public class FlowEditorPaletteFactory {
-
+	private static Logger log = LoggerFactory.getLogger(FlowEditorPaletteFactory.class);
 	private static List createCategories(PaletteRoot root) {
+		log.info("check");
 		List categories = new ArrayList();
 		categories.add(createControlGroup(root));
 		categories.add(createComponentsDrawer());
@@ -45,6 +49,7 @@ public class FlowEditorPaletteFactory {
 	}
 
 	private static PaletteContainer createComponentsDrawer() {
+		log.info("check");
 
 		PaletteDrawer drawer = new PaletteDrawer("Components", null);
 
@@ -81,6 +86,7 @@ public class FlowEditorPaletteFactory {
 	}
 
 	private static PaletteContainer createControlGroup(PaletteRoot root) {
+		log.info("check");
 		PaletteGroup controlGroup = new PaletteGroup("Control Group");
 
 		List entries = new ArrayList();
@@ -113,6 +119,7 @@ public class FlowEditorPaletteFactory {
 	 * @return the root
 	 */
 	public static PaletteRoot createPalette() {
+		log.info("check");
 		PaletteRoot flowPalette = new PaletteRoot();
 		flowPalette.addAll(createCategories(flowPalette));
 		return flowPalette;

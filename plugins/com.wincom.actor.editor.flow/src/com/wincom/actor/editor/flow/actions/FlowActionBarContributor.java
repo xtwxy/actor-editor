@@ -17,6 +17,8 @@ import org.eclipse.gef.ui.actions.UndoRetargetAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.EditorActionBarContributor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Contributes actions to the Editor.
@@ -24,11 +26,13 @@ import org.eclipse.ui.part.EditorActionBarContributor;
  * @author Daniel Lee
  */
 public class FlowActionBarContributor extends ActionBarContributor {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see org.eclipse.gef.ui.actions.ActionBarContributor#buildActions()
 	 */
 	protected void buildActions() {
+		log.info("check");
 		addRetargetAction(new UndoRetargetAction());
 		addRetargetAction(new RedoRetargetAction());
 		addRetargetAction(new DeleteRetargetAction());
@@ -39,6 +43,7 @@ public class FlowActionBarContributor extends ActionBarContributor {
 	 * @see EditorActionBarContributor#contributeToToolBar(IToolBarManager)
 	 */
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		log.info("check");
 		toolBarManager.add(getAction(ActionFactory.UNDO.getId()));
 		toolBarManager.add(getAction(ActionFactory.REDO.getId()));
 	}
@@ -47,6 +52,7 @@ public class FlowActionBarContributor extends ActionBarContributor {
 	 * @see org.eclipse.gef.ui.actions.ActionBarContributor#declareGlobalActionKeys()
 	 */
 	protected void declareGlobalActionKeys() {
+		log.info("check");
 	}
 
 }

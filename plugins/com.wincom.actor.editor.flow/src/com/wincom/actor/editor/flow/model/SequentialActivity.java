@@ -10,15 +10,20 @@
  *******************************************************************************/
 package com.wincom.actor.editor.flow.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author hudsonr Created on Jun 30, 2003
  */
 public class SequentialActivity extends StructuredActivity {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private static final long serialVersionUID = -9080401150957481095L;
 
 	public SequentialActivity() {
 		super();
+		log.info("check");
 	}
 
 }

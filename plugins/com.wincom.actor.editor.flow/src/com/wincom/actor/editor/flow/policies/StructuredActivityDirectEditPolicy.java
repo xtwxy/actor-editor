@@ -17,6 +17,8 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.DirectEditPolicy;
 import com.wincom.actor.editor.flow.figures.SubgraphFigure;
 import org.eclipse.gef.requests.DirectEditRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * StructuredActivityDirectEditPolicy
@@ -25,11 +27,13 @@ import org.eclipse.gef.requests.DirectEditRequest;
  */
 public class StructuredActivityDirectEditPolicy extends
 		ActivityDirectEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see org.eclipse.gef.EditPolicy#getCommand(Request)
 	 */
 	public Command getCommand(Request request) {
+		log.info("check");
 		if (RequestConstants.REQ_DIRECT_EDIT == request.getType()) {
 			((DirectEditRequest) request).getLocation();
 			return getDirectEditCommand((DirectEditRequest) request);
@@ -41,6 +45,7 @@ public class StructuredActivityDirectEditPolicy extends
 	 * @see DirectEditPolicy#showCurrentEditValue(org.eclipse.gef.requests.DirectEditRequest)
 	 */
 	protected void showCurrentEditValue(DirectEditRequest request) {
+		log.info("check");
 		String value = (String) request.getCellEditor().getValue();
 		((Label) ((SubgraphFigure) getHostFigure()).getHeader()).setText(value);
 		((Label) ((SubgraphFigure) getHostFigure()).getFooter())

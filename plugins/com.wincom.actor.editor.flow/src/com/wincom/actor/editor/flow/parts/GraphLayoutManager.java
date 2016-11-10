@@ -20,17 +20,22 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.graph.CompoundDirectedGraph;
 import org.eclipse.draw2d.graph.CompoundDirectedGraphLayout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class GraphLayoutManager extends AbstractLayout {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private ActivityDiagramPart diagram;
 
 	GraphLayoutManager(ActivityDiagramPart diagram) {
+		log.info("check");
 		this.diagram = diagram;
 	}
 
 	protected Dimension calculatePreferredSize(IFigure container, int wHint,
 			int hHint) {
+		log.info("check");
 		container.validate();
 		List children = container.getChildren();
 		Rectangle result = new Rectangle().setLocation(container
@@ -43,6 +48,7 @@ class GraphLayoutManager extends AbstractLayout {
 	}
 
 	public void layout(IFigure container) {
+		log.info("check");
 		GraphAnimation.recordInitialState(container);
 		if (GraphAnimation.playbackState(container))
 			return;

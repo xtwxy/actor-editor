@@ -21,11 +21,14 @@ import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr Created on Apr 28, 2003
  */
 public class GraphAnimation {
+	private static Logger log = LoggerFactory.getLogger(GraphAnimation.class);
 
 	static final long DURATION = 230;
 
@@ -45,6 +48,7 @@ public class GraphAnimation {
 	static Map finalStates;
 
 	static void end() {
+		log.info("check");
 		Iterator iter = initialStates.keySet().iterator();
 		while (iter.hasNext()) {
 			IFigure f = ((IFigure) iter.next());
@@ -62,6 +66,7 @@ public class GraphAnimation {
 	}
 
 	static boolean captureLayout(IFigure root) {
+		log.info("check");
 
 		RECORDING = true;
 
@@ -95,6 +100,7 @@ public class GraphAnimation {
 	}
 
 	static boolean playbackState(Connection conn) {
+		log.info("check");
 		if (!PLAYBACK)
 			return false;
 
@@ -123,6 +129,7 @@ public class GraphAnimation {
 	}
 
 	static boolean playbackState(IFigure container) {
+		log.info("check");
 		if (!PLAYBACK)
 			return false;
 
@@ -146,6 +153,7 @@ public class GraphAnimation {
 	}
 
 	static void recordFinalState(Connection conn) {
+		log.info("check");
 		// $TODO
 		PointList points1 = (PointList) initialStates.get(conn);
 		PointList points2 = conn.getPoints().getCopy();
@@ -215,6 +223,7 @@ public class GraphAnimation {
 	}
 
 	static void recordFinalState(IFigure child) {
+		log.info("check");
 		if (child instanceof Connection) {
 			recordFinalState((Connection) child);
 			return;
@@ -230,6 +239,7 @@ public class GraphAnimation {
 	}
 
 	static void recordInitialState(Connection connection) {
+		log.info("check");
 		if (!RECORDING)
 			return;
 		PointList points = connection.getPoints().getCopy();
@@ -243,6 +253,7 @@ public class GraphAnimation {
 	}
 
 	static void recordInitialState(IFigure container) {
+		log.info("check");
 		if (!RECORDING)
 			return;
 
@@ -255,12 +266,14 @@ public class GraphAnimation {
 	}
 
 	static void swap() {
+		log.info("check");
 		Map temp = finalStates;
 		finalStates = initialStates;
 		initialStates = temp;
 	}
 
 	static boolean step() {
+		log.info("check");
 		current = System.currentTimeMillis() + 30;
 		progress = (double) (current - start) / (finish - start);
 		progress = Math.min(progress, 0.999);

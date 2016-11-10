@@ -15,12 +15,16 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.FlowImages;
 
 /**
  * @author hudsonr Created on Jul 21, 2003
  */
 public class StartTag extends Label {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	static final Border BORDER = new MarginBorder(2, 0, 2, 9);
 
@@ -31,6 +35,7 @@ public class StartTag extends Label {
 	 *            the text to display in this StartTag
 	 */
 	public StartTag(String name) {
+		log.info("check");
 		setIconTextGap(4);
 		setText(name);
 		setIcon(FlowImages.GEAR);
@@ -38,6 +43,7 @@ public class StartTag extends Label {
 	}
 
 	protected void paintFigure(Graphics g) {
+		log.info("check");
 		super.paintFigure(g);
 		Rectangle r = getTextBounds();
 

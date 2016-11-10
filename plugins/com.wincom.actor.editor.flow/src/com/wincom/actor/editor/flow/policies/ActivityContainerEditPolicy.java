@@ -21,6 +21,8 @@ import com.wincom.actor.editor.flow.model.StructuredActivity;
 import com.wincom.actor.editor.flow.model.commands.OrphanChildCommand;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.GroupRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ActivityContainerEditPolicy
@@ -28,11 +30,13 @@ import org.eclipse.gef.requests.GroupRequest;
  * @author Daniel Lee
  */
 public class ActivityContainerEditPolicy extends ContainerEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see ContainerEditPolicy#getCreateCommand(org.eclipse.gef.requests.CreateRequest)
 	 */
 	protected Command getCreateCommand(CreateRequest request) {
+		log.info("check");
 		return null;
 	}
 
@@ -40,6 +44,7 @@ public class ActivityContainerEditPolicy extends ContainerEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.ContainerEditPolicy#getOrphanChildrenCommand(org.eclipse.gef.requests.GroupRequest)
 	 */
 	protected Command getOrphanChildrenCommand(GroupRequest request) {
+		log.info("check");
 		List parts = request.getEditParts();
 		CompoundCommand result = new CompoundCommand();
 		for (int i = 0; i < parts.size(); i++) {

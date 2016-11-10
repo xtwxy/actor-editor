@@ -16,6 +16,8 @@ import org.eclipse.gef.editpolicies.DirectEditPolicy;
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.commands.RenameActivityCommand;
 import org.eclipse.gef.requests.DirectEditRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * EditPolicy for the direct editing of Activity names.
@@ -23,11 +25,13 @@ import org.eclipse.gef.requests.DirectEditRequest;
  * @author Daniel Lee
  */
 public class ActivityDirectEditPolicy extends DirectEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * @see DirectEditPolicy#getDirectEditCommand(org.eclipse.gef.requests.DirectEditRequest)
 	 */
 	protected Command getDirectEditCommand(DirectEditRequest request) {
+		log.info("check");
 		RenameActivityCommand cmd = new RenameActivityCommand();
 		cmd.setSource((Activity) getHost().getModel());
 		cmd.setOldName(((Activity) getHost().getModel()).getName());
@@ -39,6 +43,7 @@ public class ActivityDirectEditPolicy extends DirectEditPolicy {
 	 * @see DirectEditPolicy#showCurrentEditValue(org.eclipse.gef.requests.DirectEditRequest)
 	 */
 	protected void showCurrentEditValue(DirectEditRequest request) {
+		log.info("check");
 		String value = (String) request.getCellEditor().getValue();
 		((Label) getHostFigure()).setText(value);
 		// hack to prevent async layout from placing the cell editor twice.

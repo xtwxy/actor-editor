@@ -15,8 +15,11 @@ import java.util.List;
 
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Activity extends FlowElement {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	protected static IPropertyDescriptor[] descriptors;
 
@@ -33,31 +36,38 @@ public class Activity extends FlowElement {
 	private int sortIndex;
 
 	public Activity() {
+		log.info("check");
 	}
 
 	public Activity(String s) {
+		log.info("check");
 		setName(s);
 	}
 
 	public void addInput(Transition transition) {
+		log.info("check");
 		inputs.add(transition);
 		fireStructureChange(INPUTS, transition);
 	}
 
 	public void addOutput(Transition transtition) {
+		log.info("check");
 		outputs.add(transtition);
 		fireStructureChange(OUTPUTS, transtition);
 	}
 
 	public List getIncomingTransitions() {
+		log.info("check");
 		return inputs;
 	}
 
 	public String getName() {
+		log.info("check");
 		return name;
 	}
 
 	public List getOutgoingTransitions() {
+		log.info("check");
 		return outputs;
 	}
 
@@ -76,6 +86,7 @@ public class Activity extends FlowElement {
 	 * @return Array of property descriptors.
 	 */
 	public IPropertyDescriptor[] getPropertyDescriptors() {
+		log.info("check");
 		return descriptors;
 	}
 
@@ -88,26 +99,31 @@ public class Activity extends FlowElement {
 	 * @return Object which is the value of the property.
 	 */
 	public Object getPropertyValue(Object propName) {
+		log.info("check");
 		if (NAME.equals(propName))
 			return getName();
 		return super.getPropertyValue(propName);
 	}
 
 	public int getSortIndex() {
+		log.info("check");
 		return sortIndex;
 	}
 
 	public void removeInput(Transition transition) {
+		log.info("check");
 		inputs.remove(transition);
 		fireStructureChange(INPUTS, transition);
 	}
 
 	public void removeOutput(Transition transition) {
+		log.info("check");
 		outputs.remove(transition);
 		fireStructureChange(OUTPUTS, transition);
 	}
 
 	public void setName(String s) {
+		log.info("check");
 		name = s;
 		firePropertyChange(NAME, null, s);
 	}
@@ -121,11 +137,13 @@ public class Activity extends FlowElement {
 	 *            Value to be set to the given parameter.
 	 */
 	public void setPropertyValue(Object id, Object value) {
+		log.info("check");
 		if (id == NAME)
 			setName((String) value);
 	}
 
 	public void setSortIndex(int i) {
+		log.info("check");
 		sortIndex = i;
 	}
 
@@ -133,6 +151,7 @@ public class Activity extends FlowElement {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
+		log.info("check");
 		String className = getClass().getName();
 		className = className.substring(className.lastIndexOf('.') + 1);
 		return className + "(" + name + ")";

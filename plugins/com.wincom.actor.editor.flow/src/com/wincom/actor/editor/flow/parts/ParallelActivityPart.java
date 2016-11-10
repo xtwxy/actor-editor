@@ -11,6 +11,9 @@
 package com.wincom.actor.editor.flow.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.figures.ParallelActivityFigure;
 import com.wincom.actor.editor.flow.figures.SubgraphFigure;
 
@@ -18,8 +21,10 @@ import com.wincom.actor.editor.flow.figures.SubgraphFigure;
  * @author hudsonr
  */
 public class ParallelActivityPart extends StructuredActivityPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	protected IFigure createFigure() {
+		log.info("check");
 		return new ParallelActivityFigure();
 	}
 
@@ -27,6 +32,7 @@ public class ParallelActivityPart extends StructuredActivityPart {
 	 * @see org.eclipse.gef.EditPart#setSelected(int)
 	 */
 	public void setSelected(int value) {
+		log.info("check");
 		super.setSelected(value);
 		SubgraphFigure sf = (SubgraphFigure) getFigure();
 		sf.setSelected(value != SELECTED_NONE);

@@ -10,15 +10,20 @@
  *******************************************************************************/
 package com.wincom.actor.editor.flow.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author hudsonr Created on Jun 30, 2003
  */
 public class Transition extends FlowElement {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private static final long serialVersionUID = 4486688831285730788L;
 	public Activity source, target;
 
 	public Transition(Activity source, Activity target) {
+		log.info("check");
 		this.source = source;
 		this.target = target;
 

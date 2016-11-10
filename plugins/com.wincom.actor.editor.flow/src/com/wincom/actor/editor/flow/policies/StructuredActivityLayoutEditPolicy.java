@@ -26,13 +26,17 @@ import com.wincom.actor.editor.flow.model.commands.CreateCommand;
 import com.wincom.actor.editor.flow.parts.SimpleActivityPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.requests.CreateRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Daniel Lee
  */
 public class StructuredActivityLayoutEditPolicy extends LayoutEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	protected Command createAddCommand(EditPart child) {
+		log.info("check");
 		Activity activity = (Activity) child.getModel();
 		AddCommand add = new AddCommand();
 		add.setParent((StructuredActivity) getHost().getModel());
@@ -44,16 +48,19 @@ public class StructuredActivityLayoutEditPolicy extends LayoutEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.OrderedLayoutEditPolicy#createChildEditPolicy(org.eclipse.gef.EditPart)
 	 */
 	protected EditPolicy createChildEditPolicy(EditPart child) {
+		log.info("check");
 		if (child instanceof SimpleActivityPart)
 			return new SimpleActivitySelectionEditPolicy();
 		return new NonResizableEditPolicy();
 	}
 
 	protected Command createMoveChildCommand(EditPart child, EditPart after) {
+		log.info("check");
 		return null;
 	}
 
 	protected Command getAddCommand(Request req) {
+		log.info("check");
 		ChangeBoundsRequest request = (ChangeBoundsRequest) req;
 		List editParts = request.getEditParts();
 		CompoundCommand command = new CompoundCommand();
@@ -68,6 +75,7 @@ public class StructuredActivityLayoutEditPolicy extends LayoutEditPolicy {
 	 * @see LayoutEditPolicy#getCreateCommand(org.eclipse.gef.requests.CreateRequest)
 	 */
 	protected Command getCreateCommand(CreateRequest request) {
+		log.info("check");
 		CreateCommand command = new CreateCommand();
 		command.setParent((StructuredActivity) getHost().getModel());
 		command.setChild((Activity) request.getNewObject());
@@ -78,6 +86,7 @@ public class StructuredActivityLayoutEditPolicy extends LayoutEditPolicy {
 	 * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#getMoveChildrenCommand(org.eclipse.gef.Request)
 	 */
 	protected Command getMoveChildrenCommand(Request request) {
+		log.info("check");
 		return null;
 	}
 

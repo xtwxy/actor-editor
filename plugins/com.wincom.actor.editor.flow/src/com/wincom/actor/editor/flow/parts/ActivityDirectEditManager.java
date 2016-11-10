@@ -24,6 +24,8 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Text;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * DirectEditManager for Activities
@@ -31,6 +33,7 @@ import org.eclipse.swt.widgets.Text;
  * @author Daniel Lee
  */
 public class ActivityDirectEditManager extends DirectEditManager {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	Font scaledFont;
 	protected VerifyListener verifyListener;
@@ -49,6 +52,7 @@ public class ActivityDirectEditManager extends DirectEditManager {
 	public ActivityDirectEditManager(GraphicalEditPart source,
 			Class editorType, CellEditorLocator locator, Label label) {
 		super(source, editorType, locator);
+		log.info("check");
 		activityLabel = label;
 	}
 
@@ -56,6 +60,7 @@ public class ActivityDirectEditManager extends DirectEditManager {
 	 * @see org.eclipse.gef.tools.DirectEditManager#bringDown()
 	 */
 	protected void bringDown() {
+		log.info("check");
 		// This method might be re-entered when super.bringDown() is called.
 		Font disposeFont = scaledFont;
 		scaledFont = null;
@@ -68,9 +73,11 @@ public class ActivityDirectEditManager extends DirectEditManager {
 	 * @see org.eclipse.gef.tools.DirectEditManager#initCellEditor()
 	 */
 	protected void initCellEditor() {
+		log.info("check");
 		Text text = (Text) getCellEditor().getControl();
 		verifyListener = new VerifyListener() {
 			public void verifyText(VerifyEvent event) {
+		log.info("check");
 				Text text = (Text) getCellEditor().getControl();
 				String oldText = text.getText();
 				String leftText = oldText.substring(0, event.start);
@@ -103,6 +110,7 @@ public class ActivityDirectEditManager extends DirectEditManager {
 	 * @see org.eclipse.gef.tools.DirectEditManager#unhookListeners()
 	 */
 	protected void unhookListeners() {
+		log.info("check");
 		super.unhookListeners();
 		Text text = (Text) getCellEditor().getControl();
 		text.removeVerifyListener(verifyListener);
