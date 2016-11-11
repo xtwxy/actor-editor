@@ -32,16 +32,21 @@ import com.wincom.actor.editor.flow.policies.StructuredActivityLayoutEditPolicy;
 public class ActivityDiagramPart extends StructuredActivityPart {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-	CommandStackListener stackListener = new CommandStackListener() {
-		public void commandStackChanged(EventObject event) {
+	CommandStackListener stackListener = null;
+	
+	public ActivityDiagramPart() {
 		log.info("check");
-			if (!GraphAnimation.captureLayout(getFigure()))
-				return;
-			while (GraphAnimation.step())
-				getFigure().getUpdateManager().performUpdate();
-			GraphAnimation.end();
-		}
-	};
+		stackListener = new CommandStackListener() {
+			public void commandStackChanged(EventObject event) {
+				log.info("check");
+				if (!GraphAnimation.captureLayout(getFigure()))
+					return;
+				while (GraphAnimation.step())
+					getFigure().getUpdateManager().performUpdate();
+				GraphAnimation.end();
+			}
+		};
+	}
 
 	protected void applyOwnResults(CompoundDirectedGraph graph, Map map) {
 		log.info("check");
@@ -82,7 +87,7 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 				boolean resize = (rect.width != bounds.width)
 						|| (rect.height != bounds.height), translate = (rect.x != x)
 						|| (rect.y != y);
-
+// FIXME: why erase() ?
 				if (isVisible() && (resize || translate))
 					erase();
 				if (translate) {

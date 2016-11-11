@@ -208,6 +208,7 @@ public abstract class ActivityPart extends AbstractGraphicalEditPart implements
 	 */
 	protected void setFigure(IFigure figure) {
 		log.info("check");
+		// FIXME: why set size to zero?
 		figure.getBounds().setSize(0, 0);
 		super.setFigure(figure);
 	}

@@ -28,7 +28,7 @@ public class ActivityPartFactory implements EditPartFactory {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public EditPart createEditPart(EditPart context, Object model) {
-		log.info("check");
+		log.info("check, " + context + ", " + model);
 		EditPart part = null;
 		if (model instanceof ActivityDiagram)
 			part = new ActivityDiagramPart();

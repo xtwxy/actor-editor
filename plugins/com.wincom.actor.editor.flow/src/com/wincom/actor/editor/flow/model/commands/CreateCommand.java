@@ -21,26 +21,12 @@ public class CreateCommand extends Command {
 
 	private StructuredActivity parent;
 	private Activity child;
-	private int index = -1;
 
 	/**
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
-		if (index > 0)
-			parent.addChild(child, index);
-		else
-			parent.addChild(child);
-	}
-
-	/**
-	 * Sets the index to the passed value
-	 * 
-	 * @param i
-	 *            the index
-	 */
-	public void setIndex(int i) {
-		index = i;
+		parent.addChild(child);
 	}
 
 	/**
