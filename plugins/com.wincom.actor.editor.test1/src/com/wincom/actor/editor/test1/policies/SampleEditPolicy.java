@@ -10,14 +10,14 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test1.policies;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.gef.editpolicies.ComponentEditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Daniel Lee
  */
 public class SampleEditPolicy extends ComponentEditPolicy {
-	private static final Log log = LogFactory.getLog(SampleEditPolicy.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 }

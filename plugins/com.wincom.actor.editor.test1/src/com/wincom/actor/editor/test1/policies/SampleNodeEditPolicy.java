@@ -10,19 +10,19 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test1.policies;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
  * Created on Jul 17, 2003
  */
 public class SampleNodeEditPolicy extends GraphicalNodeEditPolicy {
-	private static final Log log = LogFactory.getLog(SampleNodeEditPolicy.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {

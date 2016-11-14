@@ -10,15 +10,15 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test1.parts;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.draw2d.IFigure;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr Created on Jun 30, 2003
  */
 public class Figure1Part extends SamplePart {
-	private static final Log log = LogFactory.getLog(Figure1Part.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	int getAnchorOffset() {

@@ -42,8 +42,6 @@ public class DummyLayout extends AbstractLayout {
 	 */
 	public void layout(IFigure container) {
 		log.info("check");
-		// GraphAnimation.recordInitialState(container);
-		GraphAnimation.playbackState(container);
 	}
 
 }

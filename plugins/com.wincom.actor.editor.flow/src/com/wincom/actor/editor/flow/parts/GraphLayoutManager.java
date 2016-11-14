@@ -49,9 +49,6 @@ class GraphLayoutManager extends AbstractLayout {
 
 	public void layout(IFigure container) {
 		log.info("check");
-		GraphAnimation.recordInitialState(container);
-		if (GraphAnimation.playbackState(container))
-			return;
 
 		CompoundDirectedGraph graph = new CompoundDirectedGraph();
 		Map partsToNodes = new HashMap();

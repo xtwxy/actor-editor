@@ -11,6 +11,9 @@
 package com.wincom.actor.editor.flow.model.commands;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.StructuredActivity;
 
@@ -18,6 +21,7 @@ import com.wincom.actor.editor.flow.model.StructuredActivity;
  * @author Daniel Lee
  */
 public class CreateCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private StructuredActivity parent;
 	private Activity child;
@@ -26,6 +30,7 @@ public class CreateCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
 		parent.addChild(child);
 	}
 
@@ -54,6 +59,7 @@ public class CreateCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		parent.removeChild(child);
 	}
 

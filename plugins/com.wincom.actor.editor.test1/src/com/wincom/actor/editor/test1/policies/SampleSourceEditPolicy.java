@@ -10,17 +10,17 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test1.policies;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.ContainerEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Daniel Lee
  */
 public class SampleSourceEditPolicy extends ContainerEditPolicy {
-	private static final Log log = LogFactory.getLog(SampleSourceEditPolicy.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {

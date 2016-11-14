@@ -63,6 +63,7 @@ public class StructuredActivityLayoutEditPolicy extends LayoutEditPolicy {
 		log.info("check");
 		ChangeBoundsRequest request = (ChangeBoundsRequest) req;
 		List editParts = request.getEditParts();
+		log.info("edit parts size = " + editParts.size());
 		CompoundCommand command = new CompoundCommand();
 		for (int i = 0; i < editParts.size(); i++) {
 			EditPart child = (EditPart) editParts.get(i);

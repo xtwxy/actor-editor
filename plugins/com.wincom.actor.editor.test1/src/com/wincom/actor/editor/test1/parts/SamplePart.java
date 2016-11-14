@@ -14,16 +14,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.draw2d.ConnectionAnchor;
-import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.graph.CompoundDirectedGraph;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.wincom.actor.editor.test1.model.SampleModel;
 
@@ -32,8 +30,7 @@ import com.wincom.actor.editor.test1.model.SampleModel;
  */
 public abstract class SamplePart extends AbstractGraphicalEditPart implements
 		PropertyChangeListener, NodeEditPart {
-	//private static final Logger log = LoggerFactory.getLogger(SamplePart.class);
-	private static final Log log = LogFactory.getLog(SamplePart.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private SampleModel getSampleModel() {
 		return (SampleModel) getModel();

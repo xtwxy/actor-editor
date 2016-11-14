@@ -13,7 +13,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface,
  org.eclipse.ui.ide,
  org.eclipse.gef,
- org.apache.commons.logging
+ org.apache.commons.logging,
+ org.slf4j.api,
+ ch.qos.logback.classic,
+ ch.qos.logback.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: com.wincom.actor.editor.test1,

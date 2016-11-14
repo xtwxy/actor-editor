@@ -11,6 +11,9 @@
 package com.wincom.actor.editor.flow.model.commands;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.StructuredActivity;
 import com.wincom.actor.editor.flow.model.Transition;
@@ -21,6 +24,7 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author Daniel Lee
  */
 public class SplitTransitionCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private StructuredActivity parent;
 	private Activity oldSource;
@@ -35,6 +39,7 @@ public class SplitTransitionCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
 		oldSource.removeOutput(transition);
 		oldTarget.removeInput(transition);
 		parent.addChild(newActivity);
@@ -46,6 +51,7 @@ public class SplitTransitionCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#redo()
 	 */
 	public void redo() {
+		log.info("check");
 		oldSource.addOutput(newIncomingTransition);
 		oldTarget.addInput(newOutgoingTransition);
 		newActivity.addInput(newIncomingTransition);
@@ -63,6 +69,7 @@ public class SplitTransitionCommand extends Command {
 	 *            the parent
 	 */
 	public void setParent(StructuredActivity activity) {
+		log.info("check");
 		parent = activity;
 	}
 
@@ -73,6 +80,7 @@ public class SplitTransitionCommand extends Command {
 	 *            the transition to be "split".
 	 */
 	public void setTransition(Transition transition) {
+		log.info("check");
 		this.transition = transition;
 		oldSource = transition.source;
 		oldTarget = transition.target;
@@ -85,6 +93,7 @@ public class SplitTransitionCommand extends Command {
 	 *            the new activity
 	 */
 	public void setNewActivity(Activity activity) {
+		log.info("check");
 		newActivity = activity;
 		newActivity.setName("a " + (parent.getChildren().size() + 1));
 	}
@@ -93,6 +102,7 @@ public class SplitTransitionCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		oldSource.removeOutput(newIncomingTransition);
 		oldTarget.removeInput(newOutgoingTransition);
 		newActivity.removeInput(newIncomingTransition);

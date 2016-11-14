@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.StructuredActivity;
 import com.wincom.actor.editor.flow.model.Transition;
@@ -24,6 +27,7 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author Daniel Lee
  */
 public class DeleteCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private Activity child;
 	private StructuredActivity parent;
@@ -55,6 +59,8 @@ public class DeleteCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
+		log.info("check");
 		primExecute();
 	}
 
@@ -71,6 +77,7 @@ public class DeleteCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#redo()
 	 */
 	public void redo() {
+		log.info("check");
 		primExecute();
 	}
 
@@ -113,6 +120,7 @@ public class DeleteCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		parent.addChild(child, index);
 		restoreConnections();
 	}

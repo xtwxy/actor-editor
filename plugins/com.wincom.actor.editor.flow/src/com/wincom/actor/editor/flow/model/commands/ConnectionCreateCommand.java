@@ -13,6 +13,9 @@ package com.wincom.actor.editor.flow.model.commands;
 import java.util.List;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.Transition;
 
@@ -20,6 +23,7 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author Daniel Lee
  */
 public class ConnectionCreateCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/** The Transistion between source and target Activities **/
 	protected Transition transition;
@@ -32,6 +36,7 @@ public class ConnectionCreateCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#canExecute()
 	 */
 	public boolean canExecute() {
+		log.info("check");
 		if (source.equals(target))
 			return false;
 
@@ -48,6 +53,7 @@ public class ConnectionCreateCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
 		transition = new Transition(source, target);
 	}
 
@@ -82,6 +88,7 @@ public class ConnectionCreateCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#redo()
 	 */
 	public void redo() {
+		log.info("check");
 		source.addOutput(transition);
 		target.addInput(transition);
 	}
@@ -120,6 +127,7 @@ public class ConnectionCreateCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		source.removeOutput(transition);
 		target.removeInput(transition);
 	}

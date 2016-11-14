@@ -83,13 +83,7 @@ public class TransitionPart extends AbstractConnectionEditPart {
 	protected IFigure createFigure() {
 		log.info("check");
 		PolylineConnection conn = (PolylineConnection) super.createFigure();
-		conn.setConnectionRouter(new BendpointConnectionRouter() {
-			public void route(Connection conn) {
-				GraphAnimation.recordInitialState(conn);
-				if (!GraphAnimation.playbackState(conn))
-					super.route(conn);
-			}
-		});
+		conn.setConnectionRouter(new BendpointConnectionRouter());
 
 		conn.setTargetDecoration(new PolygonDecoration());
 		return conn;
@@ -109,7 +103,6 @@ public class TransitionPart extends AbstractConnectionEditPart {
 
 	public void contributeToGraph(CompoundDirectedGraph graph, Map map) {
 		log.info("check");
-		GraphAnimation.recordInitialState(getConnectionFigure());
 		Node source = (Node) map.get(getSource());
 		Node target = (Node) map.get(getTarget());
 		Edge e = new Edge(this, source, target);

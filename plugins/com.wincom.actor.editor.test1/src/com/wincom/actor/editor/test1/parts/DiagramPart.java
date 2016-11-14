@@ -10,23 +10,22 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test1.parts;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.editpolicies.RootComponentEditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.wincom.actor.editor.test1.policies.SampleDirectEditPolicy;
-import com.wincom.actor.editor.test1.policies.SampleEditPolicy;
-import com.wincom.actor.editor.test1.policies.SampleNodeEditPolicy;
-import com.wincom.actor.editor.test1.policies.SampleSourceEditPolicy;
+import com.wincom.actor.editor.test1.policies.ActivityContainerEditPolicy;
+import com.wincom.actor.editor.test1.policies.StructuredActivityLayoutEditPolicy;
 
 /**
  * @author hudsonr Created on Jun 30, 2003
  */
 public class DiagramPart extends SamplePart {
-	private static final Log log = LogFactory.getLog(DiagramPart.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	int getAnchorOffset() {
@@ -37,13 +36,16 @@ public class DiagramPart extends SamplePart {
 	@Override
 	protected void createEditPolicies() {
 		log.info("check");
-		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
-				new SampleNodeEditPolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, null);
+		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, null);
+		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, null);
+		installEditPolicy(EditPolicy.COMPONENT_ROLE,
+				new RootComponentEditPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE,
+				new StructuredActivityLayoutEditPolicy());
 		installEditPolicy(EditPolicy.CONTAINER_ROLE,
-				new SampleSourceEditPolicy());
-		installEditPolicy(EditPolicy.COMPONENT_ROLE, new SampleEditPolicy());
-		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
-				new SampleDirectEditPolicy());
+				new ActivityContainerEditPolicy());
+		
 	}
 
 	@Override
@@ -73,7 +75,7 @@ public class DiagramPart extends SamplePart {
 			}
 		};
 		f.setLayoutManager(new GraphLayoutManager(this));
-		log.info(f);
+		log.info(f.toString());
 		return f;
 	}
 

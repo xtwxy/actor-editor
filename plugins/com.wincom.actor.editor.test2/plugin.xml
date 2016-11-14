@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Test2 Wizards"
+            id="com.wincom.actor.editor.test2">
+      </category>
+      <wizard
+            name="Test2 Editor file"
+            icon="icons/sample.gif"
+            category="com.wincom.actor.editor.test2"
+            class="com.wincom.actor.editor.test2.wizards.SampleNewWizard"
+            id="com.wincom.actor.editor.test2.wizards.SampleNewWizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Sample Category"
+            id="com.wincom.actor.editor.test2">
+      </category>
+      <view
+            name="Test2 View"
+            icon="icons/sample.gif"
+            category="com.wincom.actor.editor.test2"
+            class="com.wincom.actor.editor.test2.views.Test2Viewer"
+            id="com.wincom.actor.editor.test2.views.Test2View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="com.wincom.actor.editor.test2.views.Test2View">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.wincom.actor.editor.test2.views.Test2Editor"
+            default="false"
+            extensions="mpe"
+            icon="icons/sample.gif"
+            id="com.wincom.actor.editor.test2.editor1"
+            name="Test2 Editor">
+      </editor>
+   </extension>
+
+</plugin>

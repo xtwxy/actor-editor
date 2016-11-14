@@ -23,6 +23,11 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.requests.DirectEditRequest;
+import org.eclipse.jface.viewers.TextCellEditor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.figures.SubgraphFigure;
 import com.wincom.actor.editor.flow.model.StructuredActivity;
 import com.wincom.actor.editor.flow.policies.ActivityContainerEditPolicy;
@@ -31,10 +36,6 @@ import com.wincom.actor.editor.flow.policies.ActivityEditPolicy;
 import com.wincom.actor.editor.flow.policies.ActivityNodeEditPolicy;
 import com.wincom.actor.editor.flow.policies.StructuredActivityDirectEditPolicy;
 import com.wincom.actor.editor.flow.policies.StructuredActivityLayoutEditPolicy;
-import org.eclipse.gef.requests.DirectEditRequest;
-import org.eclipse.jface.viewers.TextCellEditor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author hudsonr Created on Jun 30, 2003
@@ -86,7 +87,6 @@ public abstract class StructuredActivityPart extends ActivityPart implements
 	public void contributeNodesToGraph(CompoundDirectedGraph graph, Subgraph s,
 			Map map) {
 		log.info("check");
-		GraphAnimation.recordInitialState(getContentPane());
 		Subgraph me = new Subgraph(this, s);
 		// me.rowOrder = getActivity().getSortIndex();
 		me.outgoingOffset = 5;

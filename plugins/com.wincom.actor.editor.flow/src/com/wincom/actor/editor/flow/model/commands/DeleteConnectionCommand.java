@@ -11,6 +11,9 @@
 package com.wincom.actor.editor.flow.model.commands;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.Transition;
 
@@ -20,6 +23,7 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author Daniel Lee
  */
 public class DeleteConnectionCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private Activity source;
 	private Activity target;
@@ -29,6 +33,7 @@ public class DeleteConnectionCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
 		source.removeOutput(transition);
 		target.removeInput(transition);
 		transition.source = null;
@@ -69,6 +74,7 @@ public class DeleteConnectionCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		transition.source = source;
 		transition.target = target;
 		source.addOutput(transition);

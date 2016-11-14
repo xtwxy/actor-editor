@@ -14,17 +14,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.draw2d.AbstractLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.graph.CompoundDirectedGraph;
 import org.eclipse.draw2d.graph.CompoundDirectedGraphLayout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class GraphLayoutManager extends AbstractLayout {
-	private static final Log log = LogFactory.getLog(GraphLayoutManager.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private DiagramPart diagram;
 

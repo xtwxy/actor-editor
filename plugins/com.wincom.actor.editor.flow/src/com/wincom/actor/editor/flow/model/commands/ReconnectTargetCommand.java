@@ -13,6 +13,9 @@ package com.wincom.actor.editor.flow.model.commands;
 import java.util.List;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.Transition;
 
@@ -22,6 +25,7 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author Daniel Lee
  */
 public class ReconnectTargetCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/** Source Activity **/
 	protected Activity source;
@@ -36,6 +40,7 @@ public class ReconnectTargetCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#canExecute()
 	 */
 	public boolean canExecute() {
+		log.info("check");
 		if (transition.source.equals(target))
 			return false;
 
@@ -52,6 +57,7 @@ public class ReconnectTargetCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
 		if (target != null) {
 			oldTarget.removeInput(transition);
 			transition.target = target;
@@ -122,6 +128,7 @@ public class ReconnectTargetCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		target.removeInput(transition);
 		transition.target = oldTarget;
 		oldTarget.addInput(transition);

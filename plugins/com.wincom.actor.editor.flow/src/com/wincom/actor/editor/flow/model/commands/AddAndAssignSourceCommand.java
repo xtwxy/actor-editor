@@ -11,6 +11,9 @@
 package com.wincom.actor.editor.flow.model.commands;
 
 import org.eclipse.gef.commands.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.wincom.actor.editor.flow.model.Activity;
 import com.wincom.actor.editor.flow.model.StructuredActivity;
 import com.wincom.actor.editor.flow.model.Transition;
@@ -19,6 +22,7 @@ import com.wincom.actor.editor.flow.model.Transition;
  * @author Daniel Lee
  */
 public class AddAndAssignSourceCommand extends Command {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private StructuredActivity parent;
 	private Activity child;
@@ -29,6 +33,7 @@ public class AddAndAssignSourceCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#canExecute()
 	 */
 	public boolean canExecute() {
+		log.info("check");
 		for (int i = 0; i < source.getOutgoingTransitions().size(); i++) {
 			Activity target = ((Transition) source.getOutgoingTransitions()
 					.get(i)).target;
@@ -42,6 +47,7 @@ public class AddAndAssignSourceCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
 	public void execute() {
+		log.info("check");
 		parent.addChild(child);
 		transition = new Transition(source, child);
 	}
@@ -50,6 +56,7 @@ public class AddAndAssignSourceCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#redo()
 	 */
 	public void redo() {
+		log.info("check");
 		source.addOutput(transition);
 		child.addInput(transition);
 		parent.addChild(child);
@@ -89,6 +96,7 @@ public class AddAndAssignSourceCommand extends Command {
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
 	public void undo() {
+		log.info("check");
 		source.removeOutput(transition);
 		child.removeInput(transition);
 		parent.removeChild(child);

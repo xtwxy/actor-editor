@@ -4,20 +4,16 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
-
-import com.wincom.actor.editor.test1.parts.DiagramPart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SampleModel implements IPropertySource, Cloneable, Serializable {
 
 	private static final long serialVersionUID = -7289522210862727774L;
-	// private static final Logger log =
-	// LoggerFactory.getLogger(SampleModel.class);
-	private static final Log log = LogFactory.getLog(DiagramPart.class);
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private String sample = "sample";
 

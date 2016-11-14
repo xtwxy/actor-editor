@@ -10,11 +10,11 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test1.policies;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.DirectEditPolicy;
 import org.eclipse.gef.requests.DirectEditRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * EditPolicy for the direct editing of Activity names.
@@ -22,7 +22,7 @@ import org.eclipse.gef.requests.DirectEditRequest;
  * @author Daniel Lee
  */
 public class SampleDirectEditPolicy extends DirectEditPolicy {
-	private static final Log log = LogFactory.getLog(SampleDirectEditPolicy.class);
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected Command getDirectEditCommand(DirectEditRequest request) {

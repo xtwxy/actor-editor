@@ -39,11 +39,6 @@ public class ActivityDiagramPart extends StructuredActivityPart {
 		stackListener = new CommandStackListener() {
 			public void commandStackChanged(EventObject event) {
 				log.info("check");
-				if (!GraphAnimation.captureLayout(getFigure()))
-					return;
-				while (GraphAnimation.step())
-					getFigure().getUpdateManager().performUpdate();
-				GraphAnimation.end();
 			}
 		};
 	}
