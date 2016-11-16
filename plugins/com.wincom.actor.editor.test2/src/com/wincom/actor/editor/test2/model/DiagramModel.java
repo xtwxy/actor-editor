@@ -15,29 +15,4 @@ public class DiagramModel extends Test2Model {
 		return null;
 	}
 
-	@Override
-	public IPropertyDescriptor[] getPropertyDescriptors() {
-		return null;
-	}
-
-	@Override
-	public Object getPropertyValue(Object id) {
-		return null;
-	}
-
-	@Override
-	public boolean isPropertySet(Object id) {
-		return false;
-	}
-
-	@Override
-	public void resetPropertyValue(Object id) {
-		
-	}
-
-	@Override
-	public void setPropertyValue(Object id, Object value) {
-		
-	}
-
 }

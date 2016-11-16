@@ -36,5 +36,5 @@ public class RequiredPortModel extends FigureModel {
 		this.outputs = outputs;
 		firePropertyChange(OUTPUTS, old, outputs);
 	}
-	
+
 }

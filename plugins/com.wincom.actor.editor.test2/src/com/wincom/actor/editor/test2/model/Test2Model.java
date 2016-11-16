@@ -3,9 +3,9 @@ package com.wincom.actor.editor.test2.model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,6 @@ public abstract class Test2Model implements IPropertySource, Cloneable, Serializ
 	transient protected PropertyChangeSupport listeners = new PropertyChangeSupport(this);
 
 	private Test2Model parent;
-	private List<Test2Model> children = new ArrayList<>();
 
 	public void addPropertyChangeListener(PropertyChangeListener l) {
 		listeners.addPropertyChangeListener(l);
@@ -37,6 +36,37 @@ public abstract class Test2Model implements IPropertySource, Cloneable, Serializ
 	public void removePropertyChangeListener(PropertyChangeListener l) {
 		listeners.removePropertyChangeListener(l);
 	}
+	
+	@Override
+	public Object getEditableValue() {
+		log.debug("unimplemented");
+		return this;
+	}
+
+	@Override
+	public IPropertyDescriptor[] getPropertyDescriptors() {
+		return new IPropertyDescriptor[0];
+	}
+
+	@Override
+	public Object getPropertyValue(Object id) {
+		return null;
+	}
+
+	@Override
+	public boolean isPropertySet(Object id) {
+		return false;
+	}
+
+	@Override
+	public void resetPropertyValue(Object id) {
+		
+	}
+
+	@Override
+	public void setPropertyValue(Object id, Object value) {
+		
+	}
 
 	public Test2Model getParent() {
 		return parent;
@@ -47,18 +77,6 @@ public abstract class Test2Model implements IPropertySource, Cloneable, Serializ
 	}
 
 	public List<Test2Model> getChildren() {
-		return children;
-	}
-
-	public void setChildren(List<Test2Model> children) {
-		this.children = children;
-	}
-	
-	public void addChild(Test2Model child) {
-		this.children.add(child);
-	}
-	
-	public void addChild(Test2Model child, int index) {
-		this.children.add(index, child);
+		throw new RuntimeException("unimplemented.");
 	}
 }

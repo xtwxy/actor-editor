@@ -1,6 +1,5 @@
 package com.wincom.actor.editor.test2.model;
 
-import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,34 +7,23 @@ public class ConnectionModel extends Test2Model {
 	private static final long serialVersionUID = -3254462748778391632L;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Override
-	public Object getEditableValue() {
-		log.debug("unimplemented");
-		return null;
+	private ActorModel source;
+	private ActorModel target;
+	
+
+	public ActorModel getSource() {
+		return source;
 	}
 
-	@Override
-	public IPropertyDescriptor[] getPropertyDescriptors() {
-		return null;
+	public void setSource(ActorModel source) {
+		this.source = source;
 	}
 
-	@Override
-	public Object getPropertyValue(Object id) {
-		return null;
+	public ActorModel getTarget() {
+		return target;
 	}
 
-	@Override
-	public boolean isPropertySet(Object id) {
-		return false;
-	}
-
-	@Override
-	public void resetPropertyValue(Object id) {
-		
-	}
-
-	@Override
-	public void setPropertyValue(Object id, Object value) {
-		
+	public void setTarget(ActorModel target) {
+		this.target = target;
 	}
 }
