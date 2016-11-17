@@ -7,9 +7,12 @@ import java.util.Map;
 
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ActorModel extends FigureModel {
 	private static final long serialVersionUID = -3468137955444207978L;
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private String id;
 	private String name;
@@ -24,6 +27,10 @@ public class ActorModel extends FigureModel {
 	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] {
 			new TextPropertyDescriptor(ID, ID), new TextPropertyDescriptor(NAME, NAME),
 			new TextPropertyDescriptor(INPUT, INPUT), new TextPropertyDescriptor(OUTPUTS, OUTPUTS) };
+	
+	public ActorModel() { 
+		log.info("new ActorModel()");
+	}
 
 	@Override
 	public IPropertyDescriptor[] getPropertyDescriptors() {
@@ -67,8 +74,8 @@ public class ActorModel extends FigureModel {
 	}
 
 	@Override
-	public List<Test2Model> getChildren() {
-		List<Test2Model> children = new ArrayList<>();
+	public List<ElementModel> getChildren() {
+		List<ElementModel> children = new ArrayList<>();
 		children.add(input);
 		children.addAll(outputs.values());
 		return children;

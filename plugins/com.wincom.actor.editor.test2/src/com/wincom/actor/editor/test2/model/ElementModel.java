@@ -4,20 +4,26 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class Test2Model implements IPropertySource, Cloneable, Serializable {
+public abstract class ElementModel implements IPropertySource, Cloneable, Serializable {
 
 	private static final long serialVersionUID = -7289522210862727774L;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	transient protected PropertyChangeSupport listeners = new PropertyChangeSupport(this);
+	protected final Properties properties = new Properties();
 
-	private Test2Model parent;
+	private ElementModel parent;
+	
+	public ElementModel() { 
+		log.info("new ElementModel()");
+	}
 
 	public void addPropertyChangeListener(PropertyChangeListener l) {
 		listeners.addPropertyChangeListener(l);
@@ -38,45 +44,48 @@ public abstract class Test2Model implements IPropertySource, Cloneable, Serializ
 	}
 	
 	@Override
+	public IPropertyDescriptor[] getPropertyDescriptors() {
+		return new IPropertyDescriptor[0];
+	}
+
+	public ElementModel getParent() {
+		return parent;
+	}
+
+	public void setParent(ElementModel parent) {
+		this.parent = parent;
+	}
+
+	public List<ElementModel> getChildren() {
+		throw new RuntimeException("unimplemented.");
+	}
+	
+	@Override
 	public Object getEditableValue() {
 		log.debug("unimplemented");
 		return this;
 	}
 
 	@Override
-	public IPropertyDescriptor[] getPropertyDescriptors() {
-		return new IPropertyDescriptor[0];
-	}
-
-	@Override
 	public Object getPropertyValue(Object id) {
-		return null;
+		return properties.get(id);
 	}
 
 	@Override
 	public boolean isPropertySet(Object id) {
-		return false;
+		return properties.containsKey(id);
 	}
 
 	@Override
 	public void resetPropertyValue(Object id) {
-		
+		properties.remove(id);
 	}
 
 	@Override
 	public void setPropertyValue(Object id, Object value) {
-		
+		Object old = properties.get(id);
+		properties.put(id, value);
+		firePropertyChange(id.toString(), old, value);
 	}
 
-	public Test2Model getParent() {
-		return parent;
-	}
-
-	public void setParent(Test2Model parent) {
-		this.parent = parent;
-	}
-
-	public List<Test2Model> getChildren() {
-		throw new RuntimeException("unimplemented.");
-	}
 }

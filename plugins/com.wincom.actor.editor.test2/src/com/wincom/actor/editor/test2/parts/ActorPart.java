@@ -1,58 +1,55 @@
 package com.wincom.actor.editor.test2.parts;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.Map;
 
-import org.eclipse.draw2d.ConnectionAnchor;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.gef.ConnectionEditPart;
-import org.eclipse.gef.NodeEditPart;
-import org.eclipse.gef.Request;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.draw2d.graph.CompoundDirectedGraph;
+import org.eclipse.draw2d.graph.Node;
+import org.eclipse.draw2d.graph.Subgraph;
+import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class ActorPart extends AbstractGraphicalEditPart implements
-PropertyChangeListener, NodeEditPart {
+import com.wincom.actor.editor.test2.policies.ActorContainerEditPolicy;
+import com.wincom.actor.editor.test2.policies.ActorContainerHighlightEditPolicy;
+import com.wincom.actor.editor.test2.policies.ActorDirectEditPolicy;
+import com.wincom.actor.editor.test2.policies.ActorEditPolicy;
+import com.wincom.actor.editor.test2.policies.ActorLayoutEditPolicy;
+import com.wincom.actor.editor.test2.policies.ActorNodeEditPolicy;
 
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
+public class ActorPart extends ElementPart {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	public ActorPart() { 
+		log.info("new ActorPart()");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
+	public void contributeNodesToGraph(CompoundDirectedGraph graph, Subgraph s, Map<GraphicalEditPart, Node> map) {
+		log.info("check");
+		Node n = new Node(this, s);
+		n.width = getFigure().getPreferredSize().width;
+		n.height = getFigure().getPreferredSize().height;
+		n.setPadding(new Insets(10, 8, 10, 12));
+		map.put(this, n);
+		graph.nodes.add(n);
 	}
 
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected IFigure createFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	protected void createEditPolicies() {
-		// TODO Auto-generated method stub
-		
+		log.info("check");
+		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
+				new ActorNodeEditPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new ActorEditPolicy());
+		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
+				new ActorContainerHighlightEditPolicy());
+		installEditPolicy(EditPolicy.CONTAINER_ROLE,
+				new ActorContainerEditPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE,
+				new ActorLayoutEditPolicy());
+		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
+				new ActorDirectEditPolicy());
 	}
 
 }

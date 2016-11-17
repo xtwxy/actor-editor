@@ -1,56 +1,16 @@
 package com.wincom.actor.editor.test2.parts;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.util.Map;
 
-import org.eclipse.draw2d.ConnectionAnchor;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.gef.ConnectionEditPart;
-import org.eclipse.gef.NodeEditPart;
-import org.eclipse.gef.Request;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.draw2d.graph.CompoundDirectedGraph;
+import org.eclipse.draw2d.graph.Node;
+import org.eclipse.draw2d.graph.Subgraph;
+import org.eclipse.gef.GraphicalEditPart;
 
-public class DiagramPart extends AbstractGraphicalEditPart implements
-PropertyChangeListener, NodeEditPart {
+public class DiagramPart extends ElementPart {
 
 	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected IFigure createFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected void createEditPolicies() {
+	public void contributeNodesToGraph(CompoundDirectedGraph graph, Subgraph s, Map<GraphicalEditPart, Node> map) {
 		// TODO Auto-generated method stub
 		
 	}
