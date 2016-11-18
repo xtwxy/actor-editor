@@ -16,6 +16,7 @@
         <module>com.wincom.actor.editor.app</module>
         <module>com.wincom.actor.editor.test1</module>
         <module>com.wincom.actor.editor.test2</module>
+        <module>com.wincom.actor.editor.tutogef</module>
         <module>com.wincom.actor.editor.flow</module>
     </modules>
 </project>

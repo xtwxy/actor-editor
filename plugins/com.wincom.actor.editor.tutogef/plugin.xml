@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.wincom.actor.editor.tutogef.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.wincom.actor.editor.tutogef.Perspective"
+            id="com.wincom.actor.editor.tutogef.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.wincom.actor.editor.tutogef.editor.MyGraphicalEditor"
+            default="false"
+            extensions="mge"
+            icon="icons/alt_window16.gif"
+            id="com.wincom.actor.editor.tutogef.editor2"
+            name="My Graphical Editor">
+      </editor>
+   </extension>
+
+</plugin>
