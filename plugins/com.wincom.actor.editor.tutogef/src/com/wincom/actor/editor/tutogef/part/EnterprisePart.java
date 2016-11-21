@@ -1,17 +1,19 @@
 package com.wincom.actor.editor.tutogef.part;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gef.EditPolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.wincom.actor.editor.tutogef.figure.EnterpriseFigure;
 import com.wincom.actor.editor.tutogef.model.Enterprise;
 import com.wincom.actor.editor.tutogef.model.Node;
+import com.wincom.actor.editor.tutogef.policy.AppEditLayoutPolicy;
 
-public class EnterprisePart extends AbstractGraphicalEditPart {
+public class EnterprisePart extends AppAbstractEditPart {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
@@ -23,6 +25,7 @@ public class EnterprisePart extends AbstractGraphicalEditPart {
 	@Override
 	protected void createEditPolicies() {
     	log.info("check");
+    	installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
 	}
 
 	protected void refreshVisuals() {
@@ -38,4 +41,11 @@ public class EnterprisePart extends AbstractGraphicalEditPart {
     	log.info("check");
 		return ((Enterprise) getModel()).getChildrenArray();
 	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if (evt.getPropertyName().equals(Node.PROPERTY_LAYOUT))
+			refreshVisuals();
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.wincom.actor.editor.tutogef.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +13,15 @@ public class Node {
 	private List<Node> children;
 	private Node parent;
 
+	private PropertyChangeSupport listeners;
+	public static final String PROPERTY_LAYOUT = "NodeLayout";
+
 	public Node() {
 		this.name = "Unknown";
 		this.layout = new Rectangle(10, 10, 100, 100);
 		this.children = new ArrayList<Node>();
 		this.parent = null;
+		this.listeners = new PropertyChangeSupport(this);
 	}
 
 	public void setName(String name) {
@@ -26,8 +32,10 @@ public class Node {
 		return this.name;
 	}
 
-	public void setLayout(Rectangle layout) {
-		this.layout = layout;
+	public void setLayout(Rectangle newLayout) {
+		Rectangle oldLayout = this.layout;
+		this.layout = newLayout;
+		getListeners().firePropertyChange(PROPERTY_LAYOUT, oldLayout, newLayout);
 	}
 
 	public Rectangle getLayout() {
@@ -53,5 +61,17 @@ public class Node {
 
 	public Node getParent() {
 		return this.parent;
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		listeners.addPropertyChangeListener(listener);
+	}
+
+	public PropertyChangeSupport getListeners() {
+		return listeners;
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		listeners.removePropertyChangeListener(listener);
 	}
 }
