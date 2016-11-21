@@ -11,6 +11,7 @@ import com.wincom.actor.editor.tutogef.model.Node;
 import com.wincom.actor.editor.tutogef.model.Service;
 import com.wincom.actor.editor.tutogef.policy.AppDeletePolicy;
 import com.wincom.actor.editor.tutogef.policy.AppEditLayoutPolicy;
+import com.wincom.actor.editor.tutogef.policy.AppRenamePolicy;
 
 public class ServicePart extends AppAbstractEditPart {
 
@@ -23,6 +24,7 @@ public class ServicePart extends AppAbstractEditPart {
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
 
 	@Override
@@ -47,6 +49,8 @@ public class ServicePart extends AppAbstractEditPart {
 			refreshChildren();
 		if (evt.getPropertyName().equals(Node.PROPERTY_REMOVE))
 			refreshChildren();
+		if (evt.getPropertyName().equals(Node.PROPERTY_RENAME))
+			refreshVisuals();
 	}
 
 }

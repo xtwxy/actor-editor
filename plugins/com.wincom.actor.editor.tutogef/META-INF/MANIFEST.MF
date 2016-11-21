@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tutogef
+Bundle-Name: TutoGEF
 Bundle-SymbolicName: com.wincom.actor.editor.tutogef;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.wincom.actor.editor.tutogef.Activator

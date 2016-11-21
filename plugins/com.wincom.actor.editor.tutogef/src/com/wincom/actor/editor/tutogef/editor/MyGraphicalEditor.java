@@ -7,6 +7,7 @@ import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.parts.ScrollableThumbnail;
+import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.KeyHandler;
@@ -16,12 +17,14 @@ import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
+import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gef.ui.actions.ZoomInAction;
 import org.eclipse.gef.ui.actions.ZoomOutAction;
 import org.eclipse.gef.ui.parts.ContentOutlinePage;
 import org.eclipse.gef.ui.parts.GraphicalEditor;
 import org.eclipse.gef.ui.parts.TreeViewer;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.DisposeEvent;
@@ -36,6 +39,8 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.wincom.actor.editor.tutogef.action.AppContextMenuProvider;
+import com.wincom.actor.editor.tutogef.action.RenameAction;
 import com.wincom.actor.editor.tutogef.model.Employe;
 import com.wincom.actor.editor.tutogef.model.Enterprise;
 import com.wincom.actor.editor.tutogef.model.Service;
@@ -96,6 +101,10 @@ public class MyGraphicalEditor extends GraphicalEditor {
 					getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 			bars.updateActionBars();
 			getViewer().setKeyHandler(keyHandler);
+
+			ContextMenuProvider provider = new AppContextMenuProvider(getViewer(), getActionRegistry());
+			getViewer().setContextMenu(provider);
+
 		}
 
 		public Control getControl() {
@@ -204,6 +213,9 @@ public class MyGraphicalEditor extends GraphicalEditor {
 				getActionRegistry().getAction(GEFActionConstants.ZOOM_OUT));
 		viewer.setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.NONE), MouseWheelZoomHandler.SINGLETON);
 		viewer.setKeyHandler(keyHandler);
+
+		ContextMenuProvider provider = new AppContextMenuProvider(viewer, getActionRegistry());
+		viewer.setContextMenu(provider);
 	}
 
 	@Override
@@ -229,5 +241,15 @@ public class MyGraphicalEditor extends GraphicalEditor {
 		} else {
 			return super.getAdapter(type);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void createActions() {
+		super.createActions();
+		ActionRegistry registry = getActionRegistry();
+		IAction action = new RenameAction(this);
+		registry.registerAction(action);
+		getSelectionActions().add(action.getId());
 	}
 }

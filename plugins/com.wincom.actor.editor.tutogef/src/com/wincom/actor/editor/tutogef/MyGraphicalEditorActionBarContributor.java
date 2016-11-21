@@ -36,6 +36,10 @@ public class MyGraphicalEditorActionBarContributor extends ActionBarContributor 
 		toolBarManager.add(getAction(ActionFactory.UNDO.getId()));
 		toolBarManager.add(getAction(ActionFactory.REDO.getId()));
 		toolBarManager.add(getAction(ActionFactory.DELETE.getId()));
+		
+		//toolBarManager.add(getAction(ActionFactory.RENAME.getId()));
+		//toolBarManager.add(getAction(GEFActionConstants.GROUP_EDIT));
+		
 		toolBarManager.add(new Separator());
 		toolBarManager.add(getAction(GEFActionConstants.ZOOM_IN));
 		toolBarManager.add(getAction(GEFActionConstants.ZOOM_OUT));
