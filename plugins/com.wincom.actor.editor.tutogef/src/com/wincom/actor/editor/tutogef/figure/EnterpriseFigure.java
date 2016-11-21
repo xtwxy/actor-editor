@@ -3,7 +3,6 @@ package com.wincom.actor.editor.tutogef.figure;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.slf4j.Logger;
@@ -29,8 +28,8 @@ public class EnterpriseFigure extends Figure {
 		labelCapital.setForegroundColor(ColorConstants.lightBlue);
 		add(labelCapital);
 		setConstraint(labelCapital, new Rectangle(5, 30, -1, -1));
-		setForegroundColor(ColorConstants.black);
-		setBorder(new LineBorder(5));
+		//setForegroundColor(ColorConstants.black);
+		//setBorder(new LineBorder(5));
 	}
 
 	public void setLayout(Rectangle rect) {
