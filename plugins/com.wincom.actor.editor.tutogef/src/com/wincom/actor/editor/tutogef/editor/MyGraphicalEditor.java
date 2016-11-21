@@ -16,7 +16,7 @@ import com.wincom.actor.editor.tutogef.part.AppEditPartFactory;
 public class MyGraphicalEditor extends GraphicalEditor {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-	public static final String ID = "tutogef.mygraphicaleditor";
+	public static final String ID = "com.wincom.actor.editor.tutogef.editor2";
 
 	public MyGraphicalEditor() {
 		setEditDomain(new DefaultEditDomain(this));
@@ -72,6 +72,9 @@ public class MyGraphicalEditor extends GraphicalEditor {
 		s2.addChild(e5);
 
 		e.addChild(s2);
+		
+		setPartName(e.getName());
+		
 		return e;
 	}
 
