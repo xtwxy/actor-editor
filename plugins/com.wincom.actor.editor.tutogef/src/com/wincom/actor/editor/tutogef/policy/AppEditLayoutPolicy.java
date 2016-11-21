@@ -5,6 +5,8 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.wincom.actor.editor.tutogef.command.AbstractLayoutCommand;
 import com.wincom.actor.editor.tutogef.command.EmployeChangeLayoutCommand;
@@ -13,10 +15,11 @@ import com.wincom.actor.editor.tutogef.part.EmployePart;
 import com.wincom.actor.editor.tutogef.part.ServicePart;
 
 public class AppEditLayoutPolicy extends XYLayoutEditPolicy {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
-		// TODO Auto-generated method stub
+		log.info("check");
 		return null;
 	}
 

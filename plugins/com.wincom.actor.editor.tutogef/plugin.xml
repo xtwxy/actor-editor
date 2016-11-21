@@ -23,7 +23,8 @@
          point="org.eclipse.ui.editors">
       <editor
             class="com.wincom.actor.editor.tutogef.editor.MyGraphicalEditor"
-            default="false"
+            contributorClass="com.wincom.actor.editor.tutogef.MyGraphicalEditorActionBarContributor"
+            default="true"
             extensions="mge"
             icon="icons/alt_window16.gif"
             id="com.wincom.actor.editor.tutogef.editor2"

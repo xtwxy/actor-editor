@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.wincom.actor.editor.tutogef.figure.EnterpriseFigure;
 import com.wincom.actor.editor.tutogef.model.Enterprise;
 import com.wincom.actor.editor.tutogef.model.Node;
+import com.wincom.actor.editor.tutogef.policy.AppDeletePolicy;
 import com.wincom.actor.editor.tutogef.policy.AppEditLayoutPolicy;
 
 public class EnterprisePart extends AppAbstractEditPart {
@@ -18,18 +19,19 @@ public class EnterprisePart extends AppAbstractEditPart {
 
 	@Override
 	protected IFigure createFigure() {
-    	log.info("check");
+		log.info("check");
 		return new EnterpriseFigure();
 	}
 
 	@Override
 	protected void createEditPolicies() {
-    	log.info("check");
-    	installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
+		log.info("check");
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
 	}
 
 	protected void refreshVisuals() {
-    	log.info("check");
+		log.info("check");
 		EnterpriseFigure figure = (EnterpriseFigure) getFigure();
 		Enterprise model = (Enterprise) getModel();
 		figure.setName(model.getName());
@@ -38,7 +40,7 @@ public class EnterprisePart extends AppAbstractEditPart {
 	}
 
 	public List<Node> getModelChildren() {
-    	log.info("check");
+		log.info("check");
 		return ((Enterprise) getModel()).getChildrenArray();
 	}
 
@@ -46,6 +48,10 @@ public class EnterprisePart extends AppAbstractEditPart {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getPropertyName().equals(Node.PROPERTY_LAYOUT))
 			refreshVisuals();
+		if (evt.getPropertyName().equals(Node.PROPERTY_ADD))
+			refreshChildren();
+		if (evt.getPropertyName().equals(Node.PROPERTY_REMOVE))
+			refreshChildren();
 	}
 
 }

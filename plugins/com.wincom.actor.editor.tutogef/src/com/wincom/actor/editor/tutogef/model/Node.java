@@ -15,6 +15,8 @@ public class Node {
 
 	private PropertyChangeSupport listeners;
 	public static final String PROPERTY_LAYOUT = "NodeLayout";
+	public static final String PROPERTY_ADD = "NodeAddChild";
+	public static final String PROPERTY_REMOVE = "NodeRemoveChild";
 
 	public Node() {
 		this.name = "Unknown";
@@ -43,12 +45,19 @@ public class Node {
 	}
 
 	public boolean addChild(Node child) {
-		child.setParent(this);
-		return this.children.add(child);
+		boolean b = this.children.add(child);
+		if (b) {
+			child.setParent(this);
+			getListeners().firePropertyChange(PROPERTY_ADD, null, child);
+		}
+		return b;
 	}
 
 	public boolean removeChild(Node child) {
-		return this.children.remove(child);
+		boolean b = this.children.remove(child);
+		if (b)
+			getListeners().firePropertyChange(PROPERTY_REMOVE, child, null);
+		return b;
 	}
 
 	public List<Node> getChildrenArray() {

@@ -9,6 +9,7 @@ import org.eclipse.gef.EditPolicy;
 import com.wincom.actor.editor.tutogef.figure.ServiceFigure;
 import com.wincom.actor.editor.tutogef.model.Node;
 import com.wincom.actor.editor.tutogef.model.Service;
+import com.wincom.actor.editor.tutogef.policy.AppDeletePolicy;
 import com.wincom.actor.editor.tutogef.policy.AppEditLayoutPolicy;
 
 public class ServicePart extends AppAbstractEditPart {
@@ -21,6 +22,7 @@ public class ServicePart extends AppAbstractEditPart {
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
 	}
 
 	@Override
@@ -41,6 +43,10 @@ public class ServicePart extends AppAbstractEditPart {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getPropertyName().equals(Node.PROPERTY_LAYOUT))
 			refreshVisuals();
+		if (evt.getPropertyName().equals(Node.PROPERTY_ADD))
+			refreshChildren();
+		if (evt.getPropertyName().equals(Node.PROPERTY_REMOVE))
+			refreshChildren();
 	}
 
 }
