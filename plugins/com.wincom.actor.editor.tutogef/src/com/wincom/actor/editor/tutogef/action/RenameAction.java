@@ -47,6 +47,9 @@ public class RenameAction extends SelectionAction {
 
 	public Command createRenameCommand(String name) {
 		log.info(name);
+		if(getSelectedObjects().isEmpty()) {
+			return null;
+		}
 		Request renameReq = new Request("rename");
 		HashMap<String, String> reqData = new HashMap<String, String>();
 		reqData.put("newName", name);

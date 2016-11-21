@@ -1,6 +1,8 @@
 package com.wincom.actor.editor.tutogef.model;
 
 public class Employe extends Node {
+	public static final String PROPERTY_FIRSTNAME = "EmployePrenom";
+	
 	private String prenom;
 
 	public void setPrenom(String prenom) {

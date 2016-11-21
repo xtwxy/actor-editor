@@ -10,6 +10,7 @@ import org.eclipse.ui.PlatformUI;
 import com.wincom.actor.editor.tutogef.model.Employe;
 import com.wincom.actor.editor.tutogef.model.Node;
 import com.wincom.actor.editor.tutogef.policy.AppDeletePolicy;
+import com.wincom.actor.editor.tutogef.policy.AppRenamePolicy;
 
 public class EmployeTreeEditPart extends AppAbstractTreeEditPart {
 	protected List<Node> getModelChildren() {
@@ -19,6 +20,7 @@ public class EmployeTreeEditPart extends AppAbstractTreeEditPart {
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
 
 	public void refreshVisuals() {
@@ -33,5 +35,7 @@ public class EmployeTreeEditPart extends AppAbstractTreeEditPart {
 			refreshChildren();
 		if (evt.getPropertyName().equals(Node.PROPERTY_REMOVE))
 			refreshChildren();
+		if (evt.getPropertyName().equals(Node.PROPERTY_RENAME))
+			refreshVisuals();
 	}
 }

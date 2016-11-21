@@ -12,6 +12,7 @@ import com.wincom.actor.editor.tutogef.model.Employe;
 import com.wincom.actor.editor.tutogef.model.Node;
 import com.wincom.actor.editor.tutogef.policy.AppDeletePolicy;
 import com.wincom.actor.editor.tutogef.policy.AppEditLayoutPolicy;
+import com.wincom.actor.editor.tutogef.policy.AppRenamePolicy;
 
 public class EmployePart extends AppAbstractEditPart {
 
@@ -24,6 +25,7 @@ public class EmployePart extends AppAbstractEditPart {
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new AppEditLayoutPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
 
 	protected void refreshVisuals() {
@@ -41,6 +43,8 @@ public class EmployePart extends AppAbstractEditPart {
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getPropertyName().equals(Node.PROPERTY_LAYOUT))
+			refreshVisuals();
+		if (evt.getPropertyName().equals(Node.PROPERTY_RENAME))
 			refreshVisuals();
 	}
 }

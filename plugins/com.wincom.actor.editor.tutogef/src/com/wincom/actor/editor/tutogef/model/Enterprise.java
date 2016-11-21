@@ -1,6 +1,8 @@
 package com.wincom.actor.editor.tutogef.model;
 
 public class Enterprise extends Node {
+	public static final String PROPERTY_CAPITAL = "EntrepriseCapital";
+	
 	private String address;
 	private int capital;
 

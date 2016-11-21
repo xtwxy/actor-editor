@@ -5,9 +5,11 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.ui.views.properties.IPropertySource;
 
-public class Node {
+public class Node implements IAdaptable {
 	private String name;
 	private Rectangle layout;
 	private List<Node> children;
@@ -18,6 +20,19 @@ public class Node {
 	public static final String PROPERTY_ADD = "NodeAddChild";
 	public static final String PROPERTY_REMOVE = "NodeRemoveChild";
 	public static final String PROPERTY_RENAME = "NodeRename";
+
+	private IPropertySource propertySource = null;
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+		if (adapter == IPropertySource.class) {
+			if (propertySource == null)
+				propertySource = new NodePropertySource(this);
+			return propertySource;
+		}
+		return null;
+	}
 
 	public Node() {
 		this.name = "Unknown";
