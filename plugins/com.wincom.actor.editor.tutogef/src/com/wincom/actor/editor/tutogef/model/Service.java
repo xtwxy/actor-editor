@@ -8,23 +8,23 @@ import org.eclipse.swt.graphics.Color;
 public class Service extends Node {
 	public static final String PROPERTY_COLOR = "ServiceColor";
 	public static final String PROPERTY_FLOOR = "ServiceFloor";
-	public static final String PROPERTY_ETAGE = "ServiceEtage";
+	public static final String PROPERTY_ETAGE = "ServiceStockNo";
 
-	private int etage;
+	private int stockNo;
 	private Color color;
 
 	public Service() {
 		this.color = createRandomColor();
 	}
 
-	public void setEtage(int etage) {
-		int oldEtage = this.etage;
-		this.etage = etage;
-		getListeners().firePropertyChange(PROPERTY_ETAGE, oldEtage, etage);
+	public void setStockNo(int stockNo) {
+		int oldStockNo = this.stockNo;
+		this.stockNo = stockNo;
+		getListeners().firePropertyChange(PROPERTY_ETAGE, oldStockNo, stockNo);
 	}
 
-	public int getEtage() {
-		return this.etage;
+	public int getStockNo() {
+		return this.stockNo;
 	}
 
 	public Color getColor() {
@@ -46,7 +46,7 @@ public class Service extends Node {
 	public Object clone() throws CloneNotSupportedException {
 		Service srv = new Service();
 		srv.setColor(this.color);
-		srv.setEtage(this.etage);
+		srv.setStockNo(this.stockNo);
 		srv.setName(this.getName());
 		srv.setParent(this.getParent());
 		srv.setLayout(new Rectangle(getLayout().x + 10, getLayout().y + 10, getLayout().width, getLayout().height));

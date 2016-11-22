@@ -153,7 +153,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		e.setName("Wincom");
 
 		Service s1 = new Service();
-		s1.setEtage(2);
+		s1.setStockNo(2);
 		s1.setLayout(new Rectangle(30, 50, 250, 150));
 		s1.setName("XOXO Service");
 
@@ -178,7 +178,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		e.addChild(s1);
 
 		Service s2 = new Service();
-		s2.setEtage(1);
+		s2.setStockNo(1);
 		s2.setName("F**K Service");
 		s2.setLayout(new Rectangle(220, 230, 250, 150));
 

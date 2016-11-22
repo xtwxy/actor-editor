@@ -30,7 +30,7 @@ public class NodePropertySource implements IPropertySource {
 			properties.add(new TextPropertyDescriptor(Node.PROPERTY_RENAME, "Name"));
 		if (node instanceof Service) {
 			properties.add(new ColorPropertyDescriptor(Service.PROPERTY_COLOR, "Color"));
-			properties.add(new TextPropertyDescriptor(Service.PROPERTY_FLOOR, "Etage"));
+			properties.add(new TextPropertyDescriptor(Service.PROPERTY_FLOOR, "StockNo"));
 		} else if (node instanceof Enterprise) {
 			properties.add(new TextPropertyDescriptor(Enterprise.PROPERTY_CAPITAL, "Capital"));
 		} else if (node instanceof Employe) {
@@ -46,7 +46,7 @@ public class NodePropertySource implements IPropertySource {
 		if (id.equals(Service.PROPERTY_COLOR))
 			return ((Service) node).getColor().getRGB();
 		if (id.equals(Service.PROPERTY_FLOOR))
-			return Integer.toString(((Service) node).getEtage());
+			return Integer.toString(((Service) node).getStockNo());
 		if (id.equals(Enterprise.PROPERTY_CAPITAL))
 			return Integer.toString(((Enterprise) node).getCapital());
 		if (id.equals(Employe.PROPERTY_FIRSTNAME))
@@ -75,7 +75,7 @@ public class NodePropertySource implements IPropertySource {
 		} else if (id.equals(Service.PROPERTY_FLOOR)) {
 			try {
 				Integer floor = Integer.parseInt((String) value);
-				((Service) node).setEtage(floor);
+				((Service) node).setStockNo(floor);
 			} catch (NumberFormatException e) {
 			}
 		} else if (id.equals(Enterprise.PROPERTY_CAPITAL)) {

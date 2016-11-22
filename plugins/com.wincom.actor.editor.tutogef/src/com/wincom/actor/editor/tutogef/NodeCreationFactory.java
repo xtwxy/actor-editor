@@ -18,13 +18,13 @@ public class NodeCreationFactory implements CreationFactory {
 			return null;
 		if (template == Service.class) {
 			Service srv = new Service();
-			srv.setEtage(42);
-			srv.setName("Factorouf");
+			srv.setStockNo(32768);
+			srv.setName("Negative");
 			return srv;
 		} else if (template == Employe.class) {
 			Employe emp = new Employe();
-			emp.setPrenom("Halle");
-			emp.setName("Berry");
+			emp.setPrenom("David");
+			emp.setName("Johns");
 			return emp;
 		}
 		return null;
