@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.wincom.actor.editor.tutogef.figure.ServiceFigure;
 import com.wincom.actor.editor.tutogef.model.Node;
@@ -14,6 +16,7 @@ import com.wincom.actor.editor.tutogef.policy.AppEditLayoutPolicy;
 import com.wincom.actor.editor.tutogef.policy.AppRenamePolicy;
 
 public class ServicePart extends AppAbstractEditPart {
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected IFigure createFigure() {
@@ -29,11 +32,13 @@ public class ServicePart extends AppAbstractEditPart {
 
 	@Override
 	protected void refreshVisuals() {
+		log.info("check");
 		ServiceFigure figure = (ServiceFigure) getFigure();
 		Service model = (Service) getModel();
 		figure.setName(model.getName());
 		figure.setEtage(model.getEtage());
 		figure.setLayout(model.getLayout());
+		figure.setBackgroundColor(model.getColor());
 	}
 
 	@Override
@@ -43,6 +48,7 @@ public class ServicePart extends AppAbstractEditPart {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		log.info(evt.toString());
 		if (evt.getPropertyName().equals(Node.PROPERTY_LAYOUT))
 			refreshVisuals();
 		if (evt.getPropertyName().equals(Node.PROPERTY_ADD))
@@ -50,6 +56,8 @@ public class ServicePart extends AppAbstractEditPart {
 		if (evt.getPropertyName().equals(Node.PROPERTY_REMOVE))
 			refreshChildren();
 		if (evt.getPropertyName().equals(Node.PROPERTY_RENAME))
+			refreshVisuals();
+		if (evt.getPropertyName().equals(Service.PROPERTY_COLOR))
 			refreshVisuals();
 	}
 
