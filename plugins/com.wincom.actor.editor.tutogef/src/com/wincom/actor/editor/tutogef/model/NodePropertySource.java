@@ -7,7 +7,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.views.properties.ColorPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
-import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
 public class NodePropertySource implements IPropertySource {
@@ -26,7 +25,7 @@ public class NodePropertySource implements IPropertySource {
 	public IPropertyDescriptor[] getPropertyDescriptors() {
 		ArrayList<IPropertyDescriptor> properties = new ArrayList<IPropertyDescriptor>();
 		if (node instanceof Employe)
-			properties.add(new PropertyDescriptor(Node.PROPERTY_RENAME, "Name"));
+			properties.add(new TextPropertyDescriptor(Node.PROPERTY_RENAME, "Name"));
 		else
 			properties.add(new TextPropertyDescriptor(Node.PROPERTY_RENAME, "Name"));
 		if (node instanceof Service) {
@@ -35,7 +34,7 @@ public class NodePropertySource implements IPropertySource {
 		} else if (node instanceof Enterprise) {
 			properties.add(new TextPropertyDescriptor(Enterprise.PROPERTY_CAPITAL, "Capital"));
 		} else if (node instanceof Employe) {
-			properties.add(new PropertyDescriptor(Employe.PROPERTY_FIRSTNAME, "Prenom"));
+			properties.add(new TextPropertyDescriptor(Employe.PROPERTY_FIRSTNAME, "Prenom"));
 		}
 		return properties.toArray(new IPropertyDescriptor[0]);
 	}
@@ -66,9 +65,11 @@ public class NodePropertySource implements IPropertySource {
 
 	@Override
 	public void setPropertyValue(Object id, Object value) {
-		if (id.equals(Node.PROPERTY_RENAME))
+		if (id.equals(Node.PROPERTY_RENAME)) {
 			node.setName((String) value);
-		else if (id.equals(Service.PROPERTY_COLOR)) {
+		} else if (id.equals(Employe.PROPERTY_FIRSTNAME)) {
+			((Employe) node).setPrenom((String)value);
+		} else if (id.equals(Service.PROPERTY_COLOR)) {
 			Color newColor = new Color(null, (RGB) value);
 			((Service) node).setColor(newColor);
 		} else if (id.equals(Service.PROPERTY_FLOOR)) {

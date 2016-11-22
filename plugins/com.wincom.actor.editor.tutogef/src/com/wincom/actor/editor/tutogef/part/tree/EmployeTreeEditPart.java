@@ -37,5 +37,7 @@ public class EmployeTreeEditPart extends AppAbstractTreeEditPart {
 			refreshChildren();
 		if (evt.getPropertyName().equals(Node.PROPERTY_RENAME))
 			refreshVisuals();
+		if (evt.getPropertyName().equals(Employe.PROPERTY_FIRSTNAME))
+			refreshVisuals();
 	}
 }

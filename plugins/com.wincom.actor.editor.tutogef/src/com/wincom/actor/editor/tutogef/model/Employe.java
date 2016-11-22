@@ -6,7 +6,9 @@ public class Employe extends Node {
 	private String prenom;
 
 	public void setPrenom(String prenom) {
+		String oldPrenom = this.prenom;
 		this.prenom = prenom;
+		getListeners().firePropertyChange(PROPERTY_FIRSTNAME, oldPrenom, this.prenom);
 	}
 
 	public String getPrenom() {

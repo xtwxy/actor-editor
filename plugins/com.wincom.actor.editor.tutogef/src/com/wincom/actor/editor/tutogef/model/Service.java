@@ -5,6 +5,7 @@ import org.eclipse.swt.graphics.Color;
 public class Service extends Node {
 	public static final String PROPERTY_COLOR = "ServiceColor";
 	public static final String PROPERTY_FLOOR = "ServiceFloor";
+	public static final String PROPERTY_ETAGE = "ServiceEtage";
 
 	private int etage;
 	private Color color;
@@ -14,7 +15,9 @@ public class Service extends Node {
 	}
 
 	public void setEtage(int etage) {
+		int oldEtage = this.etage;
 		this.etage = etage;
+		getListeners().firePropertyChange(PROPERTY_ETAGE, oldEtage, etage);
 	}
 
 	public int getEtage() {

@@ -46,5 +46,7 @@ public class EmployePart extends AppAbstractEditPart {
 			refreshVisuals();
 		if (evt.getPropertyName().equals(Node.PROPERTY_RENAME))
 			refreshVisuals();
+		if (evt.getPropertyName().equals(Employe.PROPERTY_FIRSTNAME))
+			refreshVisuals();
 	}
 }

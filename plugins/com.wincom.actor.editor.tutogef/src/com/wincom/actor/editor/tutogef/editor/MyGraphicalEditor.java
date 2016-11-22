@@ -17,12 +17,19 @@ import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
+import org.eclipse.gef.palette.CreationToolEntry;
+import org.eclipse.gef.palette.MarqueeToolEntry;
+import org.eclipse.gef.palette.PaletteDrawer;
+import org.eclipse.gef.palette.PaletteGroup;
+import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.palette.PaletteSeparator;
+import org.eclipse.gef.palette.SelectionToolEntry;
 import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gef.ui.actions.ZoomInAction;
 import org.eclipse.gef.ui.actions.ZoomOutAction;
 import org.eclipse.gef.ui.parts.ContentOutlinePage;
-import org.eclipse.gef.ui.parts.GraphicalEditor;
+import org.eclipse.gef.ui.parts.GraphicalEditorWithPalette;
 import org.eclipse.gef.ui.parts.TreeViewer;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
@@ -35,10 +42,13 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.IPageSite;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.wincom.actor.editor.tutogef.Activator;
+import com.wincom.actor.editor.tutogef.NodeCreationFactory;
 import com.wincom.actor.editor.tutogef.action.AppContextMenuProvider;
 import com.wincom.actor.editor.tutogef.action.RenameAction;
 import com.wincom.actor.editor.tutogef.model.Employe;
@@ -47,7 +57,7 @@ import com.wincom.actor.editor.tutogef.model.Service;
 import com.wincom.actor.editor.tutogef.part.AppEditPartFactory;
 import com.wincom.actor.editor.tutogef.part.tree.AppTreeEditPartFactory;
 
-public class MyGraphicalEditor extends GraphicalEditor {
+public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	public static final String ID = "com.wincom.actor.editor.tutogef.editor2";
@@ -251,5 +261,33 @@ public class MyGraphicalEditor extends GraphicalEditor {
 		IAction action = new RenameAction(this);
 		registry.registerAction(action);
 		getSelectionActions().add(action.getId());
+	}
+
+	@Override
+	protected PaletteRoot getPaletteRoot() {
+		PaletteRoot root = new PaletteRoot();
+		PaletteGroup manipGroup = new PaletteGroup("Select Element(s)");
+		root.add(manipGroup);
+		SelectionToolEntry selectionToolEntry = new SelectionToolEntry();
+		manipGroup.add(selectionToolEntry);
+		manipGroup.add(new MarqueeToolEntry());
+		root.setDefaultEntry(selectionToolEntry);
+
+		PaletteDrawer drawer = new PaletteDrawer("Components", null);
+
+		PaletteSeparator sep2 = new PaletteSeparator();
+		drawer.add(sep2);
+		// PaletteGroup instGroup = new PaletteGroup("Create Element(s)");
+		// drawer.add(instGroup);
+		drawer.add(
+				new CreationToolEntry("Service", "Creation d'un service type", new NodeCreationFactory(Service.class),
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-low.png"),
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-high.png")));
+		drawer.add(
+				new CreationToolEntry("Employe", "Creation d'un employe model", new NodeCreationFactory(Employe.class),
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-low.png"),
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-high.png")));
+		root.add(drawer);
+		return root;
 	}
 }
