@@ -281,12 +281,12 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		// drawer.add(instGroup);
 		drawer.add(
 				new CreationToolEntry("Service", "Creation d'un service type", new NodeCreationFactory(Service.class),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-low.png"),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-high.png")));
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-low.gif"),
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-high.gif")));
 		drawer.add(
 				new CreationToolEntry("Employe", "Creation d'un employe model", new NodeCreationFactory(Employe.class),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-low.png"),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-high.png")));
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-low.gif"),
+						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-high.gif")));
 		root.add(drawer);
 		return root;
 	}
