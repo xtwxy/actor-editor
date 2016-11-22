@@ -35,6 +35,12 @@ public class AppContextMenuProvider extends ContextMenuProvider {
 		
 		action = getActionRegistry().getAction(ActionFactory.RENAME.getId());
 		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
+		
+		action = getActionRegistry().getAction(ActionFactory.COPY.getId());
+		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
+		
+		action = getActionRegistry().getAction(ActionFactory.PASTE.getId());
+		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
 	}
 
 	private ActionRegistry getActionRegistry() {

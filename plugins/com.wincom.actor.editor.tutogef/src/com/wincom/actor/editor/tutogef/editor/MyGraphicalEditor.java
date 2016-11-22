@@ -15,9 +15,10 @@ import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
+import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
-import org.eclipse.gef.palette.CreationToolEntry;
+import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteGroup;
@@ -50,6 +51,9 @@ import org.slf4j.LoggerFactory;
 import com.wincom.actor.editor.tutogef.Activator;
 import com.wincom.actor.editor.tutogef.NodeCreationFactory;
 import com.wincom.actor.editor.tutogef.action.AppContextMenuProvider;
+import com.wincom.actor.editor.tutogef.action.CopyNodeAction;
+import com.wincom.actor.editor.tutogef.action.MyTemplateTransferDropTargetListener;
+import com.wincom.actor.editor.tutogef.action.PasteNodeAction;
 import com.wincom.actor.editor.tutogef.action.RenameAction;
 import com.wincom.actor.editor.tutogef.model.Employe;
 import com.wincom.actor.editor.tutogef.model.Enterprise;
@@ -98,6 +102,13 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 				}
 			};
 			getGraphicalViewer().getControl().addDisposeListener(disposeListener);
+			
+			IActionBars bars = getSite().getActionBars();
+			ActionRegistry ar = getActionRegistry();
+			bars.setGlobalActionHandler(ActionFactory.COPY.getId(),
+			ar.getAction(ActionFactory.COPY.getId()));
+			bars.setGlobalActionHandler(ActionFactory.PASTE.getId(),
+			ar.getAction(ActionFactory.PASTE.getId()));
 		}
 
 		public void init(IPageSite pageSite) {
@@ -226,6 +237,9 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 
 		ContextMenuProvider provider = new AppContextMenuProvider(viewer, getActionRegistry());
 		viewer.setContextMenu(provider);
+		
+		getPaletteViewer().addDragSourceListener(
+				new TemplateTransferDragSourceListener(getPaletteViewer()));
 	}
 
 	@Override
@@ -233,6 +247,8 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		GraphicalViewer viewer = getGraphicalViewer();
 		model = createEnterprise();
 		viewer.setContents(model);
+		
+		viewer.addDropTargetListener(new MyTemplateTransferDropTargetListener(viewer));
 	}
 
 	@Override
@@ -258,7 +274,16 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 	public void createActions() {
 		super.createActions();
 		ActionRegistry registry = getActionRegistry();
+		
 		IAction action = new RenameAction(this);
+		registry.registerAction(action);
+		getSelectionActions().add(action.getId());
+		
+		action = new CopyNodeAction(this);
+		registry.registerAction(action);
+		getSelectionActions().add(action.getId());
+		
+		action = new PasteNodeAction(this);
 		registry.registerAction(action);
 		getSelectionActions().add(action.getId());
 	}
@@ -280,11 +305,11 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		// PaletteGroup instGroup = new PaletteGroup("Create Element(s)");
 		// drawer.add(instGroup);
 		drawer.add(
-				new CreationToolEntry("Service", "Creation d'un service type", new NodeCreationFactory(Service.class),
+				new CombinedTemplateCreationEntry("Service", "Creation d'un service type", new NodeCreationFactory(Service.class),
 						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-low.gif"),
 						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/services-high.gif")));
 		drawer.add(
-				new CreationToolEntry("Employe", "Creation d'un employe model", new NodeCreationFactory(Employe.class),
+				new CombinedTemplateCreationEntry("Employe", "Creation d'un employe model", new NodeCreationFactory(Employe.class),
 						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-low.gif"),
 						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/employe-high.gif")));
 		root.add(drawer);

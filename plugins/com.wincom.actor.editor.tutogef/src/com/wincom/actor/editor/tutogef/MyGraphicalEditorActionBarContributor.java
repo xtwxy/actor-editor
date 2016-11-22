@@ -10,7 +10,9 @@ import org.eclipse.gef.ui.actions.ZoomInRetargetAction;
 import org.eclipse.gef.ui.actions.ZoomOutRetargetAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.actions.RetargetAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +26,11 @@ public class MyGraphicalEditorActionBarContributor extends ActionBarContributor 
 		addRetargetAction(new DeleteRetargetAction());
 		addRetargetAction(new ZoomInRetargetAction());
 		addRetargetAction(new ZoomOutRetargetAction());
+		
+		IWorkbenchWindow iww = getPage().getWorkbenchWindow();
+		addRetargetAction((RetargetAction)ActionFactory.RENAME.create(iww));
+		addRetargetAction((RetargetAction)ActionFactory.COPY.create(iww));
+		addRetargetAction((RetargetAction)ActionFactory.PASTE.create(iww));
 	}
 
 	@Override
@@ -37,8 +44,9 @@ public class MyGraphicalEditorActionBarContributor extends ActionBarContributor 
 		toolBarManager.add(getAction(ActionFactory.REDO.getId()));
 		toolBarManager.add(getAction(ActionFactory.DELETE.getId()));
 		
-		//toolBarManager.add(getAction(ActionFactory.RENAME.getId()));
-		//toolBarManager.add(getAction(GEFActionConstants.GROUP_EDIT));
+		toolBarManager.add(getAction(ActionFactory.RENAME.getId()));
+		toolBarManager.add(getAction(ActionFactory.COPY.getId()));
+		toolBarManager.add(getAction(ActionFactory.PASTE.getId()));
 		
 		toolBarManager.add(new Separator());
 		toolBarManager.add(getAction(GEFActionConstants.ZOOM_IN));
