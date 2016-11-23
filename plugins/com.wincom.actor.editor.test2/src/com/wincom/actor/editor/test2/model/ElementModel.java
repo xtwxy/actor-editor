@@ -19,7 +19,13 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 	transient protected PropertyChangeSupport listeners = new PropertyChangeSupport(this);
 	protected final Properties properties = new Properties();
 
-	private ElementModel parent;
+	protected String name;
+	protected ElementModel parent;
+
+	public static final String PROPERTY_LAYOUT = "NodeLayout";
+	public static final String PROPERTY_ADD = "NodeAddChild";
+	public static final String PROPERTY_REMOVE = "NodeRemoveChild";
+	public static final String PROPERTY_RENAME = "NodeRename";
 	
 	public ElementModel() { 
 		log.info("new ElementModel()");
@@ -46,6 +52,14 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 	@Override
 	public IPropertyDescriptor[] getPropertyDescriptors() {
 		return new IPropertyDescriptor[0];
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public ElementModel getParent() {
