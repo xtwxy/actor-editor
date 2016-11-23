@@ -1,33 +1,94 @@
 package com.wincom.actor.editor.test2.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.ui.views.properties.IPropertyDescriptor;
+import org.eclipse.ui.views.properties.PropertyDescriptor;
+import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ConnectionModel extends ElementModel {
 	private static final long serialVersionUID = -3254462748778391632L;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
-
-	private ActorModel source;
-	private ActorModel target;
 	
+	public static final String SOURCE = "source";
+	public static final String TARGET = "target";
+	
+	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] {
+			new TextPropertyDescriptor(NAME, NAME),
+			new PropertyDescriptor(PARENT, PARENT),
+			new TextPropertyDescriptor(SOURCE, SOURCE),
+			new TextPropertyDescriptor(SOURCE, SOURCE)
+	};
+
+	private ElementModel source;
+	private ElementModel target;
 	
 	public ConnectionModel() { 
 		log.info("new ConnectionModel()");
 	}
+	
+	@Override
+	public IPropertyDescriptor[] getPropertyDescriptors() {
+		return descriptors;
+	}
 
-	public ActorModel getSource() {
+	public ElementModel getSource() {
 		return source;
 	}
 
-	public void setSource(ActorModel source) {
-		this.source = source;
+	public void setSource(ElementModel newSource) {
+		ElementModel old = source;
+		this.source = newSource;
+		firePropertyChange(SOURCE, old, newSource);
 	}
 
-	public ActorModel getTarget() {
+	public ElementModel getTarget() {
 		return target;
 	}
 
-	public void setTarget(ActorModel target) {
-		this.target = target;
+	public void setTarget(ElementModel newTarget) {
+		ElementModel old = target;
+		this.target = newTarget;
+		firePropertyChange(TARGET, old, newTarget);
+	}
+
+	@Override
+	public Object getPropertyValue(Object id) {
+		if(SOURCE.equals(id)) {
+			return source;
+		} else if(TARGET.equals(id)) {
+			return target;
+		} else {
+			return super.getPropertyValue(id);
+		}
+	}
+
+	@Override
+	public boolean isPropertySet(Object id) {
+		return getPropertyValue(id) != null;
+	}
+
+	@Override
+	public void resetPropertyValue(Object id) {
+		
+	}
+
+	@Override
+	public void setPropertyValue(Object id, Object value) {
+		if(SOURCE.equals(id)) {
+			setSource((ElementModel) value);
+		} else if(TARGET.equals(id)) {
+			setTarget((ElementModel) value);
+		} else {
+			super.setPropertyValue(id, value);
+		}
+	}
+
+	@Override
+	public List<ElementModel> getChildren() {
+		return new ArrayList<>();
 	}
 }

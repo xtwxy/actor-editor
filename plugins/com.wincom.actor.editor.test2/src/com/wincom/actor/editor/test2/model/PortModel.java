@@ -1,29 +1,54 @@
 package com.wincom.actor.editor.test2.model;
 
-public class PortModel extends FigureModel {
-	public static final String PROVIDED = "provided";
-	public static final String REQUIRED = "required";
+import java.util.ArrayList;
+import java.util.List;
+
+public class PortModel extends ElementModel {
 	private static final long serialVersionUID = 2969510135967969883L;
-	private ProvidedPortModel provided;
-	private RequiredPortModel required;
+	private ConnectionModel assocInterface;
+	public static final String INTERFACE = "interface";
 
-	public ProvidedPortModel getProvided() {
-		return provided;
+	public ConnectionModel getAssocInterface() {
+		return assocInterface;
 	}
 
-	public void setProvided(ProvidedPortModel provided) {
-		ProvidedPortModel old = this.provided;
-		this.provided = provided;
-		firePropertyChange(PROVIDED, old, provided);
+	public void setAssocInterface(ConnectionModel newInterface) {
+		ConnectionModel oldInterface = newInterface;
+		this.assocInterface = newInterface;
+		firePropertyChange(INTERFACE, oldInterface, newInterface);
 	}
 
-	public RequiredPortModel getRequired() {
-		return required;
+	@Override
+	public Object getPropertyValue(Object id) {
+		if (INTERFACE.equals(id)) {
+			return assocInterface;
+		}
+		return super.getPropertyValue(id);
 	}
 
-	public void setRequired(RequiredPortModel required) {
-		RequiredPortModel old = this.required;
-		this.required = required;
-		firePropertyChange(REQUIRED, old, provided);
+	@Override
+	public boolean isPropertySet(Object id) {
+		if (INTERFACE.equals(id)) {
+			return assocInterface != null;
+		}
+		return super.isPropertySet(id);
+	}
+
+	@Override
+	public void resetPropertyValue(Object id) {
+	}
+
+	@Override
+	public void setPropertyValue(Object id, Object value) {
+		if (INTERFACE.equals(id)) {
+			setAssocInterface((ConnectionModel) value);
+		} else {
+			super.setPropertyValue(id, value);
+		}
+	}
+
+	@Override
+	public List<ElementModel> getChildren() {
+		return new ArrayList<>();
 	}
 }
