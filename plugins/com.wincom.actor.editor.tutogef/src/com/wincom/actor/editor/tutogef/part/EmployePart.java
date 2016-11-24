@@ -26,6 +26,7 @@ public class EmployePart extends AppAbstractEditPart {
 		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
 
+	@Override
 	protected void refreshVisuals() {
 		EmployeFigure figure = (EmployeFigure) getFigure();
 		Employe model = (Employe) getModel();
@@ -34,6 +35,7 @@ public class EmployePart extends AppAbstractEditPart {
 		figure.setLayout(model.getLayout());
 	}
 
+	@Override
 	public List<Node> getModelChildren() {
 		return new ArrayList<Node>();
 	}

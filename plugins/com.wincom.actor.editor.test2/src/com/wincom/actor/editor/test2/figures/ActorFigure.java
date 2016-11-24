@@ -10,56 +10,62 @@
  *******************************************************************************/
 package com.wincom.actor.editor.test2.figures;
 
-import java.util.List;
-
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.LineBorder;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.graphics.Color;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.wincom.actor.editor.test2.parts.DummyLayout;
 
 /**
  * 
  * @author hudsonr Created on Jul 23, 2003
  */
 public class ActorFigure extends Figure {
-	Logger log = LoggerFactory.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
-	List<PortFigure> provides;
-	List<PortFigure> requires;
-	IFigure contents;
+	public static final int ACTOR_FIGURE_DEFWIDTH = 0;
+	public static final int ACTOR_FIGURE_DEFHEIGHT = 0;
 
-	public ActorFigure(IFigure header, IFigure footer) {
+	private Label idLabel = new Label();
+	private Label nameLabel = new Label();
+
+	public ActorFigure() {
+		XYLayout layout = new XYLayout();
+		setLayoutManager(layout);
+		
+		idLabel.setForegroundColor(ColorConstants.black);
+		add(idLabel, ToolbarLayout.ALIGN_TOPLEFT);
+		//setConstraint(id, new Rectangle(5, 17, -1, -1));	
+		
+		nameLabel.setForegroundColor(ColorConstants.darkGray);
+		add(nameLabel, ToolbarLayout.ALIGN_CENTER);
+		
+		setForegroundColor(new Color(null, (new Double(Math.random() * 128)).intValue(),
+				(new Double(Math.random() * 128)).intValue(), (new Double(Math.random() * 128)).intValue()));
+		setBackgroundColor(new Color(null, (new Double(Math.random() * 128)).intValue() + 128,
+				(new Double(Math.random() * 128)).intValue() + 128,
+				(new Double(Math.random() * 128)).intValue() + 128));
+		
+		setBorder(new LineBorder(1));
+		setOpaque(true);
 	}
 
-	public IFigure getContents() {
-		return contents;
+	public void setId(String id) {
+		this.idLabel.setText(id);
 	}
-
-	/**
-	 * @see org.eclipse.draw2d.Figure#getPreferredSize(int, int)
-	 */
-	public Dimension getPreferredSize(int wHint, int hHint) {
-		log.info("check");
-		Dimension dim = new Dimension();
-		dim.height = 50;
-		return dim;
+	
+	public void setName(String name) {
+		this.nameLabel.setText(name);
 	}
-
-	public void setBounds(Rectangle rect) {
-		log.info("check");
-		super.setBounds(rect);
-		rect = Rectangle.SINGLETON;
-		getClientArea(rect);
-		contents.setBounds(rect);
-
-	}
-
-	public void setSelected(boolean value) {
-		log.info("check");
+	
+	public void setLayout(Rectangle rect) {
+		log.info(rect.toString());
+		getParent().setConstraint(this, rect);
 	}
 
 }

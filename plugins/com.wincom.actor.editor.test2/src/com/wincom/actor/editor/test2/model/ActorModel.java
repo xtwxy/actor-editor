@@ -17,11 +17,11 @@ public class ActorModel extends ElementModel {
 
 	private String id;
 	private ProvidedPortModel input;
-	private Map<String, RequiredPortModel> outputs = new HashMap<>();
+	private Map<String, PortModel> outputs = new HashMap<>();
 
-	private static final String ID = "id";
-	private static final String INPUT = "input";
-	private static final String OUTPUTS = "outputs";
+	public static final String ID = "id";
+	public static final String INPUT = "input";
+	public static final String OUTPUTS = "outputs";
 
 	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] {
 			new PropertyDescriptor(ID, ID), 
@@ -58,22 +58,36 @@ public class ActorModel extends ElementModel {
 		firePropertyChange(INPUT, old, port);
 	}
 
-	public RequiredPortModel getOutputs(String name) {
+	public PortModel getOutput(String name) {
 		return outputs.get(name);
 	}
 
-	public Map<String, RequiredPortModel> getOutputs() {
+	public void removeOutput(PortModel port) {
+		PortModel old = this.outputs.get(name);
+		this.outputs.remove(name);
+		firePropertyChange(OUTPUTS, old, null);
+	}
+
+	public Map<String, PortModel> getOutputs() {
 		return outputs;
 	}
 
-	public void setOutputs(Map<String, RequiredPortModel> newOutputs) {
-		Map<String, RequiredPortModel> old = outputs;
+	public void setOutputs(Map<String, PortModel> newOutputs) {
+		Map<String, PortModel> old = outputs;
 		outputs = newOutputs;
 		firePropertyChange(OUTPUTS, old, newOutputs);
 	}
+	
+	public void addOutputs(PortModel port) {
+		setOutputs(port.getName(), port);
+	}
 
-	public void setOutputs(String name, RequiredPortModel port) {
-		RequiredPortModel old = this.outputs.get(name);
+	public boolean contains(PortModel port) {
+		return getOutput(port.getName()) != null;
+	}
+
+	public void setOutputs(String name, PortModel port) {
+		PortModel old = this.outputs.get(name);
 		this.outputs.put(name, port);
 		firePropertyChange(OUTPUTS, old, port);
 	}
@@ -116,7 +130,7 @@ public class ActorModel extends ElementModel {
 		} else if(INPUT.equals(id)) {
 			setInput((ProvidedPortModel) value);
 		} else if(OUTPUTS.equals(id)) {
-			setOutputs((Map<String, RequiredPortModel>) value);
+			setOutputs((Map<String, PortModel>) value);
 		} else {
 			super.setPropertyValue(id, value);
 		}

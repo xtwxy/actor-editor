@@ -1,22 +1,19 @@
 package com.wincom.actor.editor.test2.parts;
 
-import java.util.Map;
+import java.beans.PropertyChangeEvent;
+import java.util.List;
 
-import org.eclipse.draw2d.geometry.Insets;
-import org.eclipse.draw2d.graph.CompoundDirectedGraph;
-import org.eclipse.draw2d.graph.Node;
-import org.eclipse.draw2d.graph.Subgraph;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.EditPolicy;
-import org.eclipse.gef.GraphicalEditPart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.wincom.actor.editor.test2.policies.ActorContainerEditPolicy;
-import com.wincom.actor.editor.test2.policies.ActorContainerHighlightEditPolicy;
-import com.wincom.actor.editor.test2.policies.ActorDirectEditPolicy;
-import com.wincom.actor.editor.test2.policies.ActorEditPolicy;
-import com.wincom.actor.editor.test2.policies.ActorLayoutEditPolicy;
-import com.wincom.actor.editor.test2.policies.ActorNodeEditPolicy;
+import com.wincom.actor.editor.test2.figures.ActorFigure;
+import com.wincom.actor.editor.test2.model.ActorModel;
+import com.wincom.actor.editor.test2.model.ElementModel;
+import com.wincom.actor.editor.test2.policies.ActorEditLayoutPolicy;
+import com.wincom.actor.editor.test2.policies.AppRenamePolicy;
+import com.wincom.actor.editor.test2.policies.PortDeletePolicy;
 
 public class ActorPart extends ElementPart {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -25,31 +22,49 @@ public class ActorPart extends ElementPart {
 		log.info("new ActorPart()");
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public void contributeNodesToGraph(CompoundDirectedGraph graph, Subgraph s, Map<GraphicalEditPart, Node> map) {
-		log.info("check");
-		Node n = new Node(this, s);
-		n.width = getFigure().getPreferredSize().width;
-		n.height = getFigure().getPreferredSize().height;
-		n.setPadding(new Insets(10, 8, 10, 12));
-		map.put(this, n);
-		graph.nodes.add(n);
+	public void propertyChange(PropertyChangeEvent evt) {
+		if (evt.getPropertyName().equals(ActorModel.ID)) {
+			refreshVisuals();
+		} else if(evt.getPropertyName().equals(ActorModel.INPUT)) {
+			refreshVisuals();
+		} else if(evt.getPropertyName().equals(ActorModel.OUTPUTS)) {
+			refreshVisuals();
+		} else {
+			super.propertyChange(evt);
+		}
+	}
+	
+	@Override
+	protected IFigure createFigure() {
+		ActorFigure figure = new ActorFigure();
+		return figure;
 	}
 
+	@Override
 	protected void createEditPolicies() {
-		log.info("check");
-		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,
-				new ActorNodeEditPolicy());
-		installEditPolicy(EditPolicy.COMPONENT_ROLE, new ActorEditPolicy());
-		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
-				new ActorContainerHighlightEditPolicy());
-		installEditPolicy(EditPolicy.CONTAINER_ROLE,
-				new ActorContainerEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE,
-				new ActorLayoutEditPolicy());
-		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
-				new ActorDirectEditPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ActorEditLayoutPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new PortDeletePolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
+	}
+	
+	@Override
+	protected void refreshVisuals() {
+		ActorFigure figure = (ActorFigure) getFigure();
+		ActorModel model = (ActorModel) getModel();
+		
+		figure.setId(model.getId());
+		figure.setName(model.getName());
+		
+		figure.setBackgroundColor(model.getBackgroundColor());
+		figure.setForegroundColor(model.getForegroundColor());
+		
+		figure.setLayout(model.getLayout());
+	}
+	
+	@Override
+	public List<ElementModel> getModelChildren() {
+		return ((ActorModel) getModel()).getChildren();
 	}
 
 }

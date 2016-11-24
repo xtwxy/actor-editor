@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.views.properties.ColorPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
@@ -22,16 +24,22 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 	protected String name;
 	protected ElementModel parent;
 	private Rectangle layout;
+	private Color backgroundColor;
+	private Color foregroundColor;
 
 	public static final String NAME = "name";
 	public static final String PARENT = "parent";
+	public static final String BACKGROUND_COLOR = "backgroundColor";
+	public static final String FOREGROUND_COLOR = "foregroundColor";
+	
 	public static final String PROPERTY_LAYOUT = "ElementLayout";
 	public static final String PROPERTY_RENAME = "ElementRename";
-	public static final String PROPERTY_PARENT = "ElementParent";
 
 	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] {
 			new TextPropertyDescriptor(NAME, NAME),
-			new TextPropertyDescriptor(PARENT, PARENT)
+			new TextPropertyDescriptor(PARENT, PARENT),
+			new ColorPropertyDescriptor(BACKGROUND_COLOR, BACKGROUND_COLOR),
+			new ColorPropertyDescriptor(FOREGROUND_COLOR, FOREGROUND_COLOR)
 		};
 	
 	@Override
@@ -40,6 +48,10 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 			return name;
 		} else if(PARENT.equals(id)) {
 			return parent;
+		} else if(BACKGROUND_COLOR.equals(id)) {
+			return backgroundColor;
+		} else if(FOREGROUND_COLOR.equals(id)) {
+			return foregroundColor;
 		}
 		return null;
 	}
@@ -50,6 +62,10 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 			return name != null;
 		} else if(PARENT.equals(id)) {
 			return parent != null;
+		} else if(BACKGROUND_COLOR.equals(id)) {
+			return backgroundColor != null;
+		} else if(FOREGROUND_COLOR.equals(id)) {
+			return foregroundColor != null;
 		}
 		return false;
 	}
@@ -60,6 +76,10 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 			setName((String) value);
 		} else if(PARENT.equals(id)) {
 			setParent((ElementModel) value);
+		} else if(BACKGROUND_COLOR.equals(id)) {
+			setBackgroundColor((Color) value);
+		} else if(FOREGROUND_COLOR.equals(id)) {
+			setForegroundColor((Color) value);
 		}
 	}
 
@@ -117,9 +137,29 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 	public void setParent(ElementModel newParent) {
 		Rectangle oldParent = this.layout;
 		this.parent = newParent;
-		listeners.firePropertyChange(PROPERTY_PARENT, oldParent, newParent);
+		listeners.firePropertyChange(PARENT, oldParent, newParent);
 	}
 	
+	public Color getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public void setBackgroundColor(Color value) {
+		Color old = this.backgroundColor;
+		this.backgroundColor = value;
+		firePropertyChange(BACKGROUND_COLOR, old, value);
+	}
+
+	public Color getForegroundColor() {
+		return foregroundColor;
+	}
+
+	public void setForegroundColor(Color newForegroundColor) {
+		Color old = this.foregroundColor;
+		this.foregroundColor = newForegroundColor;
+		firePropertyChange(FOREGROUND_COLOR, old, newForegroundColor);
+	}
+
 	@Override
 	public Object getEditableValue() {
 		return this;
