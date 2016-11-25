@@ -4,7 +4,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.wincom.actor.editor.test2.model.ElementModel;
 
-public class PortChangeLayoutCommand extends AbstractLayoutCommand {
+public class ProvidedPortChangeLayoutCommand extends AbstractLayoutCommand {
 	private ElementModel model;
 	private Rectangle layout;
 	private Rectangle oldLayout;

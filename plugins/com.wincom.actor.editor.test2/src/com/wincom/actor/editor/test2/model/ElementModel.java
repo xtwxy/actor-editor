@@ -23,7 +23,7 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 
 	protected String name;
 	protected ElementModel parent;
-	private Rectangle layout;
+	private Rectangle layout = new Rectangle(10, 10, 100, 50);
 	private Color backgroundColor;
 	private Color foregroundColor;
 
@@ -121,6 +121,7 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 	}
 
 	public void setLayout(Rectangle newLayout) {
+		log.info("check");
 		Rectangle oldLayout = this.layout;
 		this.layout = newLayout;
 		listeners.firePropertyChange(PROPERTY_LAYOUT, oldLayout, newLayout);

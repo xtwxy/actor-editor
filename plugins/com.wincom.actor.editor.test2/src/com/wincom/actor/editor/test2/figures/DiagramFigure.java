@@ -19,22 +19,22 @@ public class DiagramFigure extends Figure {
 		layout = new XYLayout();
 		setLayoutManager(layout);
 		
+		add(nameLabel);
 		nameLabel.setForegroundColor(ColorConstants.blue);
 		setConstraint(nameLabel, new Rectangle(5, 5, -1, -1));
-		add(nameLabel);
 		
+		add(aggregateIdLabel);
 		aggregateIdLabel.setForegroundColor(ColorConstants.blue);
 		setConstraint(aggregateIdLabel, new Rectangle(5, 18, -1, -1));
-		add(aggregateIdLabel);
 	}
 
 	public void setLayout(Rectangle rect) {
-		log.info("check");
+		log.info(rect.toString());
 		setBounds(rect);
 	}
 
 	public void setName(String text) {
-		log.info("check");
+		log.info(text);
 		nameLabel.setText(text);
 	}
 

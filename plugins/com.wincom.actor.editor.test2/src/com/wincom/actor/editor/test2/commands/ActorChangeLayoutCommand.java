@@ -2,10 +2,10 @@ package com.wincom.actor.editor.test2.commands;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import com.wincom.actor.editor.test2.model.ElementModel;
+import com.wincom.actor.editor.test2.model.ActorModel;
 
-public class PortChangeLayoutCommand extends AbstractLayoutCommand {
-	private ElementModel model;
+public class ActorChangeLayoutCommand extends AbstractLayoutCommand {
+	private ActorModel model;
 	private Rectangle layout;
 	private Rectangle oldLayout;
 
@@ -21,8 +21,8 @@ public class PortChangeLayoutCommand extends AbstractLayoutCommand {
 
 	@Override
 	public void setModel(Object model) {
-		this.model = (ElementModel) model;
-		this.oldLayout = ((ElementModel) model).getLayout();
+		this.model = (ActorModel) model;
+		this.oldLayout = ((ActorModel) model).getLayout();
 	}
 
 	@Override

@@ -1,11 +1,13 @@
-package com.wincom.actor.editor.test2.parts;
+package com.wincom.actor.editor.test2.parts.tree;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
-import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gef.editparts.AbstractTreeEditPart;
+import org.eclipse.gef.tools.SelectEditPartTracker;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -16,8 +18,8 @@ import org.slf4j.LoggerFactory;
 import com.wincom.actor.editor.test2.model.ActorModel;
 import com.wincom.actor.editor.test2.model.ElementModel;
 
-public abstract class ElementPart extends AbstractGraphicalEditPart implements PropertyChangeListener {
-	Logger log = LoggerFactory.getLogger(this.getClass());
+public abstract class ElementTreeEditPart extends AbstractTreeEditPart implements PropertyChangeListener {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public void activate() {
@@ -27,8 +29,13 @@ public abstract class ElementPart extends AbstractGraphicalEditPart implements P
 
 	@Override
 	public void deactivate() {
-		super.deactivate();
 		((ElementModel) getModel()).removePropertyChangeListener(this);
+		super.deactivate();
+	}
+
+	@Override
+	public DragTracker getDragTracker(Request req) {
+		return new SelectEditPartTracker(this);
 	}
 
 	@Override
@@ -45,7 +52,6 @@ public abstract class ElementPart extends AbstractGraphicalEditPart implements P
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		log.info(evt.toString());
 		if (evt.getPropertyName().equals(ElementModel.PROPERTY_LAYOUT)) {
 			refreshVisuals();
 		} else if (evt.getPropertyName().equals(ElementModel.PROPERTY_RENAME)) {
@@ -59,7 +65,7 @@ public abstract class ElementPart extends AbstractGraphicalEditPart implements P
 		} else if(evt.getPropertyName().equals(ActorModel.PARENT)) {
 			refreshVisuals();
 		} else {
+			log.info(evt.toString());
 		}
 	}
-
 }

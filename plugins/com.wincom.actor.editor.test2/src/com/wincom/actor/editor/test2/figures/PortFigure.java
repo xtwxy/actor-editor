@@ -1,53 +1,33 @@
 package com.wincom.actor.editor.test2.figures;
 
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.wincom.actor.editor.test2.parts.DummyLayout;
-
 public class PortFigure extends Figure {
+	public static final int PORT_FIGURE_DEFWIDTH = 32;
+	public static final int PORT_FIGURE_DEFHEIGHT = 24;
+
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-	Label contents;
+	Label nameLabel = new Label();
 
-	public PortFigure(IFigure header, IFigure footer) {
+	public PortFigure() {
 		log.info("check");
-		contents = new Label();
-		contents.setLayoutManager(new DummyLayout());
-		add(contents);
+		XYLayout layout = new XYLayout();
+		setLayoutManager(layout);
+		add(nameLabel);
 	}
 
-	public IFigure getContents() {
-		log.info("check");
-		return contents;
+	public void setName(String s) {
+		nameLabel.setText(s);
 	}
 
-	/**
-	 * @see org.eclipse.draw2d.Figure#getPreferredSize(int, int)
-	 */
-	public Dimension getPreferredSize(int wHint, int hHint) {
-		log.info("check");
-		Dimension dim = new Dimension();
-		dim.width += getInsets().getWidth();
-		dim.height = 50;
-		return dim;
+	public void setLayout(Rectangle rect) {
+		log.info(rect.toString());
+		getParent().setConstraint(this, rect);
 	}
-
-	public void setBounds(Rectangle rect) {
-		log.info("check");
-		super.setBounds(rect);
-		rect = Rectangle.SINGLETON;
-		getClientArea(rect);
-		contents.setBounds(rect);
-	}
-
-	public void setSelected(boolean value) {
-		log.info("check");
-	}
-
 }

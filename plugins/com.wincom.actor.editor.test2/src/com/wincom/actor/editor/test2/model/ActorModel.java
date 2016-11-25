@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
@@ -23,16 +24,13 @@ public class ActorModel extends ElementModel {
 	public static final String INPUT = "input";
 	public static final String OUTPUTS = "outputs";
 
-	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] {
-			new PropertyDescriptor(ID, ID), 
-			new TextPropertyDescriptor(NAME, NAME),
-			new PropertyDescriptor(PARENT, PARENT),
-			new PropertyDescriptor(INPUT, INPUT), 
-			new PropertyDescriptor(OUTPUTS, OUTPUTS) 
-		};
+	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] { new PropertyDescriptor(ID, ID),
+			new TextPropertyDescriptor(NAME, NAME), new PropertyDescriptor(PARENT, PARENT),
+			new PropertyDescriptor(INPUT, INPUT), new PropertyDescriptor(OUTPUTS, OUTPUTS) };
 
 	public ActorModel() {
 		log.info("new ActorModel()");
+		input = new ProvidedPortModel();
 	}
 
 	@Override
@@ -77,7 +75,7 @@ public class ActorModel extends ElementModel {
 		outputs = newOutputs;
 		firePropertyChange(OUTPUTS, old, newOutputs);
 	}
-	
+
 	public void addOutputs(PortModel port) {
 		setOutputs(port.getName(), port);
 	}
@@ -102,11 +100,11 @@ public class ActorModel extends ElementModel {
 
 	@Override
 	public Object getPropertyValue(Object id) {
-		if(ID.equals(id)) {
+		if (ID.equals(id)) {
 			return id;
-		} else if(INPUT.equals(id)) {
+		} else if (INPUT.equals(id)) {
 			return input;
-		} else if(OUTPUTS.equals(id)) {
+		} else if (OUTPUTS.equals(id)) {
 			return outputs;
 		}
 		return super.getPropertyValue(id);
@@ -125,14 +123,39 @@ public class ActorModel extends ElementModel {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void setPropertyValue(Object id, Object value) {
-		if(ID.equals(id)) {
+		if (ID.equals(id)) {
 			setId((String) value);
-		} else if(INPUT.equals(id)) {
+		} else if (INPUT.equals(id)) {
 			setInput((ProvidedPortModel) value);
-		} else if(OUTPUTS.equals(id)) {
+		} else if (OUTPUTS.equals(id)) {
 			setOutputs((Map<String, PortModel>) value);
 		} else {
 			super.setPropertyValue(id, value);
 		}
+	}
+
+	@Override
+	public Object clone() {
+		ActorModel model = new ActorModel();
+		model.setBackgroundColor(getBackgroundColor());
+		model.setForegroundColor(getForegroundColor());
+		model.setId(getId());
+		model.setInput(getInput());
+		model.setLayout(new Rectangle(getLayout().x + 10, getLayout().y + 10, getLayout().width, getLayout().height));
+		model.setName(getName());
+
+		Map<String, PortModel> outputs = new HashMap<>();
+		for (Map.Entry<String, PortModel> e : this.outputs.entrySet()) {
+			PortModel port = (PortModel) e.getValue().clone();
+			port.setLayout(e.getValue().getLayout());
+			outputs.put(e.getKey(), port);
+		}
+		;
+
+		model.setOutputs(outputs);
+		model.setParent(getParent());
+
+		return model;
+
 	}
 }

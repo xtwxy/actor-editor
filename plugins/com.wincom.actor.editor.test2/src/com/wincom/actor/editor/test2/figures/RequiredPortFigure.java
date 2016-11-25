@@ -8,8 +8,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.wincom.actor.editor.test2.parts.DummyLayout;
-
 public class RequiredPortFigure extends Figure {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -18,7 +16,6 @@ public class RequiredPortFigure extends Figure {
 	public RequiredPortFigure(IFigure header, IFigure footer) {
 		log.info("check");
 		contents = new Label();
-		contents.setLayoutManager(new DummyLayout());
 		add(contents);
 	}
 

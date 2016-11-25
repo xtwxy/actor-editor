@@ -64,6 +64,7 @@ public class ActorPart extends ElementPart {
 	
 	@Override
 	public List<ElementModel> getModelChildren() {
+		log.info("check");
 		return ((ActorModel) getModel()).getChildren();
 	}
 

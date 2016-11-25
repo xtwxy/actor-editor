@@ -1,55 +1,42 @@
 package com.wincom.actor.editor.test2.parts;
 
-import java.beans.PropertyChangeEvent;
-
-import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.gef.ConnectionEditPart;
-import org.eclipse.gef.NodeEditPart;
-import org.eclipse.gef.Request;
+import org.eclipse.gef.EditPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class ProvidedPortPart extends ElementPart implements NodeEditPart{
+import com.wincom.actor.editor.test2.figures.ProvidedPortFigure;
+import com.wincom.actor.editor.test2.model.ProvidedPortModel;
+import com.wincom.actor.editor.test2.policies.ActorEditLayoutPolicy;
+import com.wincom.actor.editor.test2.policies.AppRenamePolicy;
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class ProvidedPortPart extends ElementPart {
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected IFigure createFigure() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProvidedPortFigure();
+	}
+	
+	@Override
+	protected void refreshVisuals() {
+		log.info("check");
+		ProvidedPortFigure figure = (ProvidedPortFigure) getFigure();
+		ProvidedPortModel model = (ProvidedPortModel) getModel();
+		
+		figure.setName(model.getName());
+		
+		figure.setBackgroundColor(model.getBackgroundColor());
+		figure.setForegroundColor(model.getForegroundColor());
+		
+		figure.setLayout(model.getLayout());
 	}
 
 	@Override
 	protected void createEditPolicies() {
-		// TODO Auto-generated method stub
-		
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ActorEditLayoutPolicy());
+		//installEditPolicy(EditPolicy.COMPONENT_ROLE, new PortDeletePolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
 
 }

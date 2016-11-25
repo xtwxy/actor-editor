@@ -28,7 +28,9 @@ public class DiagramModel extends ElementModel {
 		return descriptors;
 	}
 
-	public DiagramModel() { 
+	public DiagramModel() {
+		this.aggregateId = "to be changed";
+		this.name = "to be changed";
 		log.info("new DiagramModel()");
 	}
 
@@ -94,6 +96,10 @@ public class DiagramModel extends ElementModel {
 	public void addChild(ElementModel model) {
 		this.children.add(model);
 		firePropertyChange(CHILDREN, null, model);
+	}
+
+	public boolean contains(ActorModel actor) {
+		return this.children.contains(actor);
 	}
 
 }

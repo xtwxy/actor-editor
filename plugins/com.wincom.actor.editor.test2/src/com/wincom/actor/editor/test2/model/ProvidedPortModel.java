@@ -3,6 +3,7 @@ package com.wincom.actor.editor.test2.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
@@ -23,6 +24,9 @@ public class ProvidedPortModel extends ElementModel {
 			new PropertyDescriptor(INPUTS, INPUTS)
 		};
 	
+	public ProvidedPortModel() {
+		setLayout(new Rectangle(10, 10, 100, 50));
+	}
 	@Override
 	public IPropertyDescriptor[] getPropertyDescriptors() {
 		return descriptors;

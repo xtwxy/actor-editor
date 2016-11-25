@@ -1,55 +1,38 @@
 package com.wincom.actor.editor.test2.parts;
 
-import java.beans.PropertyChangeEvent;
-
-import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.gef.ConnectionEditPart;
-import org.eclipse.gef.NodeEditPart;
-import org.eclipse.gef.Request;
+import org.eclipse.gef.EditPolicy;
 
-public class PortPart extends ElementPart implements NodeEditPart{
+import com.wincom.actor.editor.test2.figures.PortFigure;
+import com.wincom.actor.editor.test2.model.PortModel;
+import com.wincom.actor.editor.test2.policies.AppRenamePolicy;
+import com.wincom.actor.editor.test2.policies.PortDeletePolicy;
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connection) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class PortPart extends ElementPart {
 
 	@Override
 	protected IFigure createFigure() {
-		// TODO Auto-generated method stub
-		return null;
+		return new PortFigure();
+	}
+	@Override
+	protected void refreshVisuals() {
+		PortFigure figure = (PortFigure) getFigure();
+		PortModel model = (PortModel) getModel();
+		
+		figure.setName(model.getName());
+		
+		figure.setBackgroundColor(model.getBackgroundColor());
+		figure.setForegroundColor(model.getForegroundColor());
+		
+		figure.setLayout(model.getLayout());
 	}
 
 	@Override
 	protected void createEditPolicies() {
-		// TODO Auto-generated method stub
-		
+		//installEditPolicy(EditPolicy.LAYOUT_ROLE, new ActorEditLayoutPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new PortDeletePolicy());
+		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
+
 
 }

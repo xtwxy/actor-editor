@@ -51,4 +51,16 @@ public class PortModel extends ElementModel {
 	public List<ElementModel> getChildren() {
 		return new ArrayList<>();
 	}
+	
+	@Override
+	public Object clone() {
+		PortModel model = new PortModel();
+		model.setAssocInterface(getAssocInterface());
+		model.setBackgroundColor(getBackgroundColor());
+		model.setForegroundColor(getForegroundColor());
+		model.setLayout(getLayout());
+		model.setName(getName());
+		model.setParent(getParent());
+		return model;
+	}
 }

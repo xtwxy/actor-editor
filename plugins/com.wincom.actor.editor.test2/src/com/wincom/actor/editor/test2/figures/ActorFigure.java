@@ -14,7 +14,6 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LineBorder;
-import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Color;
@@ -28,8 +27,8 @@ import org.slf4j.LoggerFactory;
 public class ActorFigure extends Figure {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
-	public static final int ACTOR_FIGURE_DEFWIDTH = 0;
-	public static final int ACTOR_FIGURE_DEFHEIGHT = 0;
+	public static final int ACTOR_FIGURE_DEFWIDTH = 150;
+	public static final int ACTOR_FIGURE_DEFHEIGHT = 100;
 
 	private Label idLabel = new Label();
 	private Label nameLabel = new Label();
@@ -38,12 +37,12 @@ public class ActorFigure extends Figure {
 		XYLayout layout = new XYLayout();
 		setLayoutManager(layout);
 		
+		add(idLabel);
 		idLabel.setForegroundColor(ColorConstants.black);
-		add(idLabel, ToolbarLayout.ALIGN_TOPLEFT);
 		//setConstraint(id, new Rectangle(5, 17, -1, -1));	
 		
+		add(nameLabel);
 		nameLabel.setForegroundColor(ColorConstants.darkGray);
-		add(nameLabel, ToolbarLayout.ALIGN_CENTER);
 		
 		setForegroundColor(new Color(null, (new Double(Math.random() * 128)).intValue(),
 				(new Double(Math.random() * 128)).intValue(), (new Double(Math.random() * 128)).intValue()));
