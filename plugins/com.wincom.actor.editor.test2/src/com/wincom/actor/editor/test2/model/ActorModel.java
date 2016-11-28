@@ -23,12 +23,16 @@ public class ActorModel extends ElementModel {
 	public static final String INPUT = "input";
 	public static final String OUTPUTS = "outputs";
 
-	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] { new PropertyDescriptor(ID, ID),
-			new TextPropertyDescriptor(NAME, NAME), new PropertyDescriptor(PARENT, PARENT),
-			new PropertyDescriptor(INPUT, INPUT), new PropertyDescriptor(OUTPUTS, OUTPUTS) };
+	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] { 
+			new TextPropertyDescriptor(ID, ID),
+			new TextPropertyDescriptor(NAME, NAME),
+			new PropertyDescriptor(PARENT, PARENT),
+			new PropertyDescriptor(INPUT, INPUT), 
+			new PropertyDescriptor(OUTPUTS, OUTPUTS) };
 
 	public ActorModel() {
 		log.info("new ActorModel()");
+		setId("id");
 		setName("actor");
 		input = new PortModel();
 		input.setName(INPUT);
@@ -42,6 +46,57 @@ public class ActorModel extends ElementModel {
 			outputs.add(output);
 		}
 	}
+	
+	@Override
+	public void setLayout(Rectangle newLayout) {
+		log.info("check");
+		super.setLayout(newLayout);
+		layoutChildren(newLayout);
+	}
+	
+	public void layoutChildren() {
+		layoutChildren(getLayout());
+	}
+
+	public void layoutChildren(Rectangle newLayout) {
+		int P = 0;
+		int W = newLayout.width;
+		int H = newLayout.height;
+		layoutInput(P, H);
+	
+		layoutOutputs(P, W, H);
+	}
+
+	private void layoutInput(int P, int H) {
+		int h = input.getLayout().height;
+		int w = input.getLayout().width;
+		int x = 0;
+		int y = (H - 2*P)/2 + P - h/2;
+		input.setLayout(new Rectangle(x, y, w, h));
+	}
+
+	public void layoutOutputs() {
+		int P = 0;
+		int W = getLayout().width;
+		int H = getLayout().height;
+		layoutOutputs(P, W, H);
+	}
+	
+	private void layoutOutputs(int P, int W, int H) {
+		int h;
+		int w;
+		int x;
+		int y;
+		final int N = outputs.size();
+		for(int i = 0; i < N; ++i) {
+			PortModel out = outputs.get(i);
+			h = out.getLayout().height;
+			w = out.getLayout().width;
+			x = W - w;
+			y = (H - 2*P)/(N + 1) * (i + 1) + P - h/2;
+			out.setLayout(new Rectangle(x, y, w, h));
+		}
+	}
 
 	@Override
 	public IPropertyDescriptor[] getPropertyDescriptors() {
@@ -52,8 +107,10 @@ public class ActorModel extends ElementModel {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String newId) {
+		String old = id;
+		this.id = newId;
+		firePropertyChange(ID, old, newId);
 	}
 
 	public PortModel getInput() {
@@ -79,6 +136,7 @@ public class ActorModel extends ElementModel {
 			old.setParent(null);
 		}
 		this.outputs.remove(port);
+		layoutOutputs();
 		firePropertyChange(OUTPUTS, old, null);
 	}
 
@@ -95,6 +153,7 @@ public class ActorModel extends ElementModel {
 	public void addOutputs(PortModel port) {
 		port.setParent(this);
 		outputs.add(port);
+		layoutOutputs();
 		firePropertyChange(OUTPUTS, null, port);
 	}
 

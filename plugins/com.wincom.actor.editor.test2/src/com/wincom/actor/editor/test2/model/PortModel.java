@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.wincom.actor.editor.test2.figures.PortFigure;
 
 public class PortModel extends ElementModel {
 	private static final long serialVersionUID = 2969510135967969883L;
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	private ConnectionModel assocInterface;
 	public static final String INTERFACE = "interface";
 
@@ -18,6 +21,11 @@ public class PortModel extends ElementModel {
 	}
 	public ConnectionModel getAssocInterface() {
 		return assocInterface;
+	}
+	
+	public void setLayout(Rectangle newLayout) {
+		log.info("check");
+		super.setLayout(newLayout);
 	}
 
 	public void setAssocInterface(ConnectionModel newInterface) {

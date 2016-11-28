@@ -9,15 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.wincom.actor.editor.test2.commands.AbstractLayoutCommand;
-import com.wincom.actor.editor.test2.commands.PortChangeLayoutCommand;
 import com.wincom.actor.editor.test2.commands.PortCreateCommand;
-import com.wincom.actor.editor.test2.commands.ProvidedPortChangeLayoutCommand;
 import com.wincom.actor.editor.test2.figures.PortFigure;
 import com.wincom.actor.editor.test2.model.ActorModel;
 import com.wincom.actor.editor.test2.model.PortModel;
 import com.wincom.actor.editor.test2.parts.ActorPart;
-import com.wincom.actor.editor.test2.parts.PortPart;
-import com.wincom.actor.editor.test2.parts.ProvidedPortPart;
 
 public class ActorEditLayoutPolicy extends XYLayoutEditPolicy {
 	Logger log = LoggerFactory.getLogger(this.getClass());
@@ -44,15 +40,15 @@ public class ActorEditLayoutPolicy extends XYLayoutEditPolicy {
 	protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
 		log.info("child = " + child + ", constraint = " + constraint);
 		AbstractLayoutCommand command = null;
-		if (child instanceof PortPart) {
-			command = new PortChangeLayoutCommand();
-		} else if (child instanceof ProvidedPortPart) {
-			command = new ProvidedPortChangeLayoutCommand();
-		} else {
-			return command;
-		}
-		command.setModel(child.getModel());
-		command.setConstraint((Rectangle) constraint);
+//		if (child instanceof PortPart) {
+//			command = new PortChangeLayoutCommand();
+//		} else if (child instanceof ProvidedPortPart) {
+//			command = new ProvidedPortChangeLayoutCommand();
+//		} else {
+//			return command;
+//		}
+//		command.setModel(child.getModel());
+//		command.setConstraint((Rectangle) constraint);
 		return command;
 	}
 }

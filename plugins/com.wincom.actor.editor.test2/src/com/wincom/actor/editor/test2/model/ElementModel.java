@@ -115,10 +115,10 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 		listeners.removePropertyChangeListener(l);
 	}
 	
-	public void setName(String name) {
+	public void setName(String newName) {
 		String oldName = this.name;
-		this.name = name;
-		listeners.firePropertyChange(PROPERTY_RENAME, oldName, this.name);
+		this.name = newName;
+		listeners.firePropertyChange(PROPERTY_RENAME, oldName, newName);
 	}
 
 	public String getName() {

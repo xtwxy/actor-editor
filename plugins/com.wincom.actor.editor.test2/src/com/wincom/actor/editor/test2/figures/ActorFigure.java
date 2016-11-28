@@ -27,8 +27,8 @@ import org.slf4j.LoggerFactory;
 public class ActorFigure extends Figure {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
-	public static final int ACTOR_FIGURE_DEFWIDTH = 150;
-	public static final int ACTOR_FIGURE_DEFHEIGHT = 100;
+	public static final int ACTOR_FIGURE_DEFWIDTH = 250;
+	public static final int ACTOR_FIGURE_DEFHEIGHT = 150;
 
 	private Label idLabel = new Label();
 	private Label nameLabel = new Label();
@@ -39,11 +39,11 @@ public class ActorFigure extends Figure {
 		
 		add(idLabel);
 		idLabel.setForegroundColor(ColorConstants.black);
-		setConstraint(idLabel, new Rectangle(5, 50, -1, -1));
+		setConstraint(idLabel, new Rectangle(5, 5, -1, -1));
 		
 		add(nameLabel);
 		nameLabel.setForegroundColor(ColorConstants.darkGray);
-		setConstraint(nameLabel, new Rectangle(5, 67, -1, -1));	
+		setConstraint(nameLabel, new Rectangle(5, 24, -1, -1));	
 		
 		setForegroundColor(new Color(null, (new Double(Math.random() * 128)).intValue(),
 				(new Double(Math.random() * 128)).intValue(), (new Double(Math.random() * 128)).intValue()));
