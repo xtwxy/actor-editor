@@ -30,8 +30,9 @@ public class AppContextMenuProvider extends ContextMenuProvider {
 		menu.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
 		action = getActionRegistry().getAction(ActionFactory.REDO.getId());
 		menu.appendToGroup(GEFActionConstants.GROUP_UNDO, action);
-		if (action.isEnabled())
+		
 		action = getActionRegistry().getAction(ActionFactory.DELETE.getId());
+		if (action.isEnabled())
 		menu.appendToGroup(GEFActionConstants.GROUP_EDIT, action);
 		
 		action = getActionRegistry().getAction(ActionFactory.RENAME.getId());
