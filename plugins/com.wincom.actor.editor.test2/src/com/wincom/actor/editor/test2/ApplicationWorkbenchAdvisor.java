@@ -31,7 +31,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
     	log.info("check");
 		try {
 			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-			page.openEditor(new MyEditorInput("TutoGEF"), Test2Editor.ID, false);
+			page.openEditor(new MyEditorInput("Configuration Editor"), Test2Editor.ID, false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

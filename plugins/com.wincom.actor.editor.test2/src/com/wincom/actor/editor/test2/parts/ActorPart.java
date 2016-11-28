@@ -12,6 +12,7 @@ import com.wincom.actor.editor.test2.figures.ActorFigure;
 import com.wincom.actor.editor.test2.model.ActorModel;
 import com.wincom.actor.editor.test2.model.ElementModel;
 import com.wincom.actor.editor.test2.policies.ActorEditLayoutPolicy;
+import com.wincom.actor.editor.test2.policies.AppDeletePolicy;
 import com.wincom.actor.editor.test2.policies.AppRenamePolicy;
 import com.wincom.actor.editor.test2.policies.PortDeletePolicy;
 
@@ -45,6 +46,7 @@ public class ActorPart extends ElementPart {
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new ActorEditLayoutPolicy());
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new PortDeletePolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new AppDeletePolicy());
 		installEditPolicy(EditPolicy.NODE_ROLE, new AppRenamePolicy());
 	}
 	

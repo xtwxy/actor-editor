@@ -11,10 +11,13 @@ import org.slf4j.LoggerFactory;
 import com.wincom.actor.editor.test2.commands.AbstractLayoutCommand;
 import com.wincom.actor.editor.test2.commands.ActorChangeLayoutCommand;
 import com.wincom.actor.editor.test2.commands.ActorCreateCommand;
+import com.wincom.actor.editor.test2.commands.PortCreateCommand;
 import com.wincom.actor.editor.test2.commands.ProvidedPortChangeLayoutCommand;
 import com.wincom.actor.editor.test2.figures.ActorFigure;
+import com.wincom.actor.editor.test2.figures.PortFigure;
 import com.wincom.actor.editor.test2.model.ActorModel;
 import com.wincom.actor.editor.test2.model.DiagramModel;
+import com.wincom.actor.editor.test2.model.PortModel;
 import com.wincom.actor.editor.test2.parts.ActorPart;
 import com.wincom.actor.editor.test2.parts.ConnectionPart;
 import com.wincom.actor.editor.test2.parts.DiagramPart;
@@ -41,6 +44,23 @@ public class AppEditLayoutPolicy extends XYLayoutEditPolicy {
 			constraint.y = (constraint.y < 0) ? 0 : constraint.y;
 			constraint.width = (constraint.width <= 0) ? ActorFigure.ACTOR_FIGURE_DEFWIDTH : constraint.width;
 			constraint.height = (constraint.height <= 0) ? ActorFigure.ACTOR_FIGURE_DEFHEIGHT : constraint.height;
+			cmd.setLayout(constraint);
+			return cmd;
+		} else if (request.getType() == REQ_CREATE && getHost() instanceof ActorPart) {
+			PortCreateCommand cmd = new PortCreateCommand();
+			cmd.setActor((ActorModel) getHost().getModel());
+
+			Object newObject = request.getNewObject();
+			if(newObject instanceof PortModel) {
+				cmd.setPort((PortModel) newObject);
+			}
+
+			Rectangle constraint = (Rectangle) getConstraintFor(request);
+			constraint.x = (constraint.x < 0) ? 0 : constraint.x;
+			constraint.y = (constraint.y < 0) ? 0 : constraint.y;
+			constraint.width = (constraint.width <= 0) ? PortFigure.PORT_FIGURE_DEFWIDTH : constraint.width;
+			constraint.height = (constraint.height <= 0) ? PortFigure.PORT_FIGURE_DEFHEIGHT : constraint.height;
+			log.info("port width = " + constraint.width + ", height = " + constraint.height);
 			cmd.setLayout(constraint);
 			return cmd;
 		} else if (request.getType() == REQ_CREATE && getHost() instanceof ConnectionPart) {

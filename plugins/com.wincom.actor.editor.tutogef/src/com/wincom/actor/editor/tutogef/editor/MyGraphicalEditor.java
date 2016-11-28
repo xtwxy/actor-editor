@@ -225,7 +225,7 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		zoomContributions.add(ZoomManager.FIT_WIDTH);
 		manager.setZoomLevelContributions(zoomContributions);
 
-		KeyHandler keyHandler = new KeyHandler();
+		keyHandler = new KeyHandler();
 		keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0),
 				getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 		keyHandler.put(KeyStroke.getPressed('+', SWT.KEYPAD_ADD, 0),

@@ -5,11 +5,11 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            name="Test2 Wizards"
+            name="Configuration Wizards"
             id="com.wincom.actor.editor.test2">
       </category>
       <wizard
-            name="Test2 Editor file"
+            name="Configuration Editor file"
             icon="icons/sample.gif"
             category="com.wincom.actor.editor.test2"
             class="com.wincom.actor.editor.test2.wizards.SampleNewWizard"
@@ -23,7 +23,7 @@
             id="com.wincom.actor.editor.test2">
       </category>
       <view
-            name="Test2 View"
+            name="Configuration View"
             icon="icons/sample.gif"
             category="com.wincom.actor.editor.test2"
             class="com.wincom.actor.editor.test2.views.Test2Viewer"
@@ -57,7 +57,7 @@
             extensions="mpe"
             icon="icons/sample.gif"
             id="com.wincom.actor.editor.test2.editor1"
-            name="Test2 Editor">
+            name="Configuration Editor">
       </editor>
    </extension>
    <extension

@@ -19,7 +19,10 @@ public class AppDeletePolicy extends ComponentEditPolicy {
 	@Override
 	protected Command createDeleteCommand(GroupRequest deleteRequest) {
 		Object parent = getHost().getParent().getModel();
+		Object host = getHost().getModel();
+		
 		log.info(parent.toString());
+		log.info(host.toString());
 		if (parent instanceof DiagramModel) {
 			DeleteCommand command = new DeleteCommand();
 			command.setModel((ElementModel) getHost().getModel());
