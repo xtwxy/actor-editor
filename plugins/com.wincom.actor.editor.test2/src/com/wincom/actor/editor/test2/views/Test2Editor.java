@@ -61,6 +61,8 @@ import com.wincom.actor.editor.test2.parts.ActorEditPartFactory;
 import com.wincom.actor.editor.test2.parts.tree.ActorTreeEditPartFactory;
 
 public class Test2Editor extends GraphicalEditorWithPalette {
+	public static final String ID = "com.wincom.actor.editor.test2.editor1";
+
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	DiagramModel diagram;

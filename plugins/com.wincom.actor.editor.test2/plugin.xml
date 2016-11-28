@@ -60,5 +60,14 @@
             name="Test2 Editor">
       </editor>
    </extension>
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.wincom.actor.editor.test2.Application">
+         </run>
+      </application>
+   </extension>
 
 </plugin>

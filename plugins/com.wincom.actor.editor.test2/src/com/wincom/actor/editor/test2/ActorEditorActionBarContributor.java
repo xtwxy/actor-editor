@@ -31,6 +31,7 @@ public class ActorEditorActionBarContributor extends ActionBarContributor {
 		addRetargetAction((RetargetAction)ActionFactory.RENAME.create(iww));
 		addRetargetAction((RetargetAction)ActionFactory.COPY.create(iww));
 		addRetargetAction((RetargetAction)ActionFactory.PASTE.create(iww));
+		addRetargetAction((RetargetAction)ActionFactory.DELETE.create(iww));
 	}
 
 	@Override

@@ -23,7 +23,12 @@ public class ActorEditLayoutPolicy extends XYLayoutEditPolicy {
 		if (request.getType() == REQ_CREATE && getHost() instanceof ActorPart) {
 			PortCreateCommand cmd = new PortCreateCommand();
 			cmd.setActor((ActorModel) getHost().getModel());
-			cmd.setPort((PortModel) request.getNewObject());
+
+			Object newObject = request.getNewObject();
+			if(newObject instanceof PortModel) {
+				cmd.setPort((PortModel) newObject);
+			}
+
 			Rectangle constraint = (Rectangle) getConstraintFor(request);
 			constraint.x = (constraint.x < 0) ? 0 : constraint.x;
 			constraint.y = (constraint.y < 0) ? 0 : constraint.y;
