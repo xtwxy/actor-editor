@@ -3,11 +3,19 @@ package com.wincom.actor.editor.test2.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.wincom.actor.editor.test2.figures.PortFigure;
+
 public class PortModel extends ElementModel {
 	private static final long serialVersionUID = 2969510135967969883L;
 	private ConnectionModel assocInterface;
 	public static final String INTERFACE = "interface";
 
+	public PortModel() {
+		setName("new port");
+		setLayout(new Rectangle(10, 10, PortFigure.PORT_FIGURE_DEFWIDTH, PortFigure.PORT_FIGURE_DEFHEIGHT));
+	}
 	public ConnectionModel getAssocInterface() {
 		return assocInterface;
 	}

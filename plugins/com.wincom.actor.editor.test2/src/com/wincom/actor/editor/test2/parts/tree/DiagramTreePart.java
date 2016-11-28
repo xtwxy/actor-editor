@@ -32,7 +32,7 @@ public class DiagramTreePart extends ElementTreeEditPart {
 		if (evt.getPropertyName().equals(DiagramModel.AGGREGATE_ID)) {
 			refreshVisuals();
 		} else if(evt.getPropertyName().equals(DiagramModel.CHILDREN)) {
-			refreshVisuals();
+			refreshChildren();
 		} else {
 			super.propertyChange(evt);
 		}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
+import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ public class DiagramModel extends ElementModel {
 	private static final IPropertyDescriptor[] descriptors = new IPropertyDescriptor[] {
 			new TextPropertyDescriptor(AGGREGATE_ID, AGGREGATE_ID),
 			new TextPropertyDescriptor(NAME, NAME),
-			new TextPropertyDescriptor(PARENT, PARENT),
+			new PropertyDescriptor(PARENT, PARENT),
 			new TextPropertyDescriptor(CHILDREN, CHILDREN)
 		};
 	
@@ -95,6 +96,7 @@ public class DiagramModel extends ElementModel {
 
 	public void addChild(ElementModel model) {
 		this.children.add(model);
+		model.setParent(this);
 		firePropertyChange(CHILDREN, null, model);
 	}
 

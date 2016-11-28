@@ -25,7 +25,7 @@ public class DiagramFigure extends Figure {
 		
 		add(aggregateIdLabel);
 		aggregateIdLabel.setForegroundColor(ColorConstants.blue);
-		setConstraint(aggregateIdLabel, new Rectangle(5, 18, -1, -1));
+		setConstraint(aggregateIdLabel, new Rectangle(5, 24, -1, -1));
 	}
 
 	public void setLayout(Rectangle rect) {

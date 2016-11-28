@@ -31,7 +31,10 @@ public class AppEditLayoutPolicy extends XYLayoutEditPolicy {
 		if (request.getType() == REQ_CREATE && getHost() instanceof DiagramPart) {
 			ActorCreateCommand cmd = new ActorCreateCommand();
 			cmd.setDiagram((DiagramModel) getHost().getModel());
-			cmd.setActor((ActorModel) request.getNewObject());
+			Object newObject = request.getNewObject();
+			if(newObject instanceof ActorModel) {
+				cmd.setActor((ActorModel) newObject);
+			}
 			
 			Rectangle constraint = (Rectangle) getConstraintFor(request);
 			constraint.x = (constraint.x < 0) ? 0 : constraint.x;

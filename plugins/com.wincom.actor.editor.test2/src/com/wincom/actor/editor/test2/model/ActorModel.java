@@ -1,9 +1,8 @@
 package com.wincom.actor.editor.test2.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
@@ -17,8 +16,8 @@ public class ActorModel extends ElementModel {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private String id;
-	private ProvidedPortModel input;
-	private Map<String, PortModel> outputs = new HashMap<>();
+	private PortModel input;
+	private List<PortModel> outputs = new ArrayList<>();
 
 	public static final String ID = "id";
 	public static final String INPUT = "input";
@@ -30,7 +29,18 @@ public class ActorModel extends ElementModel {
 
 	public ActorModel() {
 		log.info("new ActorModel()");
-		input = new ProvidedPortModel();
+		setName("actor");
+		input = new PortModel();
+		input.setName(INPUT);
+		input.setParent(this);
+		
+		for(int i = 0; i < 3; ++i) {
+			PortModel output = new PortModel();
+			String outName = "output-" + (i + 1);
+			output.setName(outName);
+			output.setParent(this);
+			outputs.add(output);
+		}
 	}
 
 	@Override
@@ -46,55 +56,57 @@ public class ActorModel extends ElementModel {
 		this.id = id;
 	}
 
-	public ProvidedPortModel getInput() {
+	public PortModel getInput() {
 		return input;
 	}
 
-	public void setInput(ProvidedPortModel port) {
-		ProvidedPortModel old = this.input;
+	public void setInput(PortModel port) {
+		PortModel old = this.input;
 		this.input = port;
+		port.setParent(this);
 		firePropertyChange(INPUT, old, port);
 	}
 
-	public PortModel getOutput(String name) {
-		return outputs.get(name);
+	private PortModel findOutput(String name) {
+		List<PortModel> l = outputs.stream().filter(x -> x.name.equals(name)).collect(Collectors.toList());
+		return l.isEmpty() ? null : l.get(0);
 	}
-
+	
 	public void removeOutput(PortModel port) {
-		PortModel old = this.outputs.get(name);
-		this.outputs.remove(name);
+		PortModel old = findOutput(port.name);
+		
+		if(old != null) {
+			old.setParent(null);
+		}
+		this.outputs.remove(port);
 		firePropertyChange(OUTPUTS, old, null);
 	}
 
-	public Map<String, PortModel> getOutputs() {
+	public List<PortModel> getOutputs() {
 		return outputs;
 	}
 
-	public void setOutputs(Map<String, PortModel> newOutputs) {
-		Map<String, PortModel> old = outputs;
+	public void setOutputs(List<PortModel> newOutputs) {
+		List<PortModel> old = outputs;
 		outputs = newOutputs;
 		firePropertyChange(OUTPUTS, old, newOutputs);
 	}
 
 	public void addOutputs(PortModel port) {
-		setOutputs(port.getName(), port);
+		port.setParent(this);
+		outputs.add(port);
+		firePropertyChange(OUTPUTS, null, port);
 	}
 
 	public boolean contains(PortModel port) {
-		return getOutput(port.getName()) != null;
-	}
-
-	public void setOutputs(String name, PortModel port) {
-		PortModel old = this.outputs.get(name);
-		this.outputs.put(name, port);
-		firePropertyChange(OUTPUTS, old, port);
+		return this.outputs.contains(port);
 	}
 
 	@Override
 	public List<ElementModel> getChildren() {
 		List<ElementModel> children = new ArrayList<>();
 		children.add(input);
-		children.addAll(outputs.values());
+		children.addAll(outputs);
 		return children;
 	}
 
@@ -126,9 +138,9 @@ public class ActorModel extends ElementModel {
 		if (ID.equals(id)) {
 			setId((String) value);
 		} else if (INPUT.equals(id)) {
-			setInput((ProvidedPortModel) value);
+			setInput((PortModel) value);
 		} else if (OUTPUTS.equals(id)) {
-			setOutputs((Map<String, PortModel>) value);
+			setOutputs((List<PortModel>) value);
 		} else {
 			super.setPropertyValue(id, value);
 		}
@@ -144,13 +156,12 @@ public class ActorModel extends ElementModel {
 		model.setLayout(new Rectangle(getLayout().x + 10, getLayout().y + 10, getLayout().width, getLayout().height));
 		model.setName(getName());
 
-		Map<String, PortModel> outputs = new HashMap<>();
-		for (Map.Entry<String, PortModel> e : this.outputs.entrySet()) {
-			PortModel port = (PortModel) e.getValue().clone();
-			port.setLayout(e.getValue().getLayout());
-			outputs.put(e.getKey(), port);
+		List<PortModel> outputs = new ArrayList<>();
+		for (PortModel e : this.outputs) {
+			PortModel port = (PortModel) e.clone();
+			port.setLayout(e.getLayout());
+			outputs.add(port);
 		}
-		;
 
 		model.setOutputs(outputs);
 		model.setParent(getParent());

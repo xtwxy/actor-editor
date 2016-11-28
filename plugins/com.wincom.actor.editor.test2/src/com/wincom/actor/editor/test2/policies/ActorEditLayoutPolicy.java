@@ -33,6 +33,7 @@ public class ActorEditLayoutPolicy extends XYLayoutEditPolicy {
 			constraint.y = (constraint.y < 0) ? 0 : constraint.y;
 			constraint.width = (constraint.width <= 0) ? PortFigure.PORT_FIGURE_DEFWIDTH : constraint.width;
 			constraint.height = (constraint.height <= 0) ? PortFigure.PORT_FIGURE_DEFHEIGHT : constraint.height;
+			log.info("port width = " + constraint.width + ", height = " + constraint.height);
 			cmd.setLayout(constraint);
 			return cmd;
 		}

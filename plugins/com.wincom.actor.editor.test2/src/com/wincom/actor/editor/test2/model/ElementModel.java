@@ -90,6 +90,11 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 
 	public ElementModel() { 
 		log.info("new ElementModel()");
+		setForegroundColor(new Color(null, (new Double(Math.random() * 128)).intValue(),
+				(new Double(Math.random() * 128)).intValue(), (new Double(Math.random() * 128)).intValue()));
+		setBackgroundColor(new Color(null, (new Double(Math.random() * 128)).intValue() + 128,
+				(new Double(Math.random() * 128)).intValue() + 128,
+				(new Double(Math.random() * 128)).intValue() + 128));
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener l) {

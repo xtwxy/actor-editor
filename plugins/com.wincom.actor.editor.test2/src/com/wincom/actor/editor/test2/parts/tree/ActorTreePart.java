@@ -1,5 +1,6 @@
 package com.wincom.actor.editor.test2.parts.tree;
 
+import java.beans.PropertyChangeEvent;
 import java.util.List;
 
 import org.eclipse.gef.EditPolicy;
@@ -32,6 +33,20 @@ public class ActorTreePart extends ElementTreeEditPart {
 	@Override
 	public List<ElementModel> getModelChildren() {
 		return ((ActorModel) getModel()).getChildren();
+	}
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		log.info(evt.toString());
+		if (evt.getPropertyName().equals(ActorModel.ID)) {
+			refreshVisuals();
+		} else if(evt.getPropertyName().equals(ActorModel.INPUT)) {
+			refreshVisuals();
+		} else if(evt.getPropertyName().equals(ActorModel.OUTPUTS)) {
+			refreshChildren();
+		} else {
+			super.propertyChange(evt);
+		}
 	}
 
 }

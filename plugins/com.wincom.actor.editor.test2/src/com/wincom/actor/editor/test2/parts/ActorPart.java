@@ -29,7 +29,7 @@ public class ActorPart extends ElementPart {
 		} else if(evt.getPropertyName().equals(ActorModel.INPUT)) {
 			refreshVisuals();
 		} else if(evt.getPropertyName().equals(ActorModel.OUTPUTS)) {
-			refreshVisuals();
+			refreshChildren();
 		} else {
 			super.propertyChange(evt);
 		}
