@@ -13,8 +13,14 @@ public class PortModel extends ElementModel {
 	private static final long serialVersionUID = 2969510135967969883L;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	private ConnectionModel assocInterface;
+	private List<ConnectionModel> incomingConnections;
+	private List<ConnectionModel> outgoingConnections;
+	
 	public static final String INTERFACE = "interface";
+	public static final String INPUTS = "inputs";
+	public static final String OUTPUTS = "outputs";
 
+	
 	public PortModel() {
 		setName("new port");
 		setLayout(new Rectangle(10, 10, PortFigure.PORT_FIGURE_DEFWIDTH, PortFigure.PORT_FIGURE_DEFHEIGHT));
@@ -68,6 +74,42 @@ public class PortModel extends ElementModel {
 		return new ArrayList<>();
 	}
 	
+	public List<ConnectionModel> getIncomingConnections() {
+		return incomingConnections;
+	}
+
+	public void setIncomingConnections(List<ConnectionModel> incomingConnections) {
+		this.incomingConnections = incomingConnections;
+	}
+
+	public List<ConnectionModel> getOutgoingConnections() {
+		return outgoingConnections;
+	}
+
+	public void setOutgoingConnections(List<ConnectionModel> outgoingConnections) {
+		this.outgoingConnections = outgoingConnections;
+	}
+
+	public void addOutput(ConnectionModel connection) {
+		this.outgoingConnections.add(connection);
+		fireStructureChange(OUTPUTS, connection);
+	}
+
+	public void addInput(ConnectionModel connection) {
+		this.incomingConnections.add(connection);
+		fireStructureChange(INPUTS, connection);
+	}
+
+	public void removeOutput(ConnectionModel connection) {
+		this.outgoingConnections.remove(connection);
+		fireStructureChange(OUTPUTS, connection);
+	}
+
+	public void removeInput(ConnectionModel connection) {
+		this.incomingConnections.remove(connection);
+		fireStructureChange(INPUTS, connection);
+	}
+
 	@Override
 	public Object clone() {
 		PortModel model = new PortModel();
