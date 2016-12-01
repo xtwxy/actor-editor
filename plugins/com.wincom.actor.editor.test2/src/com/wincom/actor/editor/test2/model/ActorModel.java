@@ -32,8 +32,8 @@ public class ActorModel extends ElementModel {
 
 	public ActorModel() {
 		log.info("new ActorModel()");
-		setId("id");
-		setName("actor");
+		setId("id-" + Double.valueOf(Math.random() * 1000).intValue());
+		setName("actor-" + Double.valueOf(Math.random() * 1000).intValue());
 		input = new PortModel();
 		input.setName(INPUT);
 		input.setParent(this);

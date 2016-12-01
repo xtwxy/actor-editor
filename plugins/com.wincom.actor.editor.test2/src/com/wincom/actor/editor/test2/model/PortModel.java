@@ -24,6 +24,8 @@ public class PortModel extends ElementModel {
 	public PortModel() {
 		setName("new port");
 		setLayout(new Rectangle(10, 10, PortFigure.PORT_FIGURE_DEFWIDTH, PortFigure.PORT_FIGURE_DEFHEIGHT));
+		incomingConnections = new ArrayList<>();
+		outgoingConnections = new ArrayList<>();
 	}
 	public ConnectionModel getAssocInterface() {
 		return assocInterface;

@@ -18,6 +18,7 @@ import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.palette.CombinedTemplateCreationEntry;
+import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.MarqueeToolEntry;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteGroup;
@@ -102,13 +103,11 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 				}
 			};
 			getGraphicalViewer().getControl().addDisposeListener(disposeListener);
-			
+
 			IActionBars bars = getSite().getActionBars();
 			ActionRegistry ar = getActionRegistry();
-			bars.setGlobalActionHandler(ActionFactory.COPY.getId(),
-			ar.getAction(ActionFactory.COPY.getId()));
-			bars.setGlobalActionHandler(ActionFactory.PASTE.getId(),
-			ar.getAction(ActionFactory.PASTE.getId()));
+			bars.setGlobalActionHandler(ActionFactory.COPY.getId(), ar.getAction(ActionFactory.COPY.getId()));
+			bars.setGlobalActionHandler(ActionFactory.PASTE.getId(), ar.getAction(ActionFactory.PASTE.getId()));
 		}
 
 		public void init(IPageSite pageSite) {
@@ -153,26 +152,29 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 		SelectionToolEntry selectionToolEntry = new SelectionToolEntry();
 		manipGroup.add(selectionToolEntry);
 		manipGroup.add(new MarqueeToolEntry());
+
+		manipGroup.add(new ConnectionCreationToolEntry("Connection Creation", "Creating connections", null,
+				AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/connection16.gif"),
+				AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/connection16.gif")));
+
 		root.setDefaultEntry(selectionToolEntry);
 
 		PaletteDrawer drawer = new PaletteDrawer("Components", null);
 
 		PaletteSeparator sep2 = new PaletteSeparator();
 		drawer.add(sep2);
-		
-		drawer.add(
-				new CombinedTemplateCreationEntry("Component", "Create Component", new ElementCreationFactory(ActorModel.class),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component-low.gif"),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component-high.gif")));
-		drawer.add(
-				new CombinedTemplateCreationEntry("Port", "Create Port", new ElementCreationFactory(PortModel.class),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/port-low.gif"),
-						AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/port-high.gif")));
+
+		drawer.add(new CombinedTemplateCreationEntry("Component", "Create Component",
+				new ElementCreationFactory(ActorModel.class),
+				AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component-low.gif"),
+				AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component-high.gif")));
+		drawer.add(new CombinedTemplateCreationEntry("Port", "Create Port", new ElementCreationFactory(PortModel.class),
+				AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/port-low.gif"),
+				AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/port-high.gif")));
 		root.add(drawer);
 		log.info("components added.");
 		return root;
 	}
-
 
 	@Override
 	protected void configureGraphicalViewer() {
@@ -210,9 +212,8 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 
 		ContextMenuProvider provider = new ActorContextMenuProvider(viewer, getActionRegistry());
 		viewer.setContextMenu(provider);
-		
-		getPaletteViewer().addDragSourceListener(
-				new TemplateTransferDragSourceListener(getPaletteViewer()));
+
+		getPaletteViewer().addDragSourceListener(new TemplateTransferDragSourceListener(getPaletteViewer()));
 	}
 
 	@Override
@@ -220,7 +221,7 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 		GraphicalViewer viewer = getGraphicalViewer();
 		diagram = createDiagram();
 		viewer.setContents(diagram);
-		
+
 		viewer.addDropTargetListener(new MyTemplateTransferDropTargetListener(viewer));
 	}
 
@@ -251,15 +252,15 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 	public void createActions() {
 		super.createActions();
 		ActionRegistry registry = getActionRegistry();
-		
+
 		IAction action = new RenameAction(this);
 		registry.registerAction(action);
 		getSelectionActions().add(action.getId());
-		
+
 		action = new CopyElementAction(this);
 		registry.registerAction(action);
 		getSelectionActions().add(action.getId());
-		
+
 		action = new PasteElementAction(this);
 		registry.registerAction(action);
 		getSelectionActions().add(action.getId());

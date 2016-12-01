@@ -23,11 +23,16 @@ public class ConnectionModel extends ElementModel {
 			new TextPropertyDescriptor(SOURCE, SOURCE)
 	};
 
-	private ElementModel source;
-	private ElementModel target;
+	private PortModel source;
+	private PortModel target;
 	
-	public ConnectionModel() { 
+	public ConnectionModel(PortModel source, PortModel target) { 
 		log.info("new ConnectionModel()");
+		this.source = source;
+		this.target = target;
+		
+		source.addOutput(this);
+		target.addInput(this);
 	}
 	
 	@Override
@@ -35,22 +40,22 @@ public class ConnectionModel extends ElementModel {
 		return descriptors;
 	}
 
-	public ElementModel getSource() {
+	public PortModel getSource() {
 		return source;
 	}
 
-	public void setSource(ElementModel newSource) {
-		ElementModel old = source;
+	public void setSource(PortModel newSource) {
+		PortModel old = source;
 		this.source = newSource;
 		firePropertyChange(SOURCE, old, newSource);
 	}
 
-	public ElementModel getTarget() {
+	public PortModel getTarget() {
 		return target;
 	}
 
-	public void setTarget(ElementModel newTarget) {
-		ElementModel old = target;
+	public void setTarget(PortModel newTarget) {
+		PortModel old = target;
 		this.target = newTarget;
 		firePropertyChange(TARGET, old, newTarget);
 	}
@@ -79,9 +84,9 @@ public class ConnectionModel extends ElementModel {
 	@Override
 	public void setPropertyValue(Object id, Object value) {
 		if(SOURCE.equals(id)) {
-			setSource((ElementModel) value);
+			setSource((PortModel) value);
 		} else if(TARGET.equals(id)) {
-			setTarget((ElementModel) value);
+			setTarget((PortModel) value);
 		} else {
 			super.setPropertyValue(id, value);
 		}

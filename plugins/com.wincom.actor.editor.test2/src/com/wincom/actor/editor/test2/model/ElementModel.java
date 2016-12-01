@@ -176,6 +176,7 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((parent == null) ? 0 : parent.hashCode());
 		return result;
 	}
 
@@ -192,6 +193,11 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (parent == null) {
+			if (other.parent != null)
+				return false;
+		} else if (!parent.equals(other.parent))
 			return false;
 		return true;
 	}

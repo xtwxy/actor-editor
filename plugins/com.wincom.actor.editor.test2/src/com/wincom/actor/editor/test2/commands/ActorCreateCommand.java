@@ -34,8 +34,12 @@ public class ActorCreateCommand extends Command {
 
 	@Override
 	public boolean canExecute() {
-		if (actor == null || diagram == null)
+		if (actor == null || diagram == null) {
 			return false;
+		}
+		if(diagram.contains(actor)) {
+			return false;
+		}
 		return true;
 	}
 
