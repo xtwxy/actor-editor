@@ -32,11 +32,11 @@ public class ActorModel extends ElementModel {
 
 	public ActorModel() {
 		log.info("new ActorModel()");
-		setId("id-" + Double.valueOf(Math.random() * 1000).intValue());
+		setId("actor-" + Double.valueOf(Math.random() * 1000).intValue());
 		setName("actor-" + Double.valueOf(Math.random() * 1000).intValue());
-		input = new PortModel();
-		input.setName(INPUT);
-		input.setParent(this);
+		this.input = new PortModel();
+		this.input.setName(INPUT);
+		this.input.setParent(this);
 		
 		for(int i = 0; i < 3; ++i) {
 			PortModel output = new PortModel();
@@ -104,7 +104,8 @@ public class ActorModel extends ElementModel {
 	}
 
 	public String getId() {
-		return id;
+		log.info("id = " + this.id);
+		return this.id;
 	}
 
 	public void setId(String newId) {
@@ -172,11 +173,11 @@ public class ActorModel extends ElementModel {
 	@Override
 	public Object getPropertyValue(Object id) {
 		if (ID.equals(id)) {
-			return id;
+			return getId();
 		} else if (INPUT.equals(id)) {
-			return input;
+			return getInput();
 		} else if (OUTPUTS.equals(id)) {
-			return outputs;
+			return getOutputs();
 		}
 		return super.getPropertyValue(id);
 	}
