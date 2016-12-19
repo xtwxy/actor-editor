@@ -40,6 +40,7 @@ public abstract class ElementTreeEditPart extends AbstractTreeEditPart implement
 
 	@Override
 	public void performRequest(Request req) {
+		log.info(req.toString());
 		if (req.getType().equals(RequestConstants.REQ_OPEN)) {
 			try {
 				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();

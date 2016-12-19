@@ -39,6 +39,7 @@ public class DiagramFigure extends Figure {
 	}
 
 	public void setAggregateId(String aggregateId) {
+		log.info(aggregateId);
 		this.aggregateIdLabel.setText(aggregateId);
 	}
 

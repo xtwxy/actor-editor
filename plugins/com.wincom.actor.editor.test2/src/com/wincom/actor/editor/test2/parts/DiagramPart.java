@@ -16,6 +16,7 @@ public class DiagramPart extends ElementPart {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		log.info(evt.toString());
 		if (evt.getPropertyName().equals(DiagramModel.AGGREGATE_ID)) {
 			refreshVisuals();
 		} else if(evt.getPropertyName().equals(DiagramModel.CHILDREN)) {

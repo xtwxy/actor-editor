@@ -30,6 +30,7 @@ import org.eclipse.gef.ContextMenuProvider;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.KeyStroke;
+import org.eclipse.gef.commands.CommandStackListener;
 import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
 import org.eclipse.gef.dnd.TemplateTransferDropTargetListener;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
@@ -132,6 +133,27 @@ public class FlowEditor extends GraphicalEditorWithPalette {
 				"com.wincom.actor.editor.flow.editor.contextmenu", //$NON-NLS-1$
 				provider, getGraphicalViewer());
 
+		log.info("install dirty checker.");
+		getCommandStack().addCommandStackListener(new CommandStackListener() {
+
+			@Override
+			public void commandStackChanged(EventObject event) {
+				setDirty(getCommandStack().isDirty());
+			}
+
+		});
+//		getCommandStack().markSaveLocation();
+//		setDirty(true);
+	}
+
+	protected void setDirty(boolean dirty) {
+		log.info("dirty status: " + dirty);
+		firePropertyChange(IEditorPart.PROP_DIRTY);
+	}
+	
+	@Override
+	public boolean isDirty() {
+		return getCommandStack().isDirty();
 	}
 
 	/**

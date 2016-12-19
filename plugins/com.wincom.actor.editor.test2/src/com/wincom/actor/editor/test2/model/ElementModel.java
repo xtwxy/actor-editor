@@ -5,6 +5,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.views.properties.ColorPropertyDescriptor;
@@ -14,7 +15,7 @@ import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class ElementModel implements IPropertySource, Cloneable, Serializable {
+public abstract class ElementModel implements IAdaptable, IPropertySource, Cloneable, Serializable {
 
 	private static final long serialVersionUID = -7289522210862727774L;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -202,5 +203,14 @@ public abstract class ElementModel implements IPropertySource, Cloneable, Serial
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+		if (adapter == IPropertySource.class) {
+			return this;
+		}
+		return null;
+	}
+	
 	public abstract List<ElementModel> getChildren();
 }

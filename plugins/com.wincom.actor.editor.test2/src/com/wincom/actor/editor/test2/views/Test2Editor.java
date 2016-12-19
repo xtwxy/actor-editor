@@ -1,6 +1,7 @@
 package com.wincom.actor.editor.test2.views;
 
 import java.util.ArrayList;
+import java.util.EventObject;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.LightweightSystem;
@@ -14,6 +15,7 @@ import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
+import org.eclipse.gef.commands.CommandStackListener;
 import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
 import org.eclipse.gef.editparts.ScalableRootEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -41,6 +43,7 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -67,6 +70,7 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	DiagramModel diagram;
+	boolean dirty = false;
 	private KeyHandler keyHandler;
 
 	protected class OutlinePage extends ContentOutlinePage {
@@ -124,7 +128,7 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 
 			ContextMenuProvider provider = new ActorContextMenuProvider(getViewer(), getActionRegistry());
 			getViewer().setContextMenu(provider);
-
+			
 		}
 
 		public Control getControl() {
@@ -214,6 +218,24 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 		viewer.setContextMenu(provider);
 
 		getPaletteViewer().addDragSourceListener(new TemplateTransferDragSourceListener(getPaletteViewer()));
+			
+		log.info("install dirty checker.");
+		getCommandStack().addCommandStackListener(new CommandStackListener() {
+
+			@Override
+			public void commandStackChanged(EventObject event) {
+				setDirty(getCommandStack().isDirty());
+			}
+
+		});
+		getCommandStack().markSaveLocation();
+		setDirty(getCommandStack().isDirty());
+}
+
+	protected void setDirty(boolean dirty) {
+		log.info("dirty status: " + dirty);
+		this.dirty = dirty;
+		firePropertyChange(IEditorPart.PROP_DIRTY);
 	}
 
 	@Override
@@ -232,7 +254,8 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		log.info("check");
-
+		getCommandStack().markSaveLocation();
+		firePropertyChange(IEditorPart.PROP_DIRTY);
 	}
 
 	@Override
@@ -247,6 +270,16 @@ public class Test2Editor extends GraphicalEditorWithPalette {
 		}
 	}
 
+	@Override
+	public boolean isSaveAsAllowed() {
+		return true;
+	}
+
+	@Override
+	public boolean isDirty() {
+		return dirty || getCommandStack().isDirty();
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void createActions() {
