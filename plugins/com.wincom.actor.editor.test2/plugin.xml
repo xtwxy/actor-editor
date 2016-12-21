@@ -57,7 +57,7 @@
             extensions="mpe"
             icon="icons/sample.gif"
             id="com.wincom.actor.editor.test2.editor1"
-            name="Configuration Editor">
+            name="Message Flow Editor">
       </editor>
    </extension>
    <extension
