@@ -8,6 +8,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.views.properties.ColorPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -50,9 +51,9 @@ public abstract class ElementModel implements IAdaptable, IPropertySource, Clone
 		} else if(PARENT.equals(id)) {
 			return parent;
 		} else if(BACKGROUND_COLOR.equals(id)) {
-			return backgroundColor;
+			return backgroundColor.getRGB();
 		} else if(FOREGROUND_COLOR.equals(id)) {
-			return foregroundColor;
+			return foregroundColor.getRGB();
 		}
 		return null;
 	}
@@ -78,9 +79,11 @@ public abstract class ElementModel implements IAdaptable, IPropertySource, Clone
 		} else if(PARENT.equals(id)) {
 			setParent((ElementModel) value);
 		} else if(BACKGROUND_COLOR.equals(id)) {
-			setBackgroundColor((Color) value);
+			Color newColor = new Color(null, (RGB) value);
+			setBackgroundColor(newColor);
 		} else if(FOREGROUND_COLOR.equals(id)) {
-			setForegroundColor((Color) value);
+			Color newColor = new Color(null, (RGB) value);
+			setForegroundColor(newColor);
 		}
 	}
 

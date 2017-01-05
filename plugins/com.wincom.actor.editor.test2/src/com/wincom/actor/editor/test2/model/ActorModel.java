@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.ui.views.properties.ColorPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
@@ -28,7 +29,10 @@ public class ActorModel extends ElementModel {
 			new TextPropertyDescriptor(NAME, NAME),
 			new PropertyDescriptor(PARENT, PARENT),
 			new PropertyDescriptor(INPUT, INPUT), 
-			new PropertyDescriptor(OUTPUTS, OUTPUTS) };
+			new PropertyDescriptor(OUTPUTS, OUTPUTS),
+			new ColorPropertyDescriptor(BACKGROUND_COLOR, BACKGROUND_COLOR),
+			new ColorPropertyDescriptor(FOREGROUND_COLOR, FOREGROUND_COLOR)
+			};
 
 	public ActorModel() {
 		log.info("new ActorModel()");
